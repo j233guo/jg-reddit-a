@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared.module';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
+import { ContentService } from 'src/services/contentService';
+import { HttpClientModule } from '@angular/common/http';
+import { UIModule } from './ui.module';
 
 @NgModule({
     declarations: [
@@ -10,9 +14,14 @@ import { AppComponent } from './app.component';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        SharedModule,
+        UIModule,
+        RouterModule.forRoot(routes, { useHash: false }),
+        HttpClientModule
     ],
-    providers: [],
+    providers: [
+        ContentService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

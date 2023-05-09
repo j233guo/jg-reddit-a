@@ -1,0 +1,16 @@
+<div class="x-container">
+    <nz-layout>
+        <nz-sider nzCollapsible [(nzCollapsed)]="siderCollapsed" [nzTrigger]="null" nzWidth="200px">
+            <div class="logo"></div>
+            <ul nz-menu nzTheme="dark" nzMode="inline">
+                <li nz-menu-item [routerLink]="'/popular'" [nzMatchRouterExact]="true" [nzMatchRouter]="true">
+                    <span nz-icon nzType="desktop"></span>
+                    <span>Feeds</span>
+                </li>
+            </ul>
+        </nz-sider>
+    </nz-layout>
+    <div class="x-workspace">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.x-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    min-width: 1280px;
+    min-height: 720px;
+
+    & > .x-workspace {
+        display: block;
+        background-color: #f3f3f4;
+        flex: 10;
+    }
+}
+
+.logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 30px 16px 0;
+}
