@@ -2,13 +2,11 @@ import { HttpClient } from "@angular/common/http";
 
 export class RemoteAPIService {
 
-    baseURL: string  = 'http://127.0.0.1:5000/'
+    protected baseURL: string  = 'http://127.0.0.1:5000/'
 
     public constructor(
         protected _http: HttpClient,
-    ) {
-
-    }
+    ) {}
 
     protected post(endpoint: string, data?: any): Promise<any> {
         return new Promise((resolve, reject) => {

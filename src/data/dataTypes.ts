@@ -1,4 +1,4 @@
-export interface IContentType {
+export interface IContent {
     data: any
     kind: string
 }

@@ -4,9 +4,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
-import { ContentService } from 'src/services/contentService';
+import { ContentService } from 'src/services/ContentService';
 import { HttpClientModule } from '@angular/common/http';
 import { UIModule } from './ui.module';
+import { MessageService } from 'src/services/MessageService';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
     declarations: [
@@ -17,10 +20,13 @@ import { UIModule } from './ui.module';
         SharedModule,
         UIModule,
         RouterModule.forRoot(routes, { useHash: false }),
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule
     ],
     providers: [
-        ContentService
+        ContentService,
+        MessageService,
+        NzMessageService
     ],
     bootstrap: [AppComponent]
 })

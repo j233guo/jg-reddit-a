@@ -16,6 +16,4 @@ import { NzMenuModule } from "ng-zorro-antd/menu";
         NzMenuModule,
     ],
 })
-export class SharedModule {
-
-}
+export class SharedModule {}
