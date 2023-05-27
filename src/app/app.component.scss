@@ -1,4 +1,4 @@
-.x-container {
+.content-container {
     display: flex;
     width: 100%;
     height: 100%;
@@ -6,7 +6,7 @@
     min-width: 1280px;
     min-height: 720px;
 
-    & > .x-workspace {
+    & > .workspace {
         display: block;
         background-color: #f3f3f4;
         flex: 10;
@@ -18,4 +18,34 @@
     height: 31px;
     background: rgba(255, 255, 255, 0.2);
     margin: 16px 30px 16px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-menu {
+    line-height: 64px;
+}
+
+.outer-content {
+    padding: 20px 50px 70px 50px;
+}
+
+.inner-layout {
+    height: 100%;
+    padding: 24px 0;
+    background: #fff;
+}
+
+.inner-content {
+    padding: 0 24px;
+    min-height: 280px;
+}
+
+.sider-menu {
+    height: 100%;
+}
+
+nz-footer {
+    height: 50px;
+    text-align: center;
 }

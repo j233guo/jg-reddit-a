@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-    selector: 'popular-post-page',
+    selector: 'home-page',
     templateUrl: './index.html',
     styleUrls: ['./index.scss']
 })
-export class PopularPostPage implements OnInit {
+export class HomePage implements OnInit {
 
     constructor() {}
-
-    ngOnInit() {
-
+    
+    ngOnInit(): void {
+        
     }
 }

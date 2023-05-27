@@ -10,6 +10,7 @@ import { UIModule } from './ui.module';
 import { MessageService } from 'src/services/MessageService';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { IconModule } from './icons.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
         UIModule,
         RouterModule.forRoot(routes, { useHash: false }),
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        IconModule,
     ],
     providers: [
         ContentService,

@@ -1,16 +1,37 @@
-<div class="x-container">
+<div class="content-container">
     <nz-layout>
-        <nz-sider nzCollapsible [(nzCollapsed)]="siderCollapsed" [nzTrigger]="null" nzWidth="200px">
-            <div class="logo"></div>
-            <ul nz-menu nzTheme="dark" nzMode="inline">
-                <li nz-menu-item [routerLink]="'/popular'" [nzMatchRouterExact]="true" [nzMatchRouter]="true">
-                    <span nz-icon nzType="desktop"></span>
-                    <span>Feeds</span>
-                </li>
+        <nz-header>
+            <div class="logo">                
+            </div>
+            <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
             </ul>
-        </nz-sider>
-    </nz-layout>
-    <div class="x-workspace">
-        <router-outlet></router-outlet>
-    </div>
+        </nz-header>
+        <nz-content class="outer-content">
+            <nz-layout class="inner-layout">
+                <nz-sider nzWidth="200px" nzTheme="dark">
+                    <ul nz-menu nzMode="inline" class="sider-menu">
+                        <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
+                            <ul>
+                                <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
+                                    <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
+                                </li>
+                                <li nz-menu-item [routerLink]="'/popular'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
+                                    <span nz-icon nzType="rise" nzTheme="outline"></span>&nbsp;Popular
+                                </li>
+                            </ul>
+                        </li>
+                        <li nz-submenu nzOpen nzTitle="Topics" nzIcon="eye">
+                            
+                        </li>
+                    </ul>
+                </nz-sider>
+                <nz-content class="inner-content">
+                    <div class="workspace">
+                        <router-outlet></router-outlet>
+                    </div>
+                </nz-content>
+            </nz-layout>
+            <nz-footer >JG Reddit App ©2023 By JG</nz-footer>
+        </nz-content>
+    </nz-layout>    
 </div>
