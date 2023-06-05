@@ -17,13 +17,26 @@
     width: 120px;
     height: 31px;
     background: rgba(255, 255, 255, 0.2);
-    margin: 16px 30px 16px 0;
-    justify-content: center;
-    align-items: center;
+    margin: 15px 30px 15px 20px;
 }
 
-.header-menu {
-    line-height: 64px;
+.header {
+    height: 60px;
+    width: 100%;
+}
+
+.header-light {
+    background-color: #D8D8D8;
+}
+
+.header-dark {
+    background-color: #151E3D;
+}
+
+.drop-down-menu-button {
+    height: 30px; 
+    width: 30px; 
+    margin: 15px 20px 15px 0px 
 }
 
 .outer-content {

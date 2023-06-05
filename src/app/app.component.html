@@ -1,11 +1,29 @@
 <div class="content-container">
     <nz-layout>
-        <nz-header>
-            <div class="logo">                
+        <div class="header" [ngClass]="uiTheme.theme === 'light' ? 'header-light' : 'header-dark'" >
+            <div nz-row>
+                <div nz-col nzSpan="3">
+                    <div class="logo">
+
+                    </div>
+                </div>
+                <div nz-col nzSpan="20">
+
+                </div>
+                <div nz-col nzSpan="1">
+                    <div nz-dropdown [nzDropdownMenu]="menu" class="drop-down-menu-button">
+                        <span nz-icon nzType="user" nzTheme="outline"></span>
+                    </div>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li nz-menu-item>
+                                <a [routerLink]="'/preferences'">Preferences</a>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </div>
             </div>
-            <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-            </ul>
-        </nz-header>
+        </div>
         <nz-content class="outer-content">
             <nz-layout class="inner-layout">
                 <nz-sider nzWidth="200px" nzTheme="dark">

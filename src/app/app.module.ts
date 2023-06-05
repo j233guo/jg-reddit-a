@@ -11,6 +11,7 @@ import { MessageService } from 'src/services/MessageService';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { IconModule } from './icons.module';
+import { AppearanceService } from 'src/services/AppearanceService';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { IconModule } from './icons.module';
     providers: [
         ContentService,
         MessageService,
-        NzMessageService
+        NzMessageService,
+        AppearanceService
     ],
     bootstrap: [AppComponent]
 })

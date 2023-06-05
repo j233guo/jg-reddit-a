@@ -3,6 +3,8 @@ import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzLayoutModule } from "ng-zorro-antd/layout"
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { IconDefinition } from '@ant-design/icons-angular';
+import { NzGridModule } from 'ng-zorro-antd/grid'
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown'
 
 import * as AllIcons from '@ant-design/icons-angular/icons'
 
@@ -17,11 +19,15 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzIconModule.forRoot(icons),
         NzLayoutModule,
         NzMenuModule,
+        NzGridModule,
+        NzDropDownModule,
     ],
     exports: [
         NzIconModule,
         NzLayoutModule,
         NzMenuModule,
+        NzGridModule,
+        NzDropDownModule,
     ],
 })
 export class SharedModule {}
