@@ -1,3 +1,11 @@
+* {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 .content-container {
     display: flex;
     width: 100%;
@@ -10,6 +18,21 @@
         display: block;
         background-color: #f3f3f4;
         flex: 10;
+    }
+}
+
+nz-spin {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background-color: #f7f7f766;
+
+    &::ng-deep .ant-spin {
+        max-height: 66%;
     }
 }
 

@@ -5,6 +5,7 @@ import { TrackableSubjectWrapper } from "src/lib/TrackableObservable";
 import { RecursiveReadonly } from "src/lib/tslang";
 import { IContent } from "src/data/dataTypes";
 import { Subject } from "rxjs";
+import { LoadingService } from "./LoadingService";
 
 type SubjectPostListData = TrackableSubjectWrapper<RecursiveReadonly<IContent>, Subject<RecursiveReadonly<IContent>>>
 
@@ -14,9 +15,10 @@ type SubjectPostListData = TrackableSubjectWrapper<RecursiveReadonly<IContent>, 
 export class ContentService extends RemoteAPIService {
 
     constructor(
-        http: HttpClient
+        http: HttpClient,
+        loading: LoadingService,
     ) {
-        super(http)
+        super(http, loading)
     }
 
     async getPopularPosts() {

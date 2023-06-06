@@ -51,5 +51,9 @@
             </nz-layout>
             <nz-footer >JG Reddit App ©2023 By JG</nz-footer>
         </nz-content>
-    </nz-layout>    
+    </nz-layout>
+
+    <nz-spin [nzSpinning]="loadingSpinningEffect" [nzSize]="'large'" *ngIf="loadingSpinningEffect" [nzTip]="loadingText">
+        <div>&nbsp;</div>
+    </nz-spin>
 </div>

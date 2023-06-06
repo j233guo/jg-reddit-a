@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppearanceService, IUITheme } from 'src/services/AppearanceService';
+import { LoadingService } from 'src/services/LoadingService';
 
 @Component({
     selector: 'app-root',
@@ -9,11 +10,13 @@ import { AppearanceService, IUITheme } from 'src/services/AppearanceService';
 export class AppComponent implements OnInit {
 
     uiTheme: IUITheme
-
     siderCollapsed: boolean = false
+    loadingSpinningEffect: boolean
+    loadingText: string = ""
 
     constructor(
-        private _appearanceService: AppearanceService
+        private _appearanceService: AppearanceService,
+        private _loadingService: LoadingService
     ) {}
 
     ngOnInit(): void {
@@ -23,5 +26,9 @@ export class AppComponent implements OnInit {
                 this.uiTheme[key] = val
             })
         })
-    }   
+        this._loadingService.getLoadingState().subscribe((value) => {
+            this.loadingSpinningEffect = value.status
+            this.loadingText = value.text
+        })
+    }
 }
