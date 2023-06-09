@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ContentService } from "src/services/ContentService";
+import { APIService } from "src/services/APIService";
 
 @Component({
     selector: 'home-page',

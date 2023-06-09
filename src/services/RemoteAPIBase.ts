@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { LoadingService } from "./LoadingService";
 
-export class RemoteAPIService {
+export class RemoteAPIBase {
 
     protected baseURL: string  = 'http://127.0.0.1:5000/'
 

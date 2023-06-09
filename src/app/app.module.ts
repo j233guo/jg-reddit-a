@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
-import { ContentService } from 'src/services/ContentService';
+import { APIService } from 'src/services/APIService';
 import { HttpClientModule } from '@angular/common/http';
 import { UIModule } from './ui.module';
 import { MessageService } from 'src/services/MessageService';
@@ -28,7 +28,7 @@ import { LoadingService } from 'src/services/LoadingService';
         IconModule,
     ],
     providers: [
-        ContentService,
+        APIService,
         MessageService,
         NzMessageService,
         AppearanceService,
