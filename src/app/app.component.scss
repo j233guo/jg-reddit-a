@@ -1,3 +1,5 @@
+@import "../scss/color";
+
 * {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -13,12 +15,6 @@
     flex-direction: row;
     min-width: 1280px;
     min-height: 720px;
-
-    & > .workspace {
-        display: block;
-        background-color: #f3f3f4;
-        flex: 10;
-    }
 }
 
 nz-spin {
@@ -49,31 +45,40 @@ nz-spin {
 }
 
 .header-light {
-    background-color: #D8D8D8;
+    background-color: $LIGHT_HEADER_COLOR;
 }
 
 .header-dark {
-    background-color: #151E3D;
+    background-color: $DARK_HEADER_COLOR;
 }
 
 .drop-down-menu-button {
     height: 30px; 
     width: 30px; 
-    margin: 15px 20px 15px 0px 
+    margin: 15px 20px 15px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .outer-content {
     padding: 20px 50px 70px 50px;
 }
 
+.outer-content-dark {
+    background-color: $DARK_BG_COLOR;
+}
+
+.outer-content-light {
+    background-color: $LIGHT_BG_COLOR;
+}
+
 .inner-layout {
     height: 100%;
-    padding: 24px 0;
-    background: #fff;
 }
 
 .inner-content {
-    padding: 0 24px;
+    padding: 20px;
     min-height: 280px;
 }
 
@@ -82,6 +87,15 @@ nz-spin {
 }
 
 nz-footer {
-    height: 50px;
     text-align: center;
+}
+
+.footer-light {
+    background-color: $LIGHT_BG_COLOR;
+    color: black;
+}
+
+.footer-dark {
+    background-color: $DARK_BG_COLOR;
+    color: darkgray;
 }

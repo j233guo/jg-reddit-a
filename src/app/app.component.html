@@ -1,17 +1,16 @@
 <div class="content-container">
     <nz-layout>
-        <div class="header" [ngClass]="uiTheme.theme === 'light' ? 'header-light' : 'header-dark'" >
+        <div class="header" [ngClass]="uiTheme.theme === 'light' ? 'header-light' : 'header-dark'">
             <div nz-row>
                 <div nz-col nzSpan="3">
-                    <div class="logo">
-
-                    </div>
+                    <a [routerLink]="'/'">
+                        <div class="logo"></div>
+                    </a>
                 </div>
-                <div nz-col nzSpan="20">
-
-                </div>
+                <div nz-col nzSpan="20"></div>
                 <div nz-col nzSpan="1">
-                    <div nz-dropdown [nzDropdownMenu]="menu" class="drop-down-menu-button">
+                    <div nz-dropdown [nzDropdownMenu]="menu" class="drop-down-menu-button"
+                        [ngStyle]="{ color: uiTheme.theme === 'light' ? 'black' : 'white' }">
                         <span nz-icon nzType="user" nzTheme="outline"></span>
                     </div>
                     <nz-dropdown-menu #menu="nzDropdownMenu">
@@ -24,10 +23,10 @@
                 </div>
             </div>
         </div>
-        <nz-content class="outer-content">
+        <nz-content class="outer-content" [ngClass]="uiTheme.theme === 'light' ? 'outer-content-light' : 'outer-content-dark'">
             <nz-layout class="inner-layout">
-                <nz-sider nzWidth="200px" nzTheme="dark">
-                    <ul nz-menu nzMode="inline" class="sider-menu">
+                <nz-sider nzWidth="200px">
+                    <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiTheme.theme">
                         <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
                             <ul>
                                 <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
@@ -49,7 +48,9 @@
                     </div>
                 </nz-content>
             </nz-layout>
-            <nz-footer >JG Reddit App ©2023 By JG</nz-footer>
+            <nz-footer [ngClass]="uiTheme.theme === 'light' ? 'footer-light' : 'footer-dark'">
+                JG Reddit App ©2023 By JG
+            </nz-footer>
         </nz-content>
     </nz-layout>
 
