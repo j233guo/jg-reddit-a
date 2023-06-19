@@ -26,7 +26,7 @@ export class AppearanceService {
 
     constructor() {
         this._subjectUITheme = new TrackableSubjectWrapper(new Subject())
-        this._theme = { theme: 'light' }
+        this._theme = { theme: 'dark' }
     }
 
     setUITheme(value: IUITheme) {

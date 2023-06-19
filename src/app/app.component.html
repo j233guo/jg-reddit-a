@@ -1,6 +1,6 @@
 <div class="content-container">
     <nz-layout>
-        <div class="header" [ngClass]="uiTheme.theme === 'light' ? 'header-light' : 'header-dark'">
+        <div class="header" [ngClass]="'header-'+uiTheme.theme">
             <div nz-row>
                 <div nz-col nzSpan="3">
                     <a [routerLink]="'/'">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <nz-content class="outer-content" [ngClass]="uiTheme.theme === 'light' ? 'outer-content-light' : 'outer-content-dark'">
+        <nz-content class="outer-content" [ngClass]="'outer-content-'+uiTheme.theme">
             <nz-layout class="inner-layout">
                 <nz-sider nzWidth="200px">
                     <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiTheme.theme">
@@ -42,13 +42,11 @@
                         </li>
                     </ul>
                 </nz-sider>
-                <nz-content class="inner-content">
-                    <div class="workspace">
-                        <router-outlet></router-outlet>
-                    </div>
+                <nz-content class="inner-content" [ngClass]="'inner-content-'+uiTheme.theme">
+                    <router-outlet></router-outlet>
                 </nz-content>
             </nz-layout>
-            <nz-footer [ngClass]="uiTheme.theme === 'light' ? 'footer-light' : 'footer-dark'">
+            <nz-footer  [ngClass]="'footer-'+uiTheme.theme">
                 JG Reddit App ©2023 By JG
             </nz-footer>
         </nz-content>
