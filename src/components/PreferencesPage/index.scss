@@ -1,0 +1,49 @@
+@import "../../scss/color";
+@import "../../scss/layout";
+
+.content-container {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    margin: 5px 0px 15px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title-text {
+        font-weight: bold;
+        font-size: 2em;
+    }
+
+    .title-text-light {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    .title-text-dark {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.list-content {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pref-line {
+    width: 100%;
+    height: $PREF_LINE_HEIGHT;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1em;
+
+    .pref-line-title-light {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    .pref-line-title-dark {
+        color: $DARK_TEXT_COLOR;
+    }
+}

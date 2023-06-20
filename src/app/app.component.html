@@ -1,0 +1,61 @@
+<div class="content-container">
+    <nz-layout>
+        <div class="header" [ngClass]="'header-'+uiSetting.theme">
+            <div nz-row>
+                <div nz-col nzSpan="3">
+                    <a [routerLink]="'/'">
+                        <div class="logo">
+                            <span nz-icon nzType="reddit" nzTheme="outline"></span>&nbsp;
+                            <span>Reddit</span>
+                        </div>
+                    </a>
+                </div>
+                <div nz-col nzSpan="20"></div>
+                <div nz-col nzSpan="1">
+                    <div nz-dropdown [nzDropdownMenu]="menu" class="drop-down-menu-button"
+                        [ngStyle]="{ color: uiSetting.theme === 'light' ? 'black' : 'white' }">
+                        <span nz-icon nzType="user" nzTheme="outline"></span>
+                    </div>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li nz-menu-item>
+                                <a [routerLink]="'/preferences'">Preferences</a>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </div>
+            </div>
+        </div>
+        <nz-content class="outer-content" [ngClass]="'outer-content-'+uiSetting.theme">
+            <nz-layout class="inner-layout">
+                <nz-sider nzWidth="200px">
+                    <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiSetting.theme">
+                        <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
+                            <ul>
+                                <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
+                                    <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
+                                </li>
+                                <li nz-menu-item [routerLink]="'/popular'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
+                                    <span nz-icon nzType="rise" nzTheme="outline"></span>&nbsp;Popular
+                                </li>
+                            </ul>
+                        </li>
+                        <li nz-submenu nzOpen nzTitle="Topics" nzIcon="eye">
+                            
+                        </li>
+                    </ul>
+                </nz-sider>
+                <nz-content class="inner-content" [ngClass]="'inner-content-'+uiSetting.theme">
+                    <router-outlet></router-outlet>
+                </nz-content>
+            </nz-layout>
+            <nz-footer  [ngClass]="'footer-'+uiSetting.theme">
+                JG Reddit App ©2023 By JG
+            </nz-footer>
+        </nz-content>
+    </nz-layout>
+
+    <nz-spin [nzSpinning]="loadingSpinningEffect" [nzSize]="'large'" *ngIf="loadingSpinningEffect" [nzTip]="loadingText">
+        <div>&nbsp;</div>
+    </nz-spin>
+</div>

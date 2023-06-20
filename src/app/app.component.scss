@@ -1,0 +1,129 @@
+@import "../scss/color";
+
+* {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    min-width: 1280px;
+    min-height: 720px;
+}
+
+nz-spin {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background-color: #f7f7f766;
+
+    &::ng-deep .ant-spin {
+        max-height: 66%;
+    }
+}
+
+.logo {
+    width: 120px;
+    height: 35px;
+    //background: rgba(255, 255, 255, 0.2);
+    margin: 5px 30px 5px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: x-large;
+    }
+}
+
+.header {
+    height: 45px;
+    width: 100%;
+}
+
+.header-light {
+    background-color: $LIGHT_HEADER_COLOR;
+}
+
+.header-dark {
+    background-color: $DARK_HEADER_COLOR;
+}
+
+.drop-down-menu-button {
+    height: 35px; 
+    width: 35px; 
+    margin: 5px 20px 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: large;
+    }
+}
+
+.outer-content {
+    padding: 20px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outer-content-dark {
+    background-color: $DARK_BG_COLOR;
+}
+
+.outer-content-light {
+    background-color: $LIGHT_BG_COLOR;
+}
+
+.inner-layout {
+    width: 75%;
+    height: 100%;
+}
+
+.inner-content {
+    padding: 0px 20px 0px 20px;
+    min-height: 280px;
+}
+
+.inner-content-light {
+    background-color: $LIGHT_INNER_BG_COLOR;
+}
+
+.inner-content-dark {
+    background-color: $DARK_INNER_BG_COLOR;
+}
+
+.sider-menu {
+    height: 100%;
+}
+
+nz-footer {
+    text-align: center;
+}
+
+::ng-deep .ant-layout-footer {
+    padding: 15px 50px;
+}
+
+.footer-light {
+    background-color: $LIGHT_BG_COLOR;
+    color: darkgrey;
+}
+
+.footer-dark {
+    background-color: $DARK_BG_COLOR;
+    color: #345678;
+}

@@ -1,0 +1,1 @@
+export type RecursiveReadonly<T> = Readonly<{[P in keyof T]: (T[P] extends Function ? T[P] : RecursiveReadonly<T[P]>)}>
