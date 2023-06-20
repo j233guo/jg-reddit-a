@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/services/APIService';
-import { AppearanceService, IUITheme } from 'src/services/AppearanceService';
+import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
 import { MessageService } from 'src/services/MessageService';
 
@@ -11,7 +11,7 @@ import { MessageService } from 'src/services/MessageService';
 })
 export class AppComponent implements OnInit {
 
-    uiTheme: IUITheme
+    uiSetting: IUISetting
     siderCollapsed: boolean = false
     loadingSpinningEffect: boolean
     loadingText: string = ""
@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
     ) {}
 
     async ngOnInit() {
-        this.uiTheme = this._appearanceService.getUITheme
-        this._appearanceService.observableUITheme.subscribe(this, (value) => {
+        this.uiSetting = this._appearanceService.getUISetting
+        this._appearanceService.observableUISetting.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {
-                this.uiTheme[key] = val
+                this.uiSetting[key] = val
             })
         })
         this._loadingService.getLoadingState().subscribe((value) => {

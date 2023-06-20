@@ -1,15 +1,15 @@
 <div class="content-container">
     <div nz-row class="title">
-        <span class="title-text" [ngClass]="'title-text-'+uiTheme.theme">Preferences</span>
+        <span class="title-text" [ngClass]="'title-text-'+uiSetting.theme">Preferences</span>
     </div>
     <div class="list-content">
         <div nz-row class="pref-line">
-            <div nz-col nzSpan="5" [ngClass]="'pref-line-title-'+uiTheme.theme">
+            <div nz-col nzSpan="5" [ngClass]="'pref-line-title-'+uiSetting.theme">
                 Color Theme
             </div>
             <div nz-col nzSpan="13"></div>
             <div nz-col nzSpan="6">
-                <nz-select [(ngModel)]="uiTheme.theme" style="width: 100%">
+                <nz-select style="width: 100%" [(ngModel)]="uiSetting.theme" (ngModelChange)="applyUITheme()">
                     <nz-option [nzLabel]="'Light'" [nzValue]="'light'"></nz-option>
                     <nz-option [nzLabel]="'Dark'" [nzValue]="'dark'"></nz-option>
                 </nz-select>

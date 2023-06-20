@@ -5,32 +5,40 @@ import { RecursiveReadonly } from "src/lib/tslang";
 
 export type UITheme = 'light' | 'dark'
 
-export interface IUITheme {
+export interface IUISetting {
     theme: UITheme
 }
 
-type SubjectUITheme = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUITheme>>, Subject<RecursiveReadonly<Partial<IUITheme>>>>
+type SubjectUIuiSetting = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUISetting>>, Subject<RecursiveReadonly<Partial<IUISetting>>>>
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppearanceService {
 
-    private _theme: IUITheme
+    private _uiSetting: IUISetting
 
-    private _subjectUITheme: SubjectUITheme
+    private _subjectUISetting: SubjectUIuiSetting
 
-    get observableUITheme() { return this._subjectUITheme.observable }
+    get observableUISetting() { return this._subjectUISetting.observable }
 
-    get getUITheme() { return this._theme }
+    get getUISetting() { return this._uiSetting }
 
     constructor() {
-        this._subjectUITheme = new TrackableSubjectWrapper(new Subject())
-        this._theme = { theme: 'light' }
+        this._subjectUISetting = new TrackableSubjectWrapper(new Subject())
+        this.initUISetting()
     }
 
-    setUITheme(value: IUITheme) {
-        this._theme = value
-        this._subjectUITheme.subject.next(value)
+    initUISetting() {
+        this._uiSetting = { theme: 'light' }
+    }
+
+    applyUISetting(value: Partial<IUISetting>) {
+        let pass: Partial<IUISetting> = {}
+        Object.entries(value).forEach(([key, val]) => {
+            this._uiSetting[key] = val
+            pass[key] = val
+        })
+        this._subjectUISetting.subject.next(pass)
     }
 }

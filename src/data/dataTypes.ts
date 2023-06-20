@@ -1,4 +1,4 @@
-export interface IContent {
+export interface IReturnData {
     data: any
     kind: string
 }
