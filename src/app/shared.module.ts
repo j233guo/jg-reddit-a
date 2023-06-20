@@ -9,6 +9,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSelectModule } from 'ng-zorro-antd/select'
 
 import * as AllIcons from '@ant-design/icons-angular/icons'
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const antDesignIcons = AllIcons as {
     [key: string]: IconDefinition;
@@ -18,6 +19,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 @NgModule({
     declarations: [],
     imports: [
+        FormsModule,
+        ReactiveFormsModule,
         NzIconModule.forRoot(icons),
         NzLayoutModule,
         NzMenuModule,
@@ -27,6 +30,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzSelectModule,
     ],
     exports: [
+        FormsModule,
+        ReactiveFormsModule,
         NzIconModule,
         NzLayoutModule,
         NzMenuModule,

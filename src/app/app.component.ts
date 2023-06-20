@@ -5,7 +5,7 @@ import { LoadingService } from 'src/services/LoadingService';
 import { MessageService } from 'src/services/MessageService';
 
 @Component({
-    selector: 'app',
+    selector: 'app-component',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })

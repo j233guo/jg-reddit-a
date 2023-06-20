@@ -3,20 +3,17 @@
         <span class="title-text" [ngClass]="'title-text-'+uiTheme.theme">Preferences</span>
     </div>
     <div class="list-content">
-        <ng-container *ngFor="let i of prefItems">
-            <div nz-row class="pref-line">
-                <div nz-col nzSpan="4">
-                    {{i.title}}
-                </div>
-                <div nz-col nzSpan="16"></div>
-                <div nz-col nzSpan="4">
-                    <ng-container *ngIf="i.type === 'select'">
-                        <nz-select [(ngModel)]="uiTheme.theme">
-                            <nz-option *ngFor="let option of i.options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-                        </nz-select>
-                    </ng-container>
-                </div>
+        <div nz-row class="pref-line">
+            <div nz-col nzSpan="5" [ngClass]="'pref-line-title-'+uiTheme.theme">
+                Color Theme
             </div>
-        </ng-container>
+            <div nz-col nzSpan="13"></div>
+            <div nz-col nzSpan="6">
+                <nz-select [(ngModel)]="uiTheme.theme" style="width: 100%">
+                    <nz-option [nzLabel]="'Light'" [nzValue]="'light'"></nz-option>
+                    <nz-option [nzLabel]="'Dark'" [nzValue]="'dark'"></nz-option>
+                </nz-select>
+            </div>
+        </div>
     </div>
 </div>

@@ -7,14 +7,14 @@
 }
 
 .title {
-    margin: 5px 0px 5px 15px;
+    margin: 5px 0px 15px 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
 
     .title-text {
         font-weight: bold;
-        font-size: larger;
+        font-size: 2em;
     }
 
     .title-text-light {
@@ -26,8 +26,24 @@
     }
 }
 
+.list-content {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .pref-line {
     width: 100%;
     height: $PREF_LINE_HEIGHT;
-    background-color: aqua;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1em;
+
+    .pref-line-title-light {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    .pref-line-title-dark {
+        color: $DARK_TEXT_COLOR;
+    }
 }

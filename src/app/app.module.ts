@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { IconModule } from './icons.module';
 import { AppearanceService } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { LoadingService } from 'src/services/LoadingService';
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         SharedModule,
         UIModule,
         RouterModule.forRoot(routes, { useHash: false }),
