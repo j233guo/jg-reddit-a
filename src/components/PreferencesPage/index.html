@@ -1,3 +1,22 @@
 <div class="content-container">
-    
+    <div nz-row class="title">
+        <span class="title-text" [ngClass]="'title-text-'+uiTheme.theme">Preferences</span>
+    </div>
+    <div class="list-content">
+        <ng-container *ngFor="let i of prefItems">
+            <div nz-row class="pref-line">
+                <div nz-col nzSpan="4">
+                    {{i.title}}
+                </div>
+                <div nz-col nzSpan="16"></div>
+                <div nz-col nzSpan="4">
+                    <ng-container *ngIf="i.type === 'select'">
+                        <nz-select [(ngModel)]="uiTheme.theme">
+                            <nz-option *ngFor="let option of i.options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                        </nz-select>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </div>
 </div>

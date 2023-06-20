@@ -1,0 +1,33 @@
+@import "../../scss/color";
+@import "../../scss/layout";
+
+.content-container {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    margin: 5px 0px 5px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title-text {
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    .title-text-light {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    .title-text-dark {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.pref-line {
+    width: 100%;
+    height: $PREF_LINE_HEIGHT;
+    background-color: aqua;
+}
