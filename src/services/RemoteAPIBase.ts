@@ -12,6 +12,12 @@ export interface IBasicResponse {
     message?: string
 }
 
+export interface IListingPayload {
+    subreddit: string
+    listingOption: string
+    limit: number
+}
+
 export class RemoteAPIBase {
 
     protected baseURL: string  = 'http://127.0.0.1:5000'
@@ -48,9 +54,9 @@ export class RemoteAPIBase {
 
     protected handleResponse(value: any, name?: string) {
         if (this.isStdResponse(value)) {
-            this.handleStdResponse(value, name)
+            return this.handleStdResponse(value, name)
         } else {
-            this.handleUnexpectedResponse(name)
+            return this.handleUnexpectedResponse(name)
         }
     }
 

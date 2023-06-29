@@ -4,11 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { HomePage } from "src/components/HomePage";
 import { PreferencesPage } from "src/components/PreferencesPage";
 import { SharedModule } from "./shared.module";
+import { PostList } from "src/components/PostList";
 
 @NgModule({
     declarations: [
         HomePage,
         PreferencesPage,
+        PostList,
     ],
     imports: [
         CommonModule,
