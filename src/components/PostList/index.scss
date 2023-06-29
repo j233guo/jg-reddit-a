@@ -1,4 +1,21 @@
+@import "../../scss/color";
+
 .post-cell {
     margin: 5px 25px 5px 25px;
-    border-style: groove;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 10px 10px 15px;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.author {
+    font-size: 0.9em;
+}
+
+.load-more-btn {
+    height: 45px;
 }

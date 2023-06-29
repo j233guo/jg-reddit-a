@@ -5,10 +5,12 @@ import { HomePage } from "src/components/HomePage";
 import { PreferencesPage } from "src/components/PreferencesPage";
 import { SharedModule } from "./shared.module";
 import { PostList } from "src/components/PostList";
+import { PopularPage } from "src/components/PopularPage";
 
 @NgModule({
     declarations: [
         HomePage,
+        PopularPage,
         PreferencesPage,
         PostList,
     ],
@@ -19,6 +21,7 @@ import { PostList } from "src/components/PostList";
     ],
     exports: [
         HomePage,
+        PopularPage,
         PreferencesPage,
     ]
 })

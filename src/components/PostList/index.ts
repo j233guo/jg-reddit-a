@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { APIService, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { IListingPayload } from "src/services/RemoteAPIBase";
@@ -6,9 +6,10 @@ import { IListingPayload } from "src/services/RemoteAPIBase";
 @Component({
     selector: 'post-list',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss', './light.scss', './dark.scss']
 })
 export class PostList implements OnInit {
+    @Input('subreddit') subreddit: string
 
     uiSetting: IUISetting
     posts: IPost[] = []
@@ -30,7 +31,7 @@ export class PostList implements OnInit {
 
     async loadPosts() {
         let payload: IListingPayload = {
-            subreddit: 'all',
+            subreddit: this.subreddit,
             listingOption: 'top',
             limit: 20
         }

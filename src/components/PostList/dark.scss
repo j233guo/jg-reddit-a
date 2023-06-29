@@ -1,0 +1,13 @@
+@import "../../scss/color";
+
+.post-cell-dark {
+    border-color: $DARK_BG_COLOR;
+}
+
+.title-dark {
+    color: $DARK_TEXT_COLOR
+}
+
+.author-dark {
+    color: $DARK_TEXT_COLOR;
+}
