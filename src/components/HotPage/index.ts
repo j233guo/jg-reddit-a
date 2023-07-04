@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { PostList } from "../PostList";
 
 @Component({
-    selector: 'home-page',
+    selector: 'hot-page',
     templateUrl: './index.html',
     styleUrls: ['./index.scss']
 })
-export class HomePage implements OnInit {
+export class HotPage implements OnInit {
     @ViewChild(PostList) postlist: PostList
 
     constructor() {}

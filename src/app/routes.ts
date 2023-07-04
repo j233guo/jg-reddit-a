@@ -1,11 +1,13 @@
 import { Routes } from "@angular/router";
 import { HomePage } from "src/components/HomePage";
-import { PopularPage } from "src/components/PopularPage";
+import { HotPage } from "src/components/HotPage";
 import { PreferencesPage } from "src/components/PreferencesPage";
+import { SubredditPage } from "src/components/SubredditPage";
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home'},
     { path: 'home', component: HomePage },
-    { path: 'popular', component: PopularPage },
+    { path: 'hot', component: HotPage },
     { path: 'preferences', component: PreferencesPage },
+    { path: 'subreddit/:sub', component: SubredditPage },
 ]

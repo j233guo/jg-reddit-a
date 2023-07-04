@@ -9,7 +9,8 @@ import { IListingPayload } from "src/services/RemoteAPIBase";
     styleUrls: ['./index.scss', './light.scss', './dark.scss']
 })
 export class PostList implements OnInit {
-    @Input('subreddit') subreddit: string
+    @Input('subreddit') subreddit: string | null
+    @Input('sort') sort: string
 
     uiSetting: IUISetting
     posts: IPost[] = []
@@ -26,13 +27,13 @@ export class PostList implements OnInit {
                 this.uiSetting[key] = val
             })
         })
-        this.loadPosts()
     }
 
-    async loadPosts() {
+    async loadPosts(clear = false) {
+        if (clear) { this.posts = [] }
         let payload: IListingPayload = {
-            subreddit: this.subreddit,
-            listingOption: 'top',
+            subreddit: this.subreddit ?? 'all',
+            listingOption: this.sort,
             limit: 20
         }
         let fetchedPosts = await this._api.getPostListing(payload)

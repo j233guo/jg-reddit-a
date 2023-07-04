@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FAV_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
 import { APIService } from 'src/services/APIService';
 import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit {
 
     uiSetting: IUISetting
     siderCollapsed: boolean = false
+    favouriteSubreddits: ISubredditNameDict[]
+
     loadingSpinningEffect: boolean
     loadingText: string = ""
 
@@ -21,7 +24,9 @@ export class AppComponent implements OnInit {
         private _loadingService: LoadingService,
         private _message: MessageService,
         private _api: APIService
-    ) {}
+    ) {
+        this.favouriteSubreddits = FAV_SUBS
+    }
 
     async ngOnInit() {
         this.uiSetting = this._appearanceService.getUISetting
@@ -34,6 +39,7 @@ export class AppComponent implements OnInit {
             this.loadingSpinningEffect = value.status
             this.loadingText = value.text
         })
+
         this._loadingService.startLoading()
         this._api.checkServer().then((res) => {
             if (!res) { this._message.error("Unable to access Reddit API because access token is unavailable.") }

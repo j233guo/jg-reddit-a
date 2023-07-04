@@ -5,14 +5,16 @@ import { HomePage } from "src/components/HomePage";
 import { PreferencesPage } from "src/components/PreferencesPage";
 import { SharedModule } from "./shared.module";
 import { PostList } from "src/components/PostList";
-import { PopularPage } from "src/components/PopularPage";
+import { HotPage } from "src/components/HotPage";
+import { SubredditPage } from "src/components/SubredditPage";
 
 @NgModule({
     declarations: [
         HomePage,
-        PopularPage,
+        HotPage,
         PreferencesPage,
         PostList,
+        SubredditPage,
     ],
     imports: [
         CommonModule,
@@ -21,8 +23,9 @@ import { PopularPage } from "src/components/PopularPage";
     ],
     exports: [
         HomePage,
-        PopularPage,
+        HotPage,
         PreferencesPage,
+        SubredditPage,
     ]
 })
 export class UIModule {}

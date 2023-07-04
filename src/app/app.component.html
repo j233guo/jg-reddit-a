@@ -6,7 +6,7 @@
                     <a [routerLink]="'/'">
                         <div class="logo">
                             <span nz-icon nzType="reddit" nzTheme="outline"></span>&nbsp;
-                            <span>Reddit</span>
+                            <span>JG Reddit</span>
                         </div>
                     </a>
                 </div>
@@ -35,13 +35,17 @@
                                 <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
                                     <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
                                 </li>
-                                <li nz-menu-item [routerLink]="'/popular'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
-                                    <span nz-icon nzType="rise" nzTheme="outline"></span>&nbsp;Popular
+                                <li nz-menu-item [routerLink]="'/hot'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
+                                    <span nz-icon nzType="fire" nzTheme="outline"></span>&nbsp;Hot
                                 </li>
                             </ul>
                         </li>
-                        <li nz-submenu nzOpen nzTitle="Topics" nzIcon="eye">
-                            
+                        <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">
+                            <ul>
+                                <li *ngFor="let item of favouriteSubreddits" nz-menu-item [routerLink]="'/subreddit/'+item.subName" [nzMatchRouter]="true">
+                                    {{ item.displayName }}
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nz-sider>
