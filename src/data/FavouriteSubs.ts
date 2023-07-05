@@ -3,7 +3,7 @@ export interface ISubredditNameDict {
     displayName: string
 }
 
-export const FAV_SUBS: ISubredditNameDict[] = [
+export const FAVOURITE_SUBS: ISubredditNameDict[] = [
     {
         subName: 'worldnews',
         displayName: "World News"

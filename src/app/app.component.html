@@ -10,20 +10,6 @@
                         </div>
                     </a>
                 </div>
-                <div nz-col nzSpan="20"></div>
-                <div nz-col nzSpan="1">
-                    <div nz-dropdown [nzDropdownMenu]="menu" class="drop-down-menu-button"
-                        [ngStyle]="{ color: uiSetting.theme === 'light' ? 'black' : 'white' }">
-                        <span nz-icon nzType="user" nzTheme="outline"></span>
-                    </div>
-                    <nz-dropdown-menu #menu="nzDropdownMenu">
-                        <ul nz-menu nzSelectable>
-                            <li nz-menu-item>
-                                <a [routerLink]="'/preferences'">Preferences</a>
-                            </li>
-                        </ul>
-                    </nz-dropdown-menu>
-                </div>
             </div>
         </div>
         <nz-content class="outer-content" [ngClass]="'outer-content-'+uiSetting.theme">
@@ -48,6 +34,14 @@
                             </ul>
                         </li>
                     </ul>
+                    <div nz-row [nzJustify]="'end'" class="sider-toolbar" [ngClass]="'sider-toolbar-'+uiSetting.theme">
+                        <div class="sider-toolbar-button" [ngStyle]="{ color: uiSetting.theme === 'light' ? 'black' : 'white' }"
+                            nz-tooltip nzTooltipTitle="Preferences">
+                            <a [routerLink]="'/preferences'">
+                                <span nz-icon nzType="setting" nzTheme="outline"></span>
+                            </a>
+                        </div>
+                    </div>
                 </nz-sider>
                 <nz-content class="inner-content" [ngClass]="'inner-content-'+uiSetting.theme">
                     <router-outlet></router-outlet>

@@ -60,19 +60,6 @@ nz-spin {
     background-color: $DARK_HEADER_COLOR;
 }
 
-.drop-down-menu-button {
-    height: 35px; 
-    width: 35px; 
-    margin: 5px 20px 5px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    span {
-        font-size: large;
-    }
-}
-
 .outer-content {
     padding: 20px 50px 0px 50px;
     display: flex;
@@ -106,7 +93,31 @@ nz-spin {
 }
 
 .sider-menu {
-    height: 100%;
+    height: calc(100% - 35px);
+}
+
+.sider-toolbar {
+    height: 35px;
+}
+
+.sider-toolbar-light {
+    background-color: $LIGHT_SIDER_BG_COLOR;
+}
+
+.sider-toolbar-dark {
+    background-color: $DARK_SIDER_BG_COLOR;
+}
+
+.sider-toolbar-button {
+    height: 35px; 
+    width: 35px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: large;
+    }
 }
 
 nz-footer {

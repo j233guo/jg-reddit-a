@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FAV_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
+import { FAVOURITE_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
 import { APIService } from 'src/services/APIService';
 import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
         private _message: MessageService,
         private _api: APIService
     ) {
-        this.favouriteSubreddits = FAV_SUBS
+        this.favouriteSubreddits = FAVOURITE_SUBS
     }
 
     async ngOnInit() {
