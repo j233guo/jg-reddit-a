@@ -2,8 +2,11 @@
     <div *ngFor="let post of posts" class="post-cell" [ngClass]="'post-cell-'+uiSetting.theme">
         <div nz-row>
             <div nz-col nzSpan="20">
-                <div nz-row>
-                    <span class="author" [ngClass]="'author-'+uiSetting.theme">
+                <div nz-row [nzAlign]="'middle'" class="post-info" [ngClass]="'post-info-'+uiSetting.theme">
+                    <span *ngIf="displaySubreddit" class="subreddit-name">
+                        r/{{ post.subreddit }}
+                    </span>
+                    <span class="author">
                         Posted by u/{{post.author}}
                     </span>
                 </div>
@@ -18,7 +21,14 @@
             </div>
         </div>
     </div>
-    <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more-btn">
-        <a>Load More</a>
-    </div>
+    <ng-container *ngIf="!loading">
+        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more-btn">
+            <a>Load More</a>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loading">
+        <div class="loading-spin">
+            <nz-spin nzSimple></nz-spin>
+        </div>
+    </ng-container>
 </div>

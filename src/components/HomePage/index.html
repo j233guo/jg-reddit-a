@@ -1,8 +1,8 @@
 <div class="content-container">
-    <div nz-row class="post-list-toolbar" [nzAlign]="'middle'">
+    <div nz-row class="post-list-toolbar" [nzAlign]="'middle'" [nzJustify]="'space-between'">
         
     </div>
     <div class="post-list">
-        <post-list [subreddit]="'all'" [sort]="'top'"></post-list>
+        <post-list [posts]="posts" [loading]="postListLoading" [displaySubreddit]="true"></post-list>
     </div>
 </div>

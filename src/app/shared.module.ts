@@ -28,6 +28,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzDropDownModule,
         NzSpinModule,
         NzSelectModule,
+        NzSpinModule,
     ],
     exports: [
         FormsModule,
@@ -39,6 +40,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzDropDownModule,
         NzSpinModule,
         NzSelectModule,
+        NzSpinModule,
     ],
 })
 export class SharedModule {}

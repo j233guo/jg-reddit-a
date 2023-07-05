@@ -12,10 +12,22 @@
     font-weight: 600;
 }
 
-.author {
-    font-size: 0.9em;
+.post-info {
+    span {
+        font-size: 0.9em;
+    }
+
+    .subreddit-name {
+        margin-right: 15px;
+    }
 }
 
 .load-more-btn {
     height: 45px;
+}
+
+.loading-spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
