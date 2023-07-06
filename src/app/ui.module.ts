@@ -7,6 +7,7 @@ import { SharedModule } from "./shared.module";
 import { PostList } from "src/components/PostList";
 import { HotPage } from "src/components/HotPage";
 import { SubredditPage } from "src/components/SubredditPage";
+import { ParseUTCPipe } from "src/pipes/parse-utc.pipe";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { SubredditPage } from "src/components/SubredditPage";
         PreferencesPage,
         PostList,
         SubredditPage,
+        ParseUTCPipe,
     ],
     imports: [
         CommonModule,

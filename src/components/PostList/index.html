@@ -9,10 +9,24 @@
                     <span class="author">
                         Posted by u/{{post.author}}
                     </span>
+                    <span class="post-time">
+                        {{ post.created_utc | parseUTC }}
+                    </span>
                 </div>
                 <div nz-row>
                     <span class="title" [ngClass]="'title-'+uiSetting.theme">
                         {{post.title}}
+                    </span>
+                </div>
+                <div nz-row [nzAlign]="'middle'">
+                    <span>
+                        <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
+                        {{ post.score }}
+                    </span>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <span>
+                        <span nz-icon nzType="comment" nzTheme="outline"></span>
+                        {{ post.num_comments }}
                     </span>
                 </div>
             </div>

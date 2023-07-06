@@ -6,6 +6,7 @@ import { MessageService } from "./MessageService";
 export interface IPost {
     id: string
     author: string
+    created_utc: number
     media: any
     num_comments: number
     permalink: string
@@ -22,6 +23,7 @@ export interface IPost {
 export interface IComment {
     id: string
     author: string
+    created_utc: number
     body: string
     body_html: string
     permalink: string

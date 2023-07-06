@@ -10,6 +10,7 @@
 .title {
     font-size: 1.2em;
     font-weight: 600;
+    margin: 5px 0px 10px 0px;
 }
 
 .post-info {
@@ -19,6 +20,10 @@
 
     .subreddit-name {
         margin-right: 15px;
+    }
+
+    .post-time {
+        margin-left: 15px;
     }
 }
 
