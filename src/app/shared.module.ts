@@ -4,9 +4,10 @@ import { NzLayoutModule } from "ng-zorro-antd/layout";
 import { NzMenuModule } from "ng-zorro-antd/menu";
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSelectModule } from 'ng-zorro-antd/select'
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip'
+import { NzDividerModule } from 'ng-zorro-antd/divider'
 
 import * as AllIcons from '@ant-design/icons-angular/icons'
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -22,23 +23,25 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         FormsModule,
         ReactiveFormsModule,
         NzIconModule.forRoot(icons),
+        NzDividerModule,
+        NzGridModule,
         NzLayoutModule,
         NzMenuModule,
-        NzGridModule,
-        NzDropDownModule,
-        NzSpinModule,
         NzSelectModule,
+        NzSpinModule,
+        NzToolTipModule,
     ],
     exports: [
         FormsModule,
         ReactiveFormsModule,
         NzIconModule,
+        NzDividerModule,
+        NzGridModule,
         NzLayoutModule,
         NzMenuModule,
-        NzGridModule,
-        NzDropDownModule,
-        NzSpinModule,
         NzSelectModule,
+        NzSpinModule,
+        NzToolTipModule,
     ],
 })
 export class SharedModule {}

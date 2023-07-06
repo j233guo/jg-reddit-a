@@ -1,0 +1,38 @@
+@import "../../scss/color";
+
+.post-cell {
+    margin: 5px 25px 5px 25px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 10px 10px 15px;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 5px 0px 10px 0px;
+}
+
+.post-info {
+    span {
+        font-size: 0.9em;
+    }
+
+    .subreddit-name {
+        margin-right: 15px;
+    }
+
+    .post-time {
+        margin-left: 15px;
+    }
+}
+
+.load-more-btn {
+    height: 45px;
+}
+
+.loading-spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

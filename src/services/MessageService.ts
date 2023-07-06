@@ -7,19 +7,19 @@ export class MessageService {
         private _nzMessageService: NzMessageService
     ) {}
 
-    info(message: string, duration: number = 3000) {
+    info(message: string, duration: number = 2000) {
         this._nzMessageService.create('info', message, { nzDuration: duration })
     }
 
-    success(message: string, duration: number = 3000) {
+    success(message: string, duration: number = 2000) {
         this._nzMessageService.create('success', message, { nzDuration: duration })
     }
 
-    error(message: string, duration: number = 3000) {
+    error(message: string, duration: number = 2000) {
         this._nzMessageService.create('error', message, { nzDuration: duration })
     }
 
-    warning(message: string, duration: number = 3000) {
+    warning(message: string, duration: number = 2000) {
         this._nzMessageService.create('warning', message, { nzDuration: duration })
     }
 }
