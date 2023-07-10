@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { APIService, IPost } from "src/services/APIService";
+import { APIService, IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import { IPostContentPayload } from "src/services/RemoteAPIBase";
 
 @Component({
     selector: 'post-list',
@@ -14,6 +15,11 @@ export class PostList implements OnInit {
 
     uiSetting: IUISetting
 
+    displayPostDetail: boolean = false
+    commentList: IComment[] = []
+    openedPost: IPost
+    postLoading: boolean = false
+
     constructor(
         private _api: APIService,
         private _appearanceService: AppearanceService,
@@ -26,5 +32,26 @@ export class PostList implements OnInit {
                 this.uiSetting[key] = val
             })
         })
+    }
+
+    openPost(permalink: string) {
+        this.postLoading = true
+        this.displayPostDetail = true
+        let payload: IPostContentPayload = {
+            permalink: permalink
+        }
+        this._api.getPostContent(payload).then((res) => {
+            if (res) {
+                this.openedPost = res.post
+                this.commentList.push(...res.comments)
+            }
+        }).finally(() => {
+            this.postLoading = false
+        })
+    }
+
+    closePost() {
+        this.displayPostDetail = false
+        this.commentList = []
     }
 }

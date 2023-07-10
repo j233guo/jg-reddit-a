@@ -15,10 +15,10 @@
                 </div>
                 <div nz-row>
                     <span class="title" [ngClass]="'title-'+uiSetting.theme">
-                        {{post.title}}
+                        <a (click)="openPost(post.permalink)">{{post.title}}</a>
                     </span>
                 </div>
-                <div nz-row [nzAlign]="'middle'">
+                <div nz-row [nzAlign]="'middle'" class="score-comment" [ngClass]="'score-comment-'+uiSetting.theme">
                     <span>
                         <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
                         {{ post.score }}
@@ -46,3 +46,10 @@
         </div>
     </ng-container>
 </div>
+
+<nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
+    [nzWidth]="'85%'">
+    <ng-template #modalContent>
+        <post-page [post]="openedPost" [comments]="commentList" [loading]="postLoading"></post-page>
+    </ng-template>
+</nz-modal>

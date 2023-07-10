@@ -18,6 +18,10 @@ export interface IListingPayload {
     limit: number
 }
 
+export interface IPostContentPayload {
+    permalink: string
+}
+
 export class RemoteAPIBase {
 
     protected baseURL: string  = 'http://127.0.0.1:5000'

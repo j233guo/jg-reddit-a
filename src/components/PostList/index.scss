@@ -11,6 +11,10 @@
     font-size: 1.2em;
     font-weight: 600;
     margin: 5px 0px 10px 0px;
+
+    a:hover {
+        color: $LINK_HOVERED_COLOR;
+    }
 }
 
 .post-info {

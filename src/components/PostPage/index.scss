@@ -1,0 +1,21 @@
+.loading-spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-cell {
+    margin: 5px 25px 5px 25px;
+    border-radius: 5px;
+    padding: 10px 10px 10px 15px;
+}
+
+.comment-info {
+    span {
+        font-size: 0.9em;
+    }
+
+    .comment-time {
+        margin-left: 15px;
+    }
+}

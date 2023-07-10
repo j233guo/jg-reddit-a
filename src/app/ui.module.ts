@@ -8,15 +8,17 @@ import { PostList } from "src/components/PostList";
 import { HotPage } from "src/components/HotPage";
 import { SubredditPage } from "src/components/SubredditPage";
 import { ParseUTCPipe } from "src/pipes/parse-utc.pipe";
+import { PostPage } from "src/components/PostPage";
 
 @NgModule({
     declarations: [
         HomePage,
         HotPage,
-        PreferencesPage,
-        PostList,
-        SubredditPage,
         ParseUTCPipe,
+        PostList,
+        PostPage,
+        PreferencesPage,
+        SubredditPage,
     ],
     imports: [
         CommonModule,

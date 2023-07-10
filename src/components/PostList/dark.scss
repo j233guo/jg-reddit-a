@@ -5,9 +5,15 @@
 }
 
 .title-dark {
-    color: $DARK_TEXT_COLOR
+    a {
+        color: $DARK_TEXT_COLOR
+    }
 }
 
 .post-info-dark {
+    color: $DARK_TEXT_COLOR;
+}
+
+.score-comment-dark {
     color: $DARK_TEXT_COLOR;
 }

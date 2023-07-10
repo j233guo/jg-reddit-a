@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IListingPayload, RemoteAPIBase } from "./RemoteAPIBase";
+import { IListingPayload, IPostContentPayload, RemoteAPIBase } from "./RemoteAPIBase";
 import { HttpClient } from "@angular/common/http";
 import { MessageService } from "./MessageService";
 
@@ -30,6 +30,11 @@ export interface IComment {
     score: number
 }
 
+export interface IPostContent {
+    post: IPost
+    comments: IComment[]
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -51,6 +56,18 @@ export class APIService extends RemoteAPIBase {
     async getPostListing(payload: IListingPayload): Promise<IPost[]> {
         return this.post('/api/general/listing', 'get post list', payload).then((res) => {
             return res.posts
+        }).catch(() => {
+            return null
+        })
+    }
+
+    async getPostContent(payload: IPostContentPayload): Promise<IPostContent | null> {
+        return this.post('/api/general/post', 'get post content', payload).then((res) => {
+            let data: IPostContent = {
+                post: res.post,
+                comments: res.comments
+            }
+            return data
         }).catch(() => {
             return null
         })

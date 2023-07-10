@@ -5,9 +5,15 @@
 }
 
 .title-light {
+    a {
+        color: $LIGHT_TEXT_COLOR;
+    }
+}
+
+.post-info-light {
     color: $LIGHT_TEXT_COLOR;
 }
 
-.post-info-dark {
+.score-comment-light {
     color: $LIGHT_TEXT_COLOR;
 }
