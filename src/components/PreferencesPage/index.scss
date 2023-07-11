@@ -15,14 +15,14 @@
     .title-text {
         font-weight: bold;
         font-size: 2em;
-    }
 
-    .title-text-light {
-        color: $LIGHT_TEXT_COLOR;
-    }
+        &[data-colormode = 'light'] {
+            color: $LIGHT_TEXT_COLOR;
+        }
 
-    .title-text-dark {
-        color: $DARK_TEXT_COLOR;
+        &[data-colormode = 'dark'] {
+            color: $DARK_TEXT_COLOR;
+        }
     }
 }
 
@@ -39,11 +39,13 @@
     font-weight: 600;
     font-size: 1.1em;
 
-    .pref-line-title-light {
-        color: $LIGHT_TEXT_COLOR;
-    }
+    .pref-line-tag {
+        &[data-colormode = 'light'] {
+            color: $LIGHT_TEXT_COLOR;
+        }
 
-    .pref-line-title-dark {
-        color: $DARK_TEXT_COLOR;
+        &[data-colormode = 'dark'] {
+            color: $DARK_TEXT_COLOR;
+        }
     }
 }

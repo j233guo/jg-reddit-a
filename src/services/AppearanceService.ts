@@ -3,10 +3,10 @@ import { Subject } from "rxjs";
 import { TrackableSubjectWrapper } from "src/lib/TrackableObservable";
 import { RecursiveReadonly } from "src/lib/tslang";
 
-export type UITheme = 'light' | 'dark'
+export type ColorMode = 'light' | 'dark'
 
 export interface IUISetting {
-    theme: UITheme
+    colorMode: ColorMode
 }
 
 type SubjectUIuiSetting = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUISetting>>, Subject<RecursiveReadonly<Partial<IUISetting>>>>
@@ -30,7 +30,9 @@ export class AppearanceService {
     }
 
     initUISetting() {
-        this._uiSetting = { theme: 'light' }
+        this._uiSetting = {
+            colorMode: 'light'
+        }
     }
 
     applyUISetting(value: Partial<IUISetting>) {

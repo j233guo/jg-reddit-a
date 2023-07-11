@@ -5,7 +5,7 @@ import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 @Component({
     selector: 'post-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss', './light.scss', './dark.scss']
+    styleUrls: ['./index.scss']
 })
 export class PostPage implements OnInit {
     @Input('loading') loading: boolean

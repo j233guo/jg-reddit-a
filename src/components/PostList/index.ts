@@ -6,7 +6,7 @@ import { IPostContentPayload } from "src/services/RemoteAPIBase";
 @Component({
     selector: 'post-list',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss', './light.scss', './dark.scss']
+    styleUrls: ['./index.scss']
 })
 export class PostList implements OnInit {
     @Input('posts') posts: IPost[]

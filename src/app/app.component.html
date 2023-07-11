@@ -1,6 +1,6 @@
 <div class="content-container">
     <nz-layout>
-        <div class="header" [ngClass]="'header-'+uiSetting.theme">
+        <div class="header" [attr.data-colormode]="uiSetting.colorMode">
             <div nz-row>
                 <div nz-col nzSpan="3">
                     <a [routerLink]="'/'">
@@ -12,10 +12,10 @@
                 </div>
             </div>
         </div>
-        <nz-content class="outer-content" [ngClass]="'outer-content-'+uiSetting.theme">
+        <nz-content class="outer-content" [attr.data-colormode]="uiSetting.colorMode">
             <nz-layout class="inner-layout">
                 <nz-sider nzWidth="200px">
-                    <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiSetting.theme">
+                    <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiSetting.colorMode">
                         <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
                             <ul>
                                 <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
@@ -34,8 +34,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <div nz-row [nzJustify]="'end'" class="sider-toolbar" [ngClass]="'sider-toolbar-'+uiSetting.theme">
-                        <div class="sider-toolbar-button" [ngStyle]="{ color: uiSetting.theme === 'light' ? 'black' : 'white' }"
+                    <div nz-row [nzJustify]="'end'" class="sider-toolbar" [attr.data-colormode]="uiSetting.colorMode">
+                        <div class="sider-toolbar-button" [attr.data-colormode]="uiSetting.colorMode"
                             nz-tooltip nzTooltipTitle="Preferences">
                             <a [routerLink]="'/preferences'">
                                 <span nz-icon nzType="setting" nzTheme="outline"></span>
@@ -43,11 +43,11 @@
                         </div>
                     </div>
                 </nz-sider>
-                <nz-content class="inner-content" [ngClass]="'inner-content-'+uiSetting.theme">
+                <nz-content class="inner-content" [attr.data-colormode]="uiSetting.colorMode">
                     <router-outlet></router-outlet>
                 </nz-content>
             </nz-layout>
-            <nz-footer  [ngClass]="'footer-'+uiSetting.theme">
+            <nz-footer [attr.data-colormode]="uiSetting.colorMode">
                 JG Reddit App ©2023 By JG
             </nz-footer>
         </nz-content>

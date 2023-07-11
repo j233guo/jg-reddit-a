@@ -4,8 +4,8 @@
     </div>
 
     <div class="comment-section">
-        <div *ngFor="let comment of comments" class="comment-cell" [ngClass]="'comment-cell-'+uiSetting.theme">
-            <div nz-row [nzAlign]="'middle'" class="comment-info" [ngClass]="'comment-info-'+uiSetting.theme">
+        <div *ngFor="let comment of comments" class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
+            <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
                 <span class="author">
                     u/{{ comment.author }}
                 </span>
