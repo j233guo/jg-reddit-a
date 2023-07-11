@@ -13,7 +13,7 @@
                     {{ comment.created_utc | parseUTC }}
                 </span>
             </div>
-            <div [innerHTML]="comment.body_html"></div>
+            <div [innerHTML]="comment.body_html | safeHtml"></div>
         </div>
     </div>
 

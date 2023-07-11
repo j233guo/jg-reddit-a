@@ -9,6 +9,7 @@ import { HotPage } from "src/components/HotPage";
 import { SubredditPage } from "src/components/SubredditPage";
 import { ParseUTCPipe } from "src/pipes/parse-utc.pipe";
 import { PostPage } from "src/components/PostPage";
+import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { PostPage } from "src/components/PostPage";
         PostPage,
         PreferencesPage,
         SubredditPage,
+        SafeHtmlPipe,
     ],
     imports: [
         CommonModule,
