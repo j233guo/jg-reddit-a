@@ -28,18 +28,19 @@ export class SubredditPage implements OnInit {
         this.route.params.subscribe(param => {
             if (param["sub"] !== this.subreddit) {
                 this.subreddit = param["sub"]
-                this.loadPosts(true)
+                this.posts = []
+                this.loadPosts()
             }
         })
     }
 
-    async loadPosts(clear = false) {
-        if (clear) { this.posts = [] }
+    async loadPosts(after?: string) {
         let payload: IPostListPayload = {
             subreddit: this.subreddit ?? 'all',
             listingOption: 'top',
             limit: 20
         }
+        if (after) { payload['after'] = after }
         this.postListLoading = true
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)

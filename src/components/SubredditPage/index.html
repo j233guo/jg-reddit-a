@@ -3,6 +3,11 @@
         
     </div>
     <div class="post-list">
-        <post-list [posts]="posts" [loading]="postListLoading"></post-list>
+        <post-list 
+            [posts]="posts" 
+            [loading]="postListLoading"
+            [displaySubreddit]="false"
+            (load)="loadPosts($event)">
+        </post-list>
     </div>
 </div>

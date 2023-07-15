@@ -35,16 +35,14 @@
             </div>
         </div>
     </div>
-    <ng-container *ngIf="!loading">
-        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more-btn">
-            <a>Load More</a>
-        </div>
-    </ng-container>
-    <ng-container *ngIf="loading">
-        <div class="loading-spin">
+    <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more">
+        <ng-container *ngIf="!loading">
+            <a (click)="loadMore()">Load More</a>
+        </ng-container>
+        <ng-container *ngIf="loading">
             <nz-spin nzSimple></nz-spin>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 </div>
 
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"

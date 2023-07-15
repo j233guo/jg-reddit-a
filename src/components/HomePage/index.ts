@@ -20,12 +20,13 @@ export class HomePage implements OnInit {
         this.loadPosts()
     }
 
-    async loadPosts() {
+    async loadPosts(after?: string) {
         let payload: IPostListPayload = {
             subreddit: 'all',
             listingOption: 'top',
             limit: 20
         }
+        if (after) { payload['after'] = after }
         this.postListLoading = true
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)

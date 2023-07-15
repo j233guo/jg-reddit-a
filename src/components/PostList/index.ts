@@ -12,6 +12,7 @@ export class PostList implements OnInit {
     @Input('posts') posts: IPost[]
     @Input('loading') loading: boolean
     @Input('displaySubreddit') displaySubreddit: boolean
+    @Output() load: EventEmitter<string> = new EventEmitter()
 
     uiSetting: IUISetting
 
@@ -34,14 +35,24 @@ export class PostList implements OnInit {
         })
     }
 
+    loadMore() {
+        const lastPostName = this.posts[this.posts.length - 1].name
+        this.load.emit(lastPostName)
+    }
+
     openPost(post: IPost) {
         this.openedPost = post
+        this.loadComments()
+    }
+
+    loadComments() {
         this.commentsLoading = true
         this.displayPostDetail = true
         let payload: ICommentListPayload = {
             subreddit: this.openedPost.subreddit,
             id: this.openedPost.id,
-            limit: 10,
+            limit: 20,
+            depth: 0,
         }
         this._api.getComments(payload).then((res) => {
             this.commentList.push(...res)
