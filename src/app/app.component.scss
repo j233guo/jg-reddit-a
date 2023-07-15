@@ -52,10 +52,12 @@ nz-spin {
 
     &[data-colormode = 'light'] {
         background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
     }
 
     &[data-colormode = 'dark'] {
         background-color: $DARK_HEADER_COLOR;
+        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
     }
 }
 

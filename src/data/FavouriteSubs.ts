@@ -16,4 +16,8 @@ export const FAVOURITE_SUBS: ISubredditNameDict[] = [
         subName: 'askreddit',
         displayName: 'Ask Reddit',
     },
+    {
+        subName: 'toronto',
+        displayName: 'Toronto'
+    }
 ]

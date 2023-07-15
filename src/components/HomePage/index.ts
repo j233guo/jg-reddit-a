@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { APIService, IPost } from "src/services/APIService";
+import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { IPostListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
@@ -9,14 +10,23 @@ import { IPostListPayload } from "src/services/RemoteAPIBase";
 })
 export class HomePage implements OnInit {
 
+    uiSetting: IUISetting
+
     posts: IPost[] = []
     postListLoading: boolean = false
 
     constructor(
-        private _api: APIService
+        private _api: APIService,
+        private _appearanceService: AppearanceService
     ) {}
     
     ngOnInit(): void {
+        this.uiSetting = this._appearanceService.getUISetting
+        this._appearanceService.observableUISetting.subscribe(this, (value) => {
+            Object.entries(value).forEach(([key, val]) => {
+                this.uiSetting[key] = val
+            })
+        })
         this.loadPosts()
     }
 

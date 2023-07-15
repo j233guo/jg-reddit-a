@@ -51,7 +51,7 @@ export class PostList implements OnInit {
         let payload: ICommentListPayload = {
             subreddit: this.openedPost.subreddit,
             id: this.openedPost.id,
-            limit: 20,
+            limit: 50,
             depth: 0,
         }
         this._api.getComments(payload).then((res) => {
