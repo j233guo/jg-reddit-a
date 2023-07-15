@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { IListingPayload } from "src/services/RemoteAPIBase";
 import { APIService, IPost } from "src/services/APIService";
+import { IPostListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
     selector: 'hot-page',
@@ -20,14 +20,15 @@ export class HotPage implements OnInit {
         this.loadPosts()
     }
 
-    async loadPosts() {
-        let payload: IListingPayload = {
+    async loadPosts(after?: string) {
+        let payload: IPostListPayload = {
             subreddit: 'all',
             listingOption: 'hot',
-            limit: 20
+            limit: 20,
         }
+        if (after) { payload['after'] = after }
         this.postListLoading = true
-        this._api.getPostListing(payload).then((res) => {
+        this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
         }).catch((err) => {
             console.log(err)

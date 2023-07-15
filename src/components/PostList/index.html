@@ -15,7 +15,7 @@
                 </div>
                 <div nz-row>
                     <span class="title" [attr.data-colormode]="uiSetting.colorMode">
-                        <a (click)="openPost(post.permalink)">{{post.title}}</a>
+                        <a (click)="openPost(post)">{{post.title}}</a>
                     </span>
                 </div>
                 <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
@@ -50,6 +50,6 @@
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
     [nzWidth]="'50%'">
     <ng-template #modalContent>
-        <post-page [post]="openedPost" [comments]="commentList" [loading]="postLoading"></post-page>
+        <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"></post-page>
     </ng-template>
 </nz-modal>

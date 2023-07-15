@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PostList } from "../PostList";
-import { IListingPayload } from "src/services/RemoteAPIBase";
 import { APIService, IPost } from "src/services/APIService";
+import { IPostListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
     selector: 'subreddit-page',
@@ -35,13 +35,13 @@ export class SubredditPage implements OnInit {
 
     async loadPosts(clear = false) {
         if (clear) { this.posts = [] }
-        let payload: IListingPayload = {
+        let payload: IPostListPayload = {
             subreddit: this.subreddit ?? 'all',
             listingOption: 'top',
             limit: 20
         }
         this.postListLoading = true
-        this._api.getPostListing(payload).then((res) => {
+        this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
         }).catch((err) => {
             console.log(err)

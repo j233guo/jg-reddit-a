@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { APIService, IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
-import { IPostContentPayload } from "src/services/RemoteAPIBase";
+import { ICommentListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
     selector: 'post-list',
@@ -18,7 +18,7 @@ export class PostList implements OnInit {
     displayPostDetail: boolean = false
     commentList: IComment[] = []
     openedPost: IPost
-    postLoading: boolean = false
+    commentsLoading: boolean = false
 
     constructor(
         private _api: APIService,
@@ -34,19 +34,21 @@ export class PostList implements OnInit {
         })
     }
 
-    openPost(permalink: string) {
-        this.postLoading = true
+    openPost(post: IPost) {
+        this.openedPost = post
+        this.commentsLoading = true
         this.displayPostDetail = true
-        let payload: IPostContentPayload = {
-            permalink: permalink
+        let payload: ICommentListPayload = {
+            subreddit: this.openedPost.subreddit,
+            id: this.openedPost.id,
+            limit: 10,
         }
-        this._api.getPostContent(payload).then((res) => {
-            if (res) {
-                this.openedPost = res.post
-                this.commentList.push(...res.comments)
-            }
+        this._api.getComments(payload).then((res) => {
+            this.commentList.push(...res)
+        }).catch((err) => {
+            console.log(err)
         }).finally(() => {
-            this.postLoading = false
+            this.commentsLoading = false
         })
     }
 

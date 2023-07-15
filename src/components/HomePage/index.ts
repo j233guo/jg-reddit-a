@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { APIService, IPost } from "src/services/APIService";
-import { IListingPayload } from "src/services/RemoteAPIBase";
+import { IPostListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
     selector: 'home-page',
@@ -21,13 +21,13 @@ export class HomePage implements OnInit {
     }
 
     async loadPosts() {
-        let payload: IListingPayload = {
+        let payload: IPostListPayload = {
             subreddit: 'all',
             listingOption: 'top',
             limit: 20
         }
         this.postListLoading = true
-        this._api.getPostListing(payload).then((res) => {
+        this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
         }).catch((err) => {
             console.log(err)

@@ -12,14 +12,19 @@ export interface IBasicResponse {
     message?: string
 }
 
-export interface IListingPayload {
+export interface IPostListPayload {
     subreddit: string
     listingOption: string
-    limit: number
+    limit?: number
+    before?: string
+    after?: string
 }
 
-export interface IPostContentPayload {
-    permalink: string
+export interface ICommentListPayload {
+    subreddit: string
+    id: string
+    limit?: number
+    depth?: number
 }
 
 export class RemoteAPIBase {
