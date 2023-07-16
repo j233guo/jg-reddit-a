@@ -6,18 +6,22 @@ export interface ISubredditNameDict {
 export const FAVOURITE_SUBS: ISubredditNameDict[] = [
     {
         subName: 'worldnews',
-        displayName: "World News"
+        displayName: "r/worldnews",
     },
     {
         subName: 'personalfinancecanada',
-        displayName: 'Personal Finance CA',
+        displayName: 'r/personalfinancecanada',
     },
     {
         subName: 'askreddit',
-        displayName: 'Ask Reddit',
+        displayName: 'r/AskReddit',
     },
     {
         subName: 'toronto',
-        displayName: 'Toronto'
+        displayName: 'r/toronto',
+    },
+    {
+        subName: 'todayilearned',
+        displayName: 'r/todayilearned',
     }
 ]
