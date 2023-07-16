@@ -1,4 +1,5 @@
 @import "../../scss/layout";
+@import "../../scss/color";
 
 .content-container {
     display: block;
@@ -9,6 +10,30 @@
 .post-list-toolbar {
     width: 100%;
     height: $POST_LIST_TOOLBAR_HEIGHT;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_HEADER_COLOR;
+        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
+
+.subreddit-name {
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: large;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
 }
 
 .post-list {

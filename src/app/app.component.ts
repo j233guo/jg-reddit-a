@@ -49,4 +49,8 @@ export class AppComponent implements OnInit {
             this._loadingService.finishLoading()
         })
     }
+
+    toggleSiderCollapse() {
+        this.siderCollapsed = !this.siderCollapsed
+    }
 }

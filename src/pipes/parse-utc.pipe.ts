@@ -4,6 +4,9 @@ import { Pipe, PipeTransform } from "@angular/core";
     name: "parseUTC"
 })
 export class ParseUTCPipe implements PipeTransform {
+
+    constructor() {}
+
     transform(value: number): string {
         const date = new Date(0)
         date.setUTCSeconds(value)

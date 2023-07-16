@@ -1,16 +1,18 @@
 @import "../../scss/color";
 
 .post-cell {
-    margin: 5px 25px 5px 25px;
-    border: 2px solid;
-    border-radius: 5px;
+    margin: 15px 30px 15px 30px;
+    border-radius: 10px;
     padding: 10px 10px 10px 15px;
-}
 
-.title {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin: 5px 0px 10px 0px;
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        box-shadow: 0 1px 1px #091E4240;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_POSTCELL_BG_COLOR;
+    }
 }
 
 .post-info {
@@ -25,14 +27,49 @@
     .post-time {
         margin-left: 15px;
     }
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
 }
 
-.load-more-btn {
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 5px 0px 10px 0px;
+
+    a:hover {
+        color: $LINK_HOVERED_COLOR;
+    }
+
+    &[data-colormode = 'light'] {
+        a {
+            color: $LIGHT_TEXT_COLOR;
+        }
+    }
+
+    &[data-colormode = 'dark'] {
+        a {
+            color: $DARK_TEXT_COLOR
+        }
+    }
+}
+
+.score-comment {
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.load-more {
     height: 45px;
-}
-
-.loading-spin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 15px;
 }

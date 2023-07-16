@@ -1,0 +1,25 @@
+<div class="content-container">
+    <div class="post-section">
+
+    </div>
+
+    <div class="comment-section">
+        <div *ngFor="let comment of comments" class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
+            <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
+                <span class="author">
+                    u/{{ comment.author }}
+                </span>
+                <span class="comment-time">
+                    {{ comment.created_utc | parseUTC }}
+                </span>
+            </div>
+            <div [innerHTML]="comment.body_html | safeHtml"></div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="loading">
+        <div class="loading-spin">
+            <nz-spin nzSimple></nz-spin>
+        </div>
+    </ng-container>
+</div>

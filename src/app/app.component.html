@@ -1,6 +1,6 @@
 <div class="content-container">
     <nz-layout>
-        <div class="header" [ngClass]="'header-'+uiSetting.theme">
+        <div class="header" [attr.data-colormode]="uiSetting.colorMode">
             <div nz-row>
                 <div nz-col nzSpan="3">
                     <a [routerLink]="'/'">
@@ -12,45 +12,52 @@
                 </div>
             </div>
         </div>
-        <nz-content class="outer-content" [ngClass]="'outer-content-'+uiSetting.theme">
-            <nz-layout class="inner-layout">
-                <nz-sider nzWidth="200px">
-                    <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiSetting.theme">
-                        <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
-                            <ul>
-                                <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
-                                    <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
-                                </li>
-                                <li nz-menu-item [routerLink]="'/hot'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
-                                    <span nz-icon nzType="fire" nzTheme="outline"></span>&nbsp;Hot
-                                </li>
-                            </ul>
-                        </li>
-                        <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">
-                            <ul>
-                                <li *ngFor="let item of favouriteSubreddits" nz-menu-item [routerLink]="'/subreddit/'+item.subName" [nzMatchRouter]="true">
-                                    {{ item.displayName }}
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div nz-row [nzJustify]="'end'" class="sider-toolbar" [ngClass]="'sider-toolbar-'+uiSetting.theme">
-                        <div class="sider-toolbar-button" [ngStyle]="{ color: uiSetting.theme === 'light' ? 'black' : 'white' }"
-                            nz-tooltip nzTooltipTitle="Preferences">
-                            <a [routerLink]="'/preferences'">
-                                <span nz-icon nzType="setting" nzTheme="outline"></span>
-                            </a>
-                        </div>
+        <nz-layout>
+            <nz-sider nzWidth="220px" [(nzCollapsed)]="siderCollapsed">
+                <button nz-button nzType="text" class="sider-collapse-btn" [attr.data-colormode]="uiSetting.colorMode"
+                    (click)="toggleSiderCollapse()">
+                    <span *ngIf="siderCollapsed">>></span>
+                    <span *ngIf="!siderCollapsed"><<</span>
+                </button>
+                <ul nz-menu nzMode="inline" class="sider-menu" [nzTheme]="uiSetting.colorMode">
+                    <li nz-submenu nzOpen nzTitle="Feeds" nzIcon="bars">
+                        <ul>
+                            <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
+                                <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
+                            </li>
+                            <li nz-menu-item [routerLink]="'/hot'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
+                                <span nz-icon nzType="fire" nzTheme="outline"></span>&nbsp;Hot
+                            </li>
+                        </ul>
+                    </li>
+                    <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">
+                        <ul>
+                            <li *ngFor="let item of favouriteSubreddits" nz-menu-item [routerLink]="'/subreddit/'+item.subName" [nzMatchRouter]="true">
+                                {{ item.displayName }}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div nz-row [nzJustify]="'center'" class="sider-toolbar" [attr.data-colormode]="uiSetting.colorMode">
+                    <div class="sider-toolbar-button" [attr.data-colormode]="uiSetting.colorMode"
+                        nz-tooltip nzTooltipTitle="Preferences">
+                        <a [routerLink]="'/preferences'">
+                            <span nz-icon nzType="setting" nzTheme="outline"></span>
+                        </a>
                     </div>
-                </nz-sider>
-                <nz-content class="inner-content" [ngClass]="'inner-content-'+uiSetting.theme">
-                    <router-outlet></router-outlet>
-                </nz-content>
-            </nz-layout>
-            <nz-footer  [ngClass]="'footer-'+uiSetting.theme">
-                JG Reddit App ©2023 By JG
-            </nz-footer>
-        </nz-content>
+                </div>
+            </nz-sider>
+            <nz-content class="outer-content" [attr.data-colormode]="uiSetting.colorMode">
+                <nz-layout class="inner-layout">
+                    <nz-content class="inner-content" [attr.data-colormode]="uiSetting.colorMode">
+                        <router-outlet></router-outlet>
+                    </nz-content>
+                </nz-layout>
+                <nz-footer [attr.data-colormode]="uiSetting.colorMode">
+                    JG Reddit App ©2023 By JG
+                </nz-footer>
+            </nz-content>
+        </nz-layout>
     </nz-layout>
 
     <nz-spin [nzSpinning]="loadingSpinningEffect" [nzSize]="'large'" *ngIf="loadingSpinningEffect" [nzTip]="loadingText">

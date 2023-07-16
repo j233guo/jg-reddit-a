@@ -1,8 +1,8 @@
 <div class="content-container">
-    <div *ngFor="let post of posts" class="post-cell" [ngClass]="'post-cell-'+uiSetting.theme">
+    <div *ngFor="let post of posts" class="post-cell" [attr.data-colormode]="uiSetting.colorMode">
         <div nz-row>
-            <div nz-col nzSpan="20">
-                <div nz-row [nzAlign]="'middle'" class="post-info" [ngClass]="'post-info-'+uiSetting.theme">
+            <div nz-col nzSpan="24">
+                <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
                     <span *ngIf="displaySubreddit" class="subreddit-name">
                         r/{{ post.subreddit }}
                     </span>
@@ -14,11 +14,11 @@
                     </span>
                 </div>
                 <div nz-row>
-                    <span class="title" [ngClass]="'title-'+uiSetting.theme">
-                        {{post.title}}
+                    <span class="title" [attr.data-colormode]="uiSetting.colorMode">
+                        <a (click)="openPost(post)">{{post.title}}</a>
                     </span>
                 </div>
-                <div nz-row [nzAlign]="'middle'">
+                <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
                     <span>
                         <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
                         {{ post.score }}
@@ -30,19 +30,21 @@
                     </span>
                 </div>
             </div>
-            <div nz-col nzSpan="4">
-                
-            </div>
         </div>
     </div>
-    <ng-container *ngIf="!loading">
-        <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more-btn">
-            <a>Load More</a>
-        </div>
-    </ng-container>
-    <ng-container *ngIf="loading">
-        <div class="loading-spin">
+    <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more">
+        <ng-container *ngIf="!loading">
+            <a (click)="loadMore()">Load More</a>
+        </ng-container>
+        <ng-container *ngIf="loading">
             <nz-spin nzSimple></nz-spin>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 </div>
+
+<nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
+    [nzWidth]="'50%'" [nzClosable]="false">
+    <ng-template #modalContent>
+        <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"></post-page>
+    </ng-template>
+</nz-modal>

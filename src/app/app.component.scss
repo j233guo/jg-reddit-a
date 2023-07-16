@@ -35,7 +35,6 @@ nz-spin {
 .logo {
     width: 135px;
     height: 35px;
-    //background: rgba(255, 255, 255, 0.2);
     margin: 5px 30px 5px 20px;
     display: flex;
     flex-direction: row;
@@ -44,20 +43,23 @@ nz-spin {
 
     span {
         font-size: x-large;
+        font-weight: 600;
     }
 }
 
 .header {
     height: 45px;
     width: 100%;
-}
 
-.header-light {
-    background-color: $LIGHT_HEADER_COLOR;
-}
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 2px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+    }
 
-.header-dark {
-    background-color: $DARK_HEADER_COLOR;
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_HEADER_COLOR;
+        border-bottom: 2px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
 }
 
 .outer-content {
@@ -65,14 +67,14 @@ nz-spin {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-.outer-content-dark {
-    background-color: $DARK_BG_COLOR;
-}
+    &[data-colormode="light"] {
+        background-color: $LIGHT_BG_COLOR;
+    }
 
-.outer-content-light {
-    background-color: $LIGHT_BG_COLOR;
+    &[data-colormode="dark"] {
+        background-color: $DARK_BG_COLOR;
+    }
 }
 
 .inner-layout {
@@ -80,32 +82,65 @@ nz-spin {
     height: 100%;
 }
 
+::ng-deep .inner-layout.ant-layout, .inner-content.ant-layout-content {
+    border-radius: 10px;
+}
+
 .inner-content {
     min-height: 280px;
-}
 
-.inner-content-light {
-    background-color: $LIGHT_INNER_BG_COLOR;
-}
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_INNER_BG_COLOR;
+    }
 
-.inner-content-dark {
-    background-color: $DARK_INNER_BG_COLOR;
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_INNER_BG_COLOR;
+    }
 }
 
 .sider-menu {
-    height: calc(100% - 35px);
+    height: calc(100% - 75px);
+}
+
+.sider-collapse-btn {
+    height: 30px;
+    width: 100%;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_SIDER_BG_COLOR;
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_SIDER_BG_COLOR;
+        color: $DARK_TEXT_COLOR;
+    }    
+}
+
+::ng-deep .sider-collapse-btn.ant-btn {
+    background-color: #345678;
+    border-radius: 0px;
+    border: 0px;
+} 
+
+::ng-deep .sider-menu.ant-menu-dark {
+    background-color: $DARK_SIDER_BG_COLOR;
+}
+
+::ng-deep .sider-menu.ant-menu-inline, .sider-menu.ant-menu-inline-collapsed {
+    border-right: 0px;
 }
 
 .sider-toolbar {
-    height: 35px;
-}
+    height: 45px;
 
-.sider-toolbar-light {
-    background-color: $LIGHT_SIDER_BG_COLOR;
-}
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_SIDER_BG_COLOR;
+    }
 
-.sider-toolbar-dark {
-    background-color: $DARK_SIDER_BG_COLOR;
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_SIDER_BG_COLOR;
+    }
 }
 
 .sider-toolbar-button {
@@ -114,26 +149,41 @@ nz-spin {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 5px;
 
     span {
         font-size: large;
+    }
+
+    &[data-colormode = 'light'] {
+        a {
+            color: black;
+        }
+        
+    }
+
+    &[data-colormode = 'dark'] {
+        a {
+            color: white;
+        }
+        
     }
 }
 
 nz-footer {
     text-align: center;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_BG_COLOR;
+        color: darkgrey;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_BG_COLOR;
+        color: #345678;
+    }
 }
 
 ::ng-deep .ant-layout-footer {
     padding: 15px 50px;
-}
-
-.footer-light {
-    background-color: $LIGHT_BG_COLOR;
-    color: darkgrey;
-}
-
-.footer-dark {
-    background-color: $DARK_BG_COLOR;
-    color: #345678;
 }
