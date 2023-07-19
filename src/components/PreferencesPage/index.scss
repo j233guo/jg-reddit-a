@@ -6,23 +6,32 @@
     height: 100%;
 }
 
-.title {
-    margin: 5px 0px 15px 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.preferences-toolbar {
+    width: 100%;
+    height: $POST_LIST_TOOLBAR_HEIGHT;
+    
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+    }
 
-    .title-text {
-        font-weight: bold;
-        font-size: 2em;
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_HEADER_COLOR;
+        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
 
-        &[data-colormode = 'light'] {
-            color: $LIGHT_TEXT_COLOR;
-        }
+.preferences-title {
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: large;
 
-        &[data-colormode = 'dark'] {
-            color: $DARK_TEXT_COLOR;
-        }
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
     }
 }
 

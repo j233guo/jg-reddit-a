@@ -67,9 +67,22 @@
     &[data-colormode = 'dark'] {
         color: $DARK_TEXT_COLOR;
     }
+
+    .score {
+        margin: 0px 10px 0px 10px;
+    }
+
+    .num-comment {
+        margin: 0px 0px 0px 10px;
+    }
 }
 
 .load-more {
     height: 45px;
     margin-bottom: 15px;
+}
+
+::ng-deep .ant-modal-body {
+    padding: 0px;
+    border-radius: 10px;
 }

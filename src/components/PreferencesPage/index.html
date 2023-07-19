@@ -1,8 +1,8 @@
 <div class="content-container">
-    <div nz-row class="title">
-        <span class="title-text" [attr.data-colormode]="uiSetting.colorMode">
-            Preferences
-        </span>
+    <div nz-row [nzAlign]="'middle'" [nzJustify]="'space-between'" class="preferences-toolbar" [attr.data-colormode]="uiSetting.colorMode">
+        <div class="preferences-title" [attr.data-colormode]="uiSetting.colorMode">
+            <span>Preferences</span>
+        </div>
     </div>
     <div class="list-content">
         <div nz-row class="pref-line">

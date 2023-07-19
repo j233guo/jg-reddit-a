@@ -1,7 +1,62 @@
+@import "../../scss/color";
+
+.content-container {
+    padding: 25px;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_INNER_BG_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_INNER_BG_COLOR;
+        border: 2px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
+
 .loading-spin {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.post-section {
+    padding: 25px 10px 0px 10px;
+}
+
+.post-info, .comment-info {
+    span {
+        font-size: 0.9em;
+    }
+
+    .subreddit-name {
+        margin-right: 15px;
+    }
+
+    .post-time, .comment-time {
+        margin-left: 15px;
+    }
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 5px 0px 10px 0px;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR
+    }
 }
 
 .comment-cell {
@@ -17,5 +72,35 @@
 
     .comment-time {
         margin-left: 15px;
+    }
+}
+
+.score-comment {
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+
+    .score {
+        margin: 0px 10px 0px 10px;
+    }
+
+    .num-comment {
+        margin: 0px 0px 0px 10px;
+    }
+}
+
+::ng-deep .self-text-light {
+    .md {
+        color: $LIGHT_TEXT_COLOR;
+    }
+}
+
+::ng-deep .self-text-dark {
+    .md {
+        color: $DARK_TEXT_COLOR;
     }
 }

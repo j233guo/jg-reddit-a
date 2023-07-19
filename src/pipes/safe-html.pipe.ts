@@ -13,6 +13,6 @@ export class SafeHtmlPipe implements PipeTransform  {
     transform(value) {
         const parsedHTMLString = new DOMParser().parseFromString(value, "text/html")
         const parsedHTML = parsedHTMLString.documentElement.textContent ?? ""
-        return this.sanitized.bypassSecurityTrustHtml(parsedHTML)
+        return value ? this.sanitized.bypassSecurityTrustHtml(parsedHTML) : ""
     }
 }
