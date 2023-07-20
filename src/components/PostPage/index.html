@@ -29,6 +29,14 @@
                         <span nz-icon nzType="comment" nzTheme="outline"></span>
                         <span class="num-comment">{{ post.num_comments }}</span>
                     </span>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <span>
+                        <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
+                            nz-tooltip nzTooltipTitle="View Original Post" nzTooltipPlacement="bottom"
+                            (click)="goToLink(post.url)">
+                            <span nz-icon nzType="upload" nzTheme="outline"></span>
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>
@@ -44,6 +52,9 @@
                 </span>
                 <span class="comment-time">
                     {{ comment.created_utc | parseUTC }}
+                </span>
+                <span class="comment-score">
+                    {{ comment.score }} points
                 </span>
             </div>
             <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>

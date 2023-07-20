@@ -4,12 +4,13 @@ import {
     ArrowDownOutline,
     ArrowUpOutline, 
     BarsOutline, 
-    CommentOutline, 
+    CommentOutline,
     FireOutline, 
     HomeOutline, 
     RedditOutline, 
     SettingOutline, 
-    StarOutline
+    StarOutline,
+    UploadOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 
@@ -22,7 +23,8 @@ const icons: IconDefinition[] = [
     HomeOutline,
     RedditOutline,
     SettingOutline,
-    StarOutline
+    StarOutline,
+    UploadOutline,
 ]
 
 @NgModule({
