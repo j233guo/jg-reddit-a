@@ -1,4 +1,5 @@
 @import "../../scss/color";
+@import "../../scss/font";
 
 .post-cell {
     margin: 15px 30px 15px 30px;
@@ -17,7 +18,8 @@
 
 .post-info {
     span {
-        font-size: 0.9em;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 
     .subreddit-name {
@@ -38,8 +40,8 @@
 }
 
 .title {
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: $FONT_SIZE_TITLE2;
+    font-weight: $FONT_WEIGHT_TITLE2;
     margin: 5px 0px 10px 0px;
 
     a:hover {
@@ -67,9 +69,20 @@
     &[data-colormode = 'dark'] {
         color: $DARK_TEXT_COLOR;
     }
+
+    .score, .num-comment {
+        margin: 0px 10px 0px 10px;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
+    }
 }
 
 .load-more {
     height: 45px;
     margin-bottom: 15px;
+}
+
+::ng-deep .ant-modal-body {
+    padding: 0px;
+    border-radius: 10px;
 }

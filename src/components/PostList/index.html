@@ -21,12 +21,13 @@
                 <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
                     <span>
                         <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
-                        {{ post.score }}
+                        <span class="score">{{ post.score }}</span>
+                        <span nz-icon nzType="arrow-down" nzTheme="outline"></span>
                     </span>
                     <nz-divider nzType="vertical"></nz-divider>
                     <span>
                         <span nz-icon nzType="comment" nzTheme="outline"></span>
-                        {{ post.num_comments }}
+                        <span class="num-comment">{{ post.num_comments }}</span>
                     </span>
                 </div>
             </div>
@@ -43,7 +44,7 @@
 </div>
 
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
-    [nzWidth]="'50%'" [nzClosable]="false">
+    [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
     <ng-template #modalContent>
         <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"></post-page>
     </ng-template>

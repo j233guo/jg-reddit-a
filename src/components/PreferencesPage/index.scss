@@ -1,4 +1,5 @@
 @import "../../scss/color";
+@import "../../scss/font";
 @import "../../scss/layout";
 
 .content-container {
@@ -6,16 +7,77 @@
     height: 100%;
 }
 
-.title {
-    margin: 5px 0px 15px 15px;
-    display: flex;
-    flex-direction: row;
+.preferences-toolbar {
+    width: 100%;
+    height: $POST_LIST_TOOLBAR_HEIGHT;
+    
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_HEADER_COLOR;
+        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
+
+.preferences-title {
+    margin-left: 25px;
+    font-size: $FONT_SIZE_TITLE2;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.list-content {
+    margin: 0px 30px 0px 30px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    margin: 10px 0px 5px 5px;
+    font-size: $FONT_SIZE_SUBHEAD;
+    font-weight: $FONT_WEIGHT_SUBHEAD;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.section-list {
+    border-radius: 8px;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        box-shadow: 0 1px 1px #091E4240;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_POSTCELL_BG_COLOR;
+    }
+}
+
+.pref-line {
+    width: 100%;
     align-items: center;
+    font-weight: $FONT_WEIGHT_BODY;
+    font-size: $FONT_SIZE_BODY;
+    padding: 5px 15px 5px 15px;
 
-    .title-text {
-        font-weight: bold;
-        font-size: 2em;
-
+    .pref-line-tag {
         &[data-colormode = 'light'] {
             color: $LIGHT_TEXT_COLOR;
         }
@@ -26,26 +88,12 @@
     }
 }
 
-.list-content {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-}
+::ng-deep .ant-select-dark {
+    .ant-select-selector {
+        background-color: $DARK_POSTCELL_BG_COLOR !important;
+    }
 
-.pref-line {
-    width: 100%;
-    height: $PREF_LINE_HEIGHT;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.1em;
-
-    .pref-line-tag {
-        &[data-colormode = 'light'] {
-            color: $LIGHT_TEXT_COLOR;
-        }
-
-        &[data-colormode = 'dark'] {
-            color: $DARK_TEXT_COLOR;
-        }
+    .ant-select-selection-item, .ant-select-arrow {
+        color: $DARK_TEXT_COLOR !important;
     }
 }

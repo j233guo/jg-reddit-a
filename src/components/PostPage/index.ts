@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 
 @Component({
     selector: 'post-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
 })
 export class PostPage implements OnInit {
     @Input('loading') loading: boolean
@@ -25,5 +25,9 @@ export class PostPage implements OnInit {
                 this.uiSetting[key] = val
             })
         })
+    }
+
+    goToLink(url: string){
+        window.open(url, "_blank")
     }
 }

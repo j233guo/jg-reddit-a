@@ -1,18 +1,21 @@
 import { NgModule } from "@angular/core";
 import { NzIconModule } from "ng-zorro-antd/icon";
 import { 
+    ArrowDownOutline,
     ArrowUpOutline, 
     BarsOutline, 
-    CommentOutline, 
+    CommentOutline,
     FireOutline, 
     HomeOutline, 
     RedditOutline, 
     SettingOutline, 
-    StarOutline
+    StarOutline,
+    UploadOutline,
 } from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
 
 const icons: IconDefinition[] = [
+    ArrowDownOutline,
     ArrowUpOutline,
     BarsOutline,
     CommentOutline,
@@ -20,7 +23,8 @@ const icons: IconDefinition[] = [
     HomeOutline,
     RedditOutline,
     SettingOutline,
-    StarOutline
+    StarOutline,
+    UploadOutline,
 ]
 
 @NgModule({

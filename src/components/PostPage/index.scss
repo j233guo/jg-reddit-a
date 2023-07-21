@@ -1,21 +1,128 @@
+@import "../../scss/color";
+@import "../../scss/font";
+
+.content-container {
+    padding: 25px;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_INNER_BG_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_INNER_BG_COLOR;
+        border: 2px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
+
 .loading-spin {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.post-section {
+    padding: 25px 10px 0px 10px;
+}
+
+.post-info, .comment-info {
+    span {
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
+    }
+
+    .subreddit-name {
+        margin-right: 15px;
+    }
+
+    .post-time, .comment-time, .comment-score {
+        margin-left: 15px;
+    }
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.title {
+    font-size: $FONT_SIZE_TITLE2;
+    font-weight: $FONT_WEIGHT_TITLE2;
+    margin: 5px 0px 10px 0px;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR
+    }
+}
+
 .comment-cell {
-    margin: 5px 25px 5px 25px;
-    border-radius: 5px;
+    margin: 10px 25px 10px 25px;
+    border-radius: 8px;
     padding: 10px 10px 10px 15px;
+
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        box-shadow: 0 1px 1px #091E4240;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_POSTCELL_BG_COLOR;
+    }
 }
 
 .comment-info {
     span {
-        font-size: 0.9em;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 
     .comment-time {
         margin-left: 15px;
+    }
+}
+
+.score-comment {
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+
+    .score, .num-comment {
+        margin: 0px 10px 0px 10px;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
+    }
+}
+
+.open-in-browser-btn {
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+::ng-deep .self-text-light {
+    .md {
+        color: $LIGHT_TEXT_COLOR;
+        font-size: $FONT_SIZE_BODY;
+    }
+}
+
+::ng-deep .self-text-dark {
+    .md {
+        color: $DARK_TEXT_COLOR;
+        font-size: $FONT_SIZE_BODY;
     }
 }

@@ -1,22 +1,52 @@
 <div class="content-container">
-    <div nz-row class="title">
-        <span class="title-text" [attr.data-colormode]="uiSetting.colorMode">
-            Preferences
-        </span>
+    <div nz-row [nzAlign]="'middle'" [nzJustify]="'space-between'" class="preferences-toolbar" [attr.data-colormode]="uiSetting.colorMode">
+        <div class="preferences-title" [attr.data-colormode]="uiSetting.colorMode">
+            <span>Preferences</span>
+        </div>
     </div>
     <div class="list-content">
-        <div nz-row class="pref-line">
-            <div nz-col nzSpan="5">
-                <span class="pref-line-tag" [attr.data-colormode]="uiSetting.colorMode">
-                    Color Mode
-                </span>
+        <div class="section">
+            <div nz-row class="section-title" [attr.data-colormode]="uiSetting.colorMode">
+                <span>Appearance</span>
             </div>
-            <div nz-col nzSpan="13"></div>
-            <div nz-col nzSpan="6">
-                <nz-select style="width: 100%" [(ngModel)]="uiSetting.colorMode" (ngModelChange)="applyUITheme()">
-                    <nz-option [nzLabel]="'Light'" [nzValue]="'light'"></nz-option>
-                    <nz-option [nzLabel]="'Dark'" [nzValue]="'dark'"></nz-option>
-                </nz-select>
+            <div class="section-list" [attr.data-colormode]="uiSetting.colorMode">
+                <div nz-row class="pref-line">
+                    <div nz-col nzSpan="18">
+                        <span class="pref-line-tag" [attr.data-colormode]="uiSetting.colorMode">
+                            Color Mode
+                        </span>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-select style="width: 100%" [ngClass]="'ant-select-'+uiSetting.colorMode"
+                            [(ngModel)]="uiSetting.colorMode" (ngModelChange)="applyUITheme()">
+                            <nz-option [nzLabel]="'Light'" [nzValue]="'light'"></nz-option>
+                            <nz-option [nzLabel]="'Dark'" [nzValue]="'dark'"></nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div nz-row class="section-title" [attr.data-colormode]="uiSetting.colorMode">
+                <span>General</span>
+            </div>
+            <div class="section-list" [attr.data-colormode]="uiSetting.colorMode">
+                <div nz-row class="pref-line">
+                    <div nz-col nzSpan="18">
+                        <span class="pref-line-tag" [attr.data-colormode]="uiSetting.colorMode">
+                            Number of Posts per Load
+                        </span>
+                    </div>
+                    <div nz-col nzSpan="6">
+                        <nz-select style="width: 100%" [ngClass]="'ant-select-'+uiSetting.colorMode"
+                            [(ngModel)]="preferences.postsPerLoad" (ngModelChange)="applyPreferences()">
+                            <nz-option [nzLabel]="'15'" [nzValue]="15"></nz-option>
+                            <nz-option [nzLabel]="'25'" [nzValue]="25"></nz-option>
+                            <nz-option [nzLabel]="'35'" [nzValue]="35"></nz-option>
+                        </nz-select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

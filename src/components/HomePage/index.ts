@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { APIService, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import { IPreferences, PreferenceService } from "src/services/PreferenceService";
 import { IPostListPayload } from "src/services/RemoteAPIBase";
 
 @Component({
@@ -11,13 +12,15 @@ import { IPostListPayload } from "src/services/RemoteAPIBase";
 export class HomePage implements OnInit {
 
     uiSetting: IUISetting
+    preferences: IPreferences
 
     posts: IPost[] = []
     postListLoading: boolean = false
 
     constructor(
         private _api: APIService,
-        private _appearanceService: AppearanceService
+        private _appearanceService: AppearanceService,
+        private _preferenceService: PreferenceService,
     ) {}
     
     ngOnInit(): void {
@@ -27,6 +30,12 @@ export class HomePage implements OnInit {
                 this.uiSetting[key] = val
             })
         })
+        this.preferences = this._preferenceService.getPreferences
+        this._preferenceService.observablePreferences.subscribe(this, (value) => {
+            Object.entries(value).forEach(([key, val]) => {
+                this.preferences[key] = val
+            })
+        })
         this.loadPosts()
     }
 
@@ -34,7 +43,7 @@ export class HomePage implements OnInit {
         let payload: IPostListPayload = {
             subreddit: 'all',
             listingOption: 'top',
-            limit: 20
+            limit: this.preferences.postsPerLoad
         }
         if (after) { payload['after'] = after }
         this.postListLoading = true

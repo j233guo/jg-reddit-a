@@ -4,6 +4,7 @@ import { PostList } from "../PostList";
 import { APIService, IPost } from "src/services/APIService";
 import { IPostListPayload } from "src/services/RemoteAPIBase";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import { IPreferences, PreferenceService } from "src/services/PreferenceService";
 
 @Component({
     selector: 'subreddit-page',
@@ -14,6 +15,7 @@ export class SubredditPage implements OnInit {
     @ViewChild(PostList) postlist: PostList
 
     uiSetting: IUISetting
+    preferences: IPreferences
 
     subreddit: string | null
     posts: IPost[] = []
@@ -22,6 +24,7 @@ export class SubredditPage implements OnInit {
     constructor(
         private _api: APIService,
         private _appearanceService: AppearanceService,
+        private _preferenceService: PreferenceService,
         private _route: ActivatedRoute,
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
@@ -34,7 +37,12 @@ export class SubredditPage implements OnInit {
                 this.uiSetting[key] = val
             })
         })
-        this.loadPosts()
+        this.preferences = this._preferenceService.getPreferences
+        this._preferenceService.observablePreferences.subscribe(this, (value) => {
+            Object.entries(value).forEach(([key, val]) => {
+                this.preferences[key] = val
+            })
+        })
         this._route.params.subscribe(param => {
             if (param["sub"] !== this.subreddit) {
                 this.subreddit = param["sub"]
@@ -42,13 +50,14 @@ export class SubredditPage implements OnInit {
                 this.loadPosts()
             }
         })
+        this.loadPosts()
     }
 
     async loadPosts(after?: string) {
         let payload: IPostListPayload = {
             subreddit: this.subreddit ?? 'all',
             listingOption: 'top',
-            limit: 20
+            limit: this.preferences.postsPerLoad
         }
         if (after) { payload['after'] = after }
         this.postListLoading = true
