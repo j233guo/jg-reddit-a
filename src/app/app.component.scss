@@ -1,5 +1,6 @@
 @import "../scss/color";
 @import "../scss/font";
+@import "../scss/layout";
 
 * {
     -webkit-touch-callout: none; /* iOS Safari */
@@ -49,7 +50,7 @@ nz-spin {
 }
 
 .header {
-    height: 45px;
+    height: $HEADER_HEIGHT;
     width: 100%;
 
     &[data-colormode = 'light'] {

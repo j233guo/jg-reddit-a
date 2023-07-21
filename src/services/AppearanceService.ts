@@ -9,7 +9,7 @@ export interface IUISetting {
     colorMode: ColorMode
 }
 
-type SubjectUIuiSetting = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUISetting>>, Subject<RecursiveReadonly<Partial<IUISetting>>>>
+type SubjectUISetting = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUISetting>>, Subject<RecursiveReadonly<Partial<IUISetting>>>>
 
 @Injectable({
     providedIn: 'root'
@@ -17,12 +17,10 @@ type SubjectUIuiSetting = TrackableSubjectWrapper<RecursiveReadonly<Partial<IUIS
 export class AppearanceService {
 
     private _uiSetting: IUISetting
-
-    private _subjectUISetting: SubjectUIuiSetting
-
-    get observableUISetting() { return this._subjectUISetting.observable }
+    private _subjectUISetting: SubjectUISetting
 
     get getUISetting() { return this._uiSetting }
+    get observableUISetting() { return this._subjectUISetting.observable }
 
     constructor() {
         this._subjectUISetting = new TrackableSubjectWrapper(new Subject())
