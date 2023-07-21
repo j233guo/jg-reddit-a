@@ -1,4 +1,5 @@
 @import "../../scss/color";
+@import "../../scss/font";
 
 .content-container {
     padding: 25px;
@@ -25,7 +26,8 @@
 
 .post-info, .comment-info {
     span {
-        font-size: 0.9em;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 
     .subreddit-name {
@@ -46,8 +48,8 @@
 }
 
 .title {
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: $FONT_SIZE_TITLE2;
+    font-weight: $FONT_WEIGHT_TITLE2;
     margin: 5px 0px 10px 0px;
 
     &[data-colormode = 'light'] {
@@ -76,7 +78,8 @@
 
 .comment-info {
     span {
-        font-size: 0.9em;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 
     .comment-time {
@@ -93,12 +96,10 @@
         color: $DARK_TEXT_COLOR;
     }
 
-    .score {
+    .score, .num-comment {
         margin: 0px 10px 0px 10px;
-    }
-
-    .num-comment {
-        margin: 0px 0px 0px 10px;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 }
 
@@ -115,11 +116,13 @@
 ::ng-deep .self-text-light {
     .md {
         color: $LIGHT_TEXT_COLOR;
+        font-size: $FONT_SIZE_BODY;
     }
 }
 
 ::ng-deep .self-text-dark {
     .md {
         color: $DARK_TEXT_COLOR;
+        font-size: $FONT_SIZE_BODY;
     }
 }

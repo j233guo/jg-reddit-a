@@ -1,5 +1,6 @@
-@import "../../scss/layout";
 @import "../../scss/color";
+@import "../../scss/font";
+@import "../../scss/layout";
 
 .content-container {
     display: block;
@@ -25,7 +26,8 @@
 .subreddit-name {
     margin-left: 25px;
     font-weight: 600;
-    font-size: large;
+    font-size: $FONT_SIZE_HEADLINE;
+    font-weight: $FONT_WEIGHT_HEADLINE;
 
     &[data-colormode = 'light'] {
         color: $LIGHT_TEXT_COLOR;
