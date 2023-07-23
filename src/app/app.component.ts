@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
             this.loadingSpinningEffect = value.status
             this.loadingText = value.text
         })
-
         this._loadingService.startLoading()
         this._api.checkServer().then((res) => {
             if (!res) { this._message.error("Unable to access Reddit API because access token is unavailable.") }
@@ -49,7 +48,10 @@ export class AppComponent implements OnInit {
             this._loadingService.finishLoading()
         })
     }
-
+    
+    /**
+     * Toggles the state of the sider (sidebar) collapse.
+     */
     toggleSiderCollapse() {
         this.siderCollapsed = !this.siderCollapsed
     }
