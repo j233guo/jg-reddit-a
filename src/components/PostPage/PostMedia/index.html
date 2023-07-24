@@ -1,0 +1,5 @@
+<div *ngIf="media && media.oembed" 
+    [style.max-width.px]="media.oembed.width" 
+    [style.max-height.px]="media.oembed.height"
+    [innerHTML]="media.oembed.html | safeHtml">
+</div>

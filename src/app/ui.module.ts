@@ -10,6 +10,8 @@ import { SubredditPage } from "src/components/SubredditPage";
 import { ParseUTCPipe } from "src/pipes/parse-utc.pipe";
 import { PostPage } from "src/components/PostPage";
 import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
+import { PostMedia } from "src/components/PostPage/PostMedia";
+import { UrlHandler } from "src/components/PostPage/UrlHandler";
 
 @NgModule({
     declarations: [
@@ -17,10 +19,12 @@ import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
         HotPage,
         ParseUTCPipe,
         PostList,
+        PostMedia,
         PostPage,
         PreferencesPage,
         SubredditPage,
         SafeHtmlPipe,
+        UrlHandler,
     ],
     imports: [
         CommonModule,

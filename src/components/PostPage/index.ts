@@ -32,6 +32,7 @@ export class PostPage implements OnInit {
      * @param url The URL of the web page to be opened.
      */
     goToLink(url: string){
+        console.log(url)
         window.open(url, "_blank")
     }
 }
