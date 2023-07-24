@@ -1,7 +1,7 @@
 <div class="content-container">
     <div *ngFor="let post of posts" class="post-cell" [attr.data-colormode]="uiSetting.colorMode">
         <div nz-row>
-            <div nz-col nzSpan="24">
+            <div nz-col [nzSpan]="post.thumbnail === '' ? 24 : 21">
                 <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
                     <span *ngIf="displaySubreddit" class="subreddit-name">
                         r/{{ post.subreddit }}
@@ -30,6 +30,9 @@
                         <span class="num-comment">{{ post.num_comments }}</span>
                     </span>
                 </div>
+            </div>
+            <div nz-col [nzSpan]="post.thumbnail === '' ? 0 : 3" class="thumbnail-cell" >
+                <img [src]="post.thumbnail" (error)="onThumbnailError($event)" class="thumbnail">
             </div>
         </div>
     </div>

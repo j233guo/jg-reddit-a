@@ -16,6 +16,12 @@
                     </span>
                 </div>
                 <div nz-row>
+                    <post-media [media]="post.media"></post-media>
+                </div>
+                <div nz-row>
+                    <url-handler [url]="post.url"></url-handler>
+                </div>
+                <div nz-row>
                     <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="post.selftext_html | safeHtml"></div>
                 </div>
                 <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
@@ -33,7 +39,7 @@
                     <span>
                         <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
                             nz-tooltip nzTooltipTitle="View Original Post" nzTooltipPlacement="bottom"
-                            (click)="goToLink(post.url)">
+                            (click)="goToLink('https://www.reddit.com' + post.permalink)">
                             <span nz-icon nzType="upload" nzTheme="outline"></span>
                         </button>
                     </span>

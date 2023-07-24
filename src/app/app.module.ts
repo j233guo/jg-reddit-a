@@ -14,7 +14,6 @@ import { IconModule } from './icons.module';
 import { AppearanceService } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
 import { FormsModule } from '@angular/forms';
-import { ParseUTCPipe } from 'src/pipes/parse-utc.pipe';
 import { PreferenceService } from 'src/services/PreferenceService';
 
 @NgModule({

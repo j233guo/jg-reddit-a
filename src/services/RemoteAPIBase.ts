@@ -69,7 +69,7 @@ export class RemoteAPIBase {
         }
     }
 
-    protected handleHttpError(error?: any, name?: string) {
+    protected handleHttpError(name?: string) {
         this._message.error(`Operation failed: [${name}]`)
     }
 

@@ -4,7 +4,7 @@
 .post-cell {
     margin: 15px 30px 15px 30px;
     border-radius: 10px;
-    padding: 10px 10px 10px 15px;
+    padding: 15px 15px 15px 20px;
 
     &[data-colormode = 'light'] {
         background-color: $LIGHT_POSTCELL_BG_COLOR;
@@ -42,7 +42,8 @@
 .title {
     font-size: $FONT_SIZE_TITLE2;
     font-weight: $FONT_WEIGHT_TITLE2;
-    margin: 5px 0px 10px 0px;
+    margin: 5px 0px 15px 0px;
+    padding-right: 5px;
 
     a:hover {
         color: $LINK_HOVERED_COLOR;
@@ -75,6 +76,19 @@
         font-size: $FONT_SIZE_SUBHEAD;
         font-weight: $FONT_WEIGHT_SUBHEAD;
     }
+}
+
+.thumbnail-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.thumbnail {
+    border-radius: 5px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
 }
 
 .load-more {

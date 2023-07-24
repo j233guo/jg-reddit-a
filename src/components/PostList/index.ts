@@ -67,4 +67,13 @@ export class PostList implements OnInit {
         this.displayPostDetail = false
         this.commentList = []
     }
+
+    /**
+     * This function is called when an error occurs while loading the thumbnail image.
+     * By setting the style of the 'target' to 'display: none', the thumbnail image is effectively hidden when it fails to load.
+     * @param event error event
+     */
+    onThumbnailError(event) {
+        event.target.style.display = 'none';
+    }
 }
