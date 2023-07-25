@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
 import { APIService, IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import { MessageService } from "src/services/MessageService";
 import { ICommentListPayload } from "src/services/RemoteAPIBase";
+import { SiderService } from "src/services/SiderService";
 
 @Component({
     selector: 'post-list',
@@ -12,7 +15,7 @@ export class PostList implements OnInit {
     @Input('posts') posts: IPost[]
     @Input('loading') loading: boolean
     @Input('displaySubreddit') displaySubreddit: boolean
-    @Output() load: EventEmitter<string> = new EventEmitter()
+    @Output() load: EventEmitter<string | null> = new EventEmitter()
 
     uiSetting: IUISetting
 
@@ -24,6 +27,9 @@ export class PostList implements OnInit {
     constructor(
         private _api: APIService,
         private _appearanceService: AppearanceService,
+        private _router: Router,
+        private _siderService: SiderService,
+        private _messageService: MessageService,
     ) {}
 
     ngOnInit(): void {
@@ -36,7 +42,7 @@ export class PostList implements OnInit {
     }
 
     loadMore() {
-        const lastPostName = this.posts[this.posts.length - 1].name
+        const lastPostName = this.posts && this.posts.length > 0 ? this.posts[this.posts.length - 1].name : null
         this.load.emit(lastPostName)
     }
 
@@ -57,7 +63,7 @@ export class PostList implements OnInit {
         this._api.getComments(payload).then((res) => {
             this.commentList.push(...res)
         }).catch((err) => {
-            console.log(err)
+            this._messageService.error("Failed to load comments.")
         }).finally(() => {
             this.commentsLoading = false
         })
@@ -74,6 +80,11 @@ export class PostList implements OnInit {
      * @param event error event
      */
     onThumbnailError(event) {
-        event.target.style.display = 'none';
+        event.target.style.display = 'none'
+    }
+
+    goToSubreddit(subreddit: string) {
+        this._router.navigate(['/subreddit', subreddit])
+        this._siderService.collapse()
     }
 }

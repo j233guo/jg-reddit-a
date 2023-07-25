@@ -3,8 +3,10 @@
         <div nz-row>
             <div nz-col [nzSpan]="post.thumbnail === '' ? 24 : 21">
                 <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
-                    <span *ngIf="displaySubreddit" class="subreddit-name">
-                        r/{{ post.subreddit }}
+                    <span *ngIf="displaySubreddit" class="subreddit-name" [attr.data-colormode]="uiSetting.colorMode">
+                        <a (click)="goToSubreddit(post.subreddit)">
+                            r/{{ post.subreddit }}
+                        </a>
                     </span>
                     <span class="author">
                         Posted by u/{{post.author}}

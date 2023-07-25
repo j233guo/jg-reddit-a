@@ -15,6 +15,7 @@ import { AppearanceService } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
 import { FormsModule } from '@angular/forms';
 import { PreferenceService } from 'src/services/PreferenceService';
+import { SiderService } from 'src/services/SiderService';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { PreferenceService } from 'src/services/PreferenceService';
         AppearanceService,
         LoadingService,
         PreferenceService,
+        SiderService,
     ],
     bootstrap: [AppComponent]
 })

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FAVOURITE_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
 import { APIService } from 'src/services/APIService';
 import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
 import { MessageService } from 'src/services/MessageService';
+import { SiderService } from 'src/services/SiderService';
 
 @Component({
     selector: 'app-component',
@@ -23,13 +25,18 @@ export class AppComponent implements OnInit {
         private _appearanceService: AppearanceService,
         private _loadingService: LoadingService,
         private _message: MessageService,
-        private _api: APIService
+        private _api: APIService,
+        private _siderService: SiderService,
+        private _router: Router
     ) {
         this.favouriteSubreddits = FAVOURITE_SUBS
+        this.uiSetting = this._appearanceService.getUISetting
     }
 
     async ngOnInit() {
-        this.uiSetting = this._appearanceService.getUISetting
+        this._siderService.isCollapsed$.subscribe((collapsed) => { 
+            this.siderCollapsed = collapsed 
+        })
         this._appearanceService.observableUISetting.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {
                 this.uiSetting[key] = val
@@ -53,6 +60,11 @@ export class AppComponent implements OnInit {
      * Toggles the state of the sider (sidebar) collapse.
      */
     toggleSiderCollapse() {
-        this.siderCollapsed = !this.siderCollapsed
+        this.siderCollapsed ? this._siderService.expand() : this._siderService.collapse()
+    }
+
+    goToHome() {
+        this._router.navigate(['/'])
+        this._siderService.expand()
     }
 }

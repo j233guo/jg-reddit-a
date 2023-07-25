@@ -1,15 +1,13 @@
 <div class="content-container">
     <nz-layout>
         <div class="header" [attr.data-colormode]="uiSetting.colorMode">
-            <div nz-row>
-                <div nz-col nzSpan="3">
-                    <a [routerLink]="'/'">
-                        <div class="logo">
-                            <span nz-icon nzType="reddit" nzTheme="outline"></span>&nbsp;
-                            <span>JG Reddit</span>
-                        </div>
-                    </a>
-                </div>
+            <div nz-row [nzJustify]="'space-between'" [nzAlign]="'middle'">
+                <a (click)="goToHome()">
+                    <div class="logo">
+                        <span nz-icon nzType="reddit" nzTheme="outline"></span>&nbsp;
+                        <span>JG Reddit</span>
+                    </div>
+                </a>
             </div>
         </div>
         <nz-layout>

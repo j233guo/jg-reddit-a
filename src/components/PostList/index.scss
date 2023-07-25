@@ -39,6 +39,24 @@
     }
 }
 
+.subreddit-name {
+    a:hover {
+        color: $LINK_HOVERED_COLOR;
+    }
+
+    &[data-colormode = 'light'] {
+        a {
+            color: $LIGHT_TEXT_COLOR;
+        }
+    }
+
+    &[data-colormode = 'dark'] {
+        a {
+            color: $DARK_TEXT_COLOR
+        }
+    }
+}
+
 .title {
     font-size: $FONT_SIZE_TITLE2;
     font-weight: $FONT_WEIGHT_TITLE2;

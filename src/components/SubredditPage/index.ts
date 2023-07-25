@@ -5,6 +5,7 @@ import { APIService, IPost } from "src/services/APIService";
 import { IPostListPayload } from "src/services/RemoteAPIBase";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { IPreferences, PreferenceService } from "src/services/PreferenceService";
+import { MessageService } from "src/services/MessageService";
 
 @Component({
     selector: 'subreddit-page',
@@ -26,6 +27,7 @@ export class SubredditPage implements OnInit {
         private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService,
         private _route: ActivatedRoute,
+        private _messageService: MessageService
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
     }
@@ -53,7 +55,7 @@ export class SubredditPage implements OnInit {
         this.loadPosts()
     }
 
-    async loadPosts(after?: string) {
+    async loadPosts(after?: string | null) {
         let payload: IPostListPayload = {
             subreddit: this.subreddit ?? 'all',
             listingOption: 'top',
@@ -64,7 +66,7 @@ export class SubredditPage implements OnInit {
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
         }).catch((err) => {
-            console.log(err)
+            this._messageService.error("Failed to load posts.")
         }).finally(() => {
             this.postListLoading = false
         })
