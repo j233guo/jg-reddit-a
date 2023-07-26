@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ICommentListPayload, IPostListPayload, RemoteAPIBase } from "./RemoteAPIBase";
+import { ICommentListPayload, IPostListPayload, ISubredditNamesPayload, RemoteAPIBase } from "./RemoteAPIBase";
 import { HttpClient } from "@angular/common/http";
 import { MessageService } from "./MessageService";
 
@@ -61,6 +61,14 @@ export class APIService extends RemoteAPIBase {
     async getComments(payload: ICommentListPayload): Promise<IComment[]> {
         return this.post('/api/general/comments', 'get comment list', payload).then((res) => {
             return res.comments
+        }).catch(() => {
+            return null
+        })
+    }
+
+    async getSubredditNames(payload: ISubredditNamesPayload): Promise<string[]> {
+        return this.post('/api/general/search_reddit_names', 'search reddit names', payload).then((res) => {
+            return res.names
         }).catch(() => {
             return null
         })

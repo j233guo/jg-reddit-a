@@ -12,6 +12,7 @@ import { PostPage } from "src/components/PostPage";
 import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
 import { PostMedia } from "src/components/PostPage/PostMedia";
 import { UrlHandler } from "src/components/PostPage/UrlHandler";
+import { SearchPage } from "src/components/SearchPage";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UrlHandler } from "src/components/PostPage/UrlHandler";
         PostMedia,
         PostPage,
         PreferencesPage,
+        SearchPage,
         SubredditPage,
         SafeHtmlPipe,
         UrlHandler,
@@ -35,6 +37,7 @@ import { UrlHandler } from "src/components/PostPage/UrlHandler";
         HomePage,
         HotPage,
         PreferencesPage,
+        SearchPage,
         SubredditPage,
     ]
 })

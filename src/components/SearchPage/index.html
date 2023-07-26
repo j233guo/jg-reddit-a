@@ -1,0 +1,16 @@
+<div class="content-container">
+    <div nz-row [nzAlign]="'middle'" [nzJustify]="'space-between'" class="toolbar" [attr.data-colormode]="uiSetting.colorMode">
+        <div class="title" [attr.data-colormode]="uiSetting.colorMode">
+            <span>Search For a Community</span>
+        </div>
+    </div>
+    <div nz-row class="search-bar">
+        <input nz-input type="text" placeholder="Type a subreddit name..." class="search-input"
+            [ngClass]="'search-input-'+uiSetting.colorMode" [(ngModel)]="searchQuery">
+        <div nz-row class="include-nsfw-box" [nzAlign]="'middle'">
+            <label nz-checkbox [ngClass]="'checkbox-'+uiSetting.colorMode" [(ngModel)]="includeNSFW">
+                Include NSFW Results
+            </label>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,12 @@
                         <span>JG Reddit</span>
                     </div>
                 </a>
+                <div class="search-logo" [attr.data-colormode]="uiSetting.colorMode"
+                    nz-tooltip nzTooltipTitle="Search For a Community">
+                    <a (click)="goToSearch()">
+                        <span nz-icon nzType="search" nzTheme="outline"></span>
+                    </a>
+                </div>
             </div>
         </div>
         <nz-layout>

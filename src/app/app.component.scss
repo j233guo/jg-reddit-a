@@ -49,6 +49,33 @@ nz-spin {
     }
 }
 
+.search-logo {
+    height: 35px;
+    width: 35px;
+    margin: 5px 20px 5px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: $FONT_SIZE_TITLE2;
+        font-weight: $FONT_WEIGHT_TITLE2;
+    }
+
+    &[data-colormode = 'light'] {
+        a {
+            color: black;
+        }
+    }
+
+    &[data-colormode = 'dark'] {
+        a {
+            color: white;
+        }
+    }
+}
+
 .header {
     height: $HEADER_HEIGHT;
     width: 100%;
@@ -150,7 +177,7 @@ nz-spin {
     margin: 5px;
 
     span {
-        font-size: $FONT_SIZE_TITLE1;
+        font-size: $FONT_SIZE_TITLE2;
     }
 
     &[data-colormode = 'light'] {

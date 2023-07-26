@@ -1,0 +1,74 @@
+@import "../../scss/color";
+@import "../../scss/font";
+@import "../../scss/layout";
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolbar {
+    width: 100%;
+    height: $POST_LIST_TOOLBAR_HEIGHT;
+    
+    &[data-colormode = 'light'] {
+        background-color: $LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        background-color: $DARK_HEADER_COLOR;
+        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+    }
+}
+
+.title {
+    margin-left: 25px;
+    font-size: $FONT_SIZE_HEADLINE;
+    font-weight: $FONT_WEIGHT_HEADLINE;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
+.search-bar {
+    display: flex;
+    width: 75%;
+    padding: auto;
+
+    input {
+        height: 40px;
+        margin: 10px 0px 10px 0px;
+    }
+
+    .include-nsfw-box {
+        height: 20px;
+    }
+}
+
+.search-results {
+    display: block;
+    width: 100%;
+    height: calc(100% - $POST_LIST_TOOLBAR_HEIGHT);
+    overflow: scroll;
+}
+
+.search-input {
+    border-radius: 5px;
+    border-color: $DARK_BOX_BORDER_COLOR;
+}
+
+.search-input-dark {
+    background-color: $DARK_POSTCELL_BG_COLOR !important;
+    color: $DARK_TEXT_COLOR !important;
+}
+
+.checkbox-dark {
+    color: $DARK_TEXT_COLOR !important;
+}

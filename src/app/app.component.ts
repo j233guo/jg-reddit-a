@@ -67,4 +67,9 @@ export class AppComponent implements OnInit {
         this._router.navigate(['/'])
         this._siderService.expand()
     }
+
+    goToSearch() {
+        this._router.navigate(['/search'])
+        this._siderService.collapse()
+    }
 }
