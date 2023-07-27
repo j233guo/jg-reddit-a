@@ -5,12 +5,23 @@
         </div>
     </div>
     <div nz-row class="search-bar">
-        <input nz-input type="text" placeholder="Type a subreddit name..." class="search-input"
-            [ngClass]="'search-input-'+uiSetting.colorMode" [(ngModel)]="searchQuery">
-        <div nz-row class="include-nsfw-box" [nzAlign]="'middle'">
-            <label nz-checkbox [ngClass]="'checkbox-'+uiSetting.colorMode" [(ngModel)]="includeNSFW">
-                Include NSFW Results
-            </label>
-        </div>
+        <input nz-input type="text" placeholder="Type a subreddit name..." class="search-input" 
+            [ngClass]="'search-input-'+uiSetting.colorMode" [formControl]="searchControl">
+    </div>
+    <div class="search-results" [attr.data-colormode]="uiSetting.colorMode">
+        <ng-container *ngIf="names.length === 0 && !loading">
+            <nz-empty [nzNotFoundContent]="'No results'" [ngClass]="'empty-placeholder-'+uiSetting.colorMode"></nz-empty>
+        </ng-container>
+        <ng-container *ngIf="loading">
+            <div nz-row [nzAlign]="'middle'" [nzJustify]="'center'" style="height: 50px">
+                <nz-spin nzSimple></nz-spin>
+            </div>
+        </ng-container>
+        <ng-container>
+            <div *ngFor="let name of names; let isLast = last" class="search-result-line" [attr.data-colormode]="uiSetting.colorMode">
+                <a (click)="goToSubreddit(name)">r/{{ name }}</a>
+                <div *ngIf="!isLast" class="divider" [attr.data-colormode]="uiSetting.colorMode"></div>
+            </div>
+        </ng-container>
     </div>
 </div>

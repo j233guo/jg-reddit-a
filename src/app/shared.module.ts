@@ -12,6 +12,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal'
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
+import { NzEmptyModule } from "ng-zorro-antd/empty";
 
 import * as AllIcons from '@ant-design/icons-angular/icons'
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -30,6 +31,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzButtonModule,
         NzCheckboxModule,
         NzDividerModule,
+        NzEmptyModule,
         NzGridModule,
         NzInputModule,
         NzLayoutModule,
@@ -46,6 +48,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         NzButtonModule,
         NzCheckboxModule,
         NzDividerModule,
+        NzEmptyModule,
         NzGridModule,
         NzInputModule,
         NzLayoutModule,
