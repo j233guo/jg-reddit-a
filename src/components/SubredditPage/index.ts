@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { PostList } from "../PostList";
 import { APIService, IPost } from "src/services/APIService";
-import { IPostListPayload } from "src/services/RemoteAPIBase";
+import { IPostListPayload, ListingOption } from "src/services/RemoteAPIBase";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { IPreferences, PreferenceService } from "src/services/PreferenceService";
 import { MessageService } from "src/services/MessageService";
@@ -21,6 +21,8 @@ export class SubredditPage implements OnInit {
     subreddit: string | null
     posts: IPost[] = []
     postListLoading: boolean = false
+
+    listingOption: ListingOption = 'hot'
 
     constructor(
         private _api: APIService,
@@ -55,10 +57,17 @@ export class SubredditPage implements OnInit {
         this.loadPosts()
     }
 
+    setListingOption(option: ListingOption) {
+        if (option === this.listingOption) return
+        this.listingOption = option
+        this.posts = []
+        this.loadPosts()
+    }
+
     async loadPosts(after?: string | null) {
         let payload: IPostListPayload = {
             subreddit: this.subreddit ?? 'all',
-            listingOption: 'top',
+            listingOption: this.listingOption,
             limit: this.preferences.postsPerLoad
         }
         if (after) { payload['after'] = after }

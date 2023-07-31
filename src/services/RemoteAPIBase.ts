@@ -12,9 +12,11 @@ export interface IBasicResponse {
     message?: string
 }
 
+export type ListingOption = 'hot'|'top'|'new'|'rising'
+
 export interface IPostListPayload {
     subreddit: string
-    listingOption: string
+    listingOption: ListingOption
     limit?: number
     before?: string
     after?: string
