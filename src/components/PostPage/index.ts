@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from "@angular/core";
 import { IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 
@@ -11,6 +11,7 @@ export class PostPage implements OnInit {
     @Input('loading') loading: boolean
     @Input('post') post: IPost
     @Input('comments') comments: IComment[]
+    @Output('dismiss') dismiss: EventEmitter<any> = new EventEmitter()
 
     uiSetting: IUISetting
 
@@ -32,7 +33,13 @@ export class PostPage implements OnInit {
      * @param url The URL of the web page to be opened.
      */
     goToLink(url: string){
-        console.log(url)
         window.open(url, "_blank")
+    }
+
+    /**
+     * Closes the current post page modal
+     */
+    dismissModal() {
+        this.dismiss.emit()
     }
 }

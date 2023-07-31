@@ -3,8 +3,10 @@
         <div nz-row>
             <div nz-col [nzSpan]="post.thumbnail === '' ? 24 : 21">
                 <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
-                    <span *ngIf="displaySubreddit" class="subreddit-name">
-                        r/{{ post.subreddit }}
+                    <span *ngIf="displaySubreddit" class="subreddit-name" [attr.data-colormode]="uiSetting.colorMode">
+                        <a (click)="goToSubreddit(post.subreddit)">
+                            r/{{ post.subreddit }}
+                        </a>
                     </span>
                     <span class="author">
                         Posted by u/{{post.author}}
@@ -49,6 +51,11 @@
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
     [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
     <ng-template #modalContent>
-        <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"></post-page>
+        <post-page
+            [post]="openedPost" 
+            [comments]="commentList" 
+            [loading]="commentsLoading" 
+            (dismiss)="closePost()">
+        </post-page>
     </ng-template>
 </nz-modal>

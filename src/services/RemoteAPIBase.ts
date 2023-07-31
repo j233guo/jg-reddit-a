@@ -27,6 +27,12 @@ export interface ICommentListPayload {
     depth?: number
 }
 
+export interface ISubredditNamesPayload {
+    query: string
+    include_over_18: boolean
+    limit?: number
+}
+
 export class RemoteAPIBase {
 
     protected baseURL: string  = 'http://127.0.0.1:5000'

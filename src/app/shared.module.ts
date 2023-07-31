@@ -10,6 +10,9 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzModalModule } from 'ng-zorro-antd/modal'
 import { NzButtonModule } from "ng-zorro-antd/button";
+import { NzInputModule } from "ng-zorro-antd/input";
+import { NzCheckboxModule } from "ng-zorro-antd/checkbox";
+import { NzEmptyModule } from "ng-zorro-antd/empty";
 
 import * as AllIcons from '@ant-design/icons-angular/icons'
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -26,8 +29,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         ReactiveFormsModule,
         NzIconModule.forRoot(icons),
         NzButtonModule,
+        NzCheckboxModule,
         NzDividerModule,
+        NzEmptyModule,
         NzGridModule,
+        NzInputModule,
         NzLayoutModule,
         NzMenuModule,
         NzModalModule,
@@ -40,8 +46,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
         ReactiveFormsModule,
         NzIconModule,
         NzButtonModule,
+        NzCheckboxModule,
         NzDividerModule,
+        NzEmptyModule,
         NzGridModule,
+        NzInputModule,
         NzLayoutModule,
         NzMenuModule,
         NzModalModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { APIService, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import { MessageService } from "src/services/MessageService";
 import { IPreferences, PreferenceService } from "src/services/PreferenceService";
 import { IPostListPayload } from "src/services/RemoteAPIBase";
 
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
         private _api: APIService,
         private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService,
+        private _messageService: MessageService,
     ) {}
     
     ngOnInit(): void {
@@ -39,7 +41,7 @@ export class HomePage implements OnInit {
         this.loadPosts()
     }
 
-    async loadPosts(after?: string) {
+    async loadPosts(after?: string | null) {
         let payload: IPostListPayload = {
             subreddit: 'all',
             listingOption: 'top',
@@ -50,7 +52,7 @@ export class HomePage implements OnInit {
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
         }).catch((err) => {
-            console.log(err)
+            this._messageService.error("Failed to load posts.")
         }).finally(() => {
             this.postListLoading = false
         })
