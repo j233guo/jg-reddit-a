@@ -51,6 +51,11 @@
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
     [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
     <ng-template #modalContent>
-        <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"></post-page>
+        <post-page
+            [post]="openedPost" 
+            [comments]="commentList" 
+            [loading]="commentsLoading" 
+            (dismiss)="closePost()">
+        </post-page>
     </ng-template>
 </nz-modal>

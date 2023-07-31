@@ -1,69 +1,86 @@
+
+
 <div class="content-container" [attr.data-colormode]="uiSetting.colorMode">
-    <div class="post-section">
-        <div nz-row>
-            <div nz-col nzSpan="24">
-                <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
-                    <span class="author">
-                        u/{{post.author}}
-                    </span>
-                    <span class="post-time">
-                        {{ post.created_utc | parseUTC }}
-                    </span>
-                </div>
-                <div nz-row>
-                    <span class="title" [attr.data-colormode]="uiSetting.colorMode">
-                        {{post.title}}
-                    </span>
-                </div>
-                <div nz-row>
-                    <post-media [media]="post.media"></post-media>
-                </div>
-                <div nz-row>
-                    <url-handler [url]="post.url"></url-handler>
-                </div>
-                <div nz-row>
-                    <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="post.selftext_html | safeHtml"></div>
-                </div>
-                <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
-                    <span>
-                        <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
-                        <span class="score">{{ post.score }}</span>
-                        <span nz-icon nzType="arrow-down" nzTheme="outline"></span>
-                    </span>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <span>
-                        <span nz-icon nzType="comment" nzTheme="outline"></span>
-                        <span class="num-comment">{{ post.num_comments }}</span>
-                    </span>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <span>
-                        <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
-                            nz-tooltip nzTooltipTitle="View Original Post" nzTooltipPlacement="bottom"
-                            (click)="goToLink('https://www.reddit.com' + post.permalink)">
-                            <span nz-icon nzType="upload" nzTheme="outline"></span>
-                        </button>
-                    </span>
+    <div nz-row [nzJustify]="'end'" class="close-bar" [attr.data-colormode]="uiSetting.colorMode">
+        <a (click)="dismissModal()">
+            <svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" cx="150" cy="150" r="150"></circle>
+                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#101010' : '#EBECF0'" cx="150" cy="150" r="130"></circle>
+                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" transform="translate(150, 150) rotate(45) translate(-150, -150)" x="50" y="135" width="200" height="30"></rect>
+                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" transform="translate(150, 150) rotate(45) translate(-150, -150)" x="135" y="50" width="30" height="200"></rect>
+                </g>
+            </svg>
+        </a>
+    </div>
+
+    <div class="post-content">
+        <div class="post-section">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
+                        <span class="author">
+                            u/{{post.author}}
+                        </span>
+                        <span class="post-time">
+                            {{ post.created_utc | parseUTC }}
+                        </span>
+                    </div>
+                    <div nz-row>
+                        <span class="title" [attr.data-colormode]="uiSetting.colorMode">
+                            {{post.title}}
+                        </span>
+                    </div>
+                    <div nz-row class="media">
+                        <post-media [media]="post.media"></post-media>
+                    </div>
+                    <div nz-row>
+                        <url-handler [url]="post.url"></url-handler>
+                    </div>
+                    <div nz-row>
+                        <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="post.selftext_html | safeHtml"></div>
+                    </div>
+                    <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
+                        <span>
+                            <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
+                            <span class="score">{{ post.score }}</span>
+                            <span nz-icon nzType="arrow-down" nzTheme="outline"></span>
+                        </span>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <span>
+                            <span nz-icon nzType="comment" nzTheme="outline"></span>
+                            <span class="num-comment">{{ post.num_comments }}</span>
+                        </span>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <span>
+                            <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
+                                nz-tooltip nzTooltipTitle="View Original Post" nzTooltipPlacement="bottom"
+                                (click)="goToLink('https://www.reddit.com' + post.permalink)">
+                                <span nz-icon nzType="upload" nzTheme="outline"></span>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <nz-divider></nz-divider>
-
-    <div class="comment-section">
-        <div *ngFor="let comment of comments" class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
-            <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
-                <span class="author">
-                    u/{{ comment.author }}
-                </span>
-                <span class="comment-time">
-                    {{ comment.created_utc | parseUTC }}
-                </span>
-                <span class="comment-score">
-                    {{ comment.score }} points
-                </span>
+    
+        <nz-divider></nz-divider>
+    
+        <div class="comment-section">
+            <div *ngFor="let comment of comments" class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
+                <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
+                    <span class="author">
+                        u/{{ comment.author }}
+                    </span>
+                    <span class="comment-time">
+                        {{ comment.created_utc | parseUTC }}
+                    </span>
+                    <span class="comment-score">
+                        {{ comment.score }} points
+                    </span>
+                </div>
+                <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
             </div>
-            <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
         </div>
     </div>
 

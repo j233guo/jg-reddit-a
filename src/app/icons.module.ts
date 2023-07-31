@@ -3,7 +3,7 @@ import { NzIconModule } from "ng-zorro-antd/icon";
 import { 
     ArrowDownOutline,
     ArrowUpOutline, 
-    BarsOutline, 
+    BarsOutline,
     CommentOutline,
     FireOutline, 
     HomeOutline, 
