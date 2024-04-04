@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div nz-col [nzSpan]="post.thumbnail === '' ? 0 : 3" class="thumbnail-cell" >
-                <img [src]="post.thumbnail" (error)="onThumbnailError($event)" class="thumbnail">
+                <img alt="" [src]="post.thumbnail" (error)="onThumbnailError($event)" class="thumbnail">
             </div>
         </div>
     </div>
@@ -52,9 +52,9 @@
     [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
     <ng-template #modalContent>
         <post-page
-            [post]="openedPost" 
-            [comments]="commentList" 
-            [loading]="commentsLoading" 
+            [post]="openedPost"
+            [comments]="commentList"
+            [loading]="commentsLoading"
             (dismiss)="closePost()">
         </post-page>
     </ng-template>

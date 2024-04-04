@@ -12,7 +12,7 @@
 .toolbar {
     width: 100%;
     height: $POST_LIST_TOOLBAR_HEIGHT;
-    
+
     &[data-colormode = 'light'] {
         background-color: $LIGHT_HEADER_COLOR;
         border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
@@ -41,11 +41,10 @@
 .search-bar {
     display: flex;
     width: 75%;
-    padding: auto;
 
     input {
         height: 40px;
-        margin: 10px 0px 10px 0px;
+        margin: 10px 0 10px 0;
     }
 }
 
@@ -69,7 +68,7 @@
     height: calc(100% - $POST_LIST_TOOLBAR_HEIGHT - 120px);
     overflow: scroll;
     padding: 25px;
-    margin: 20px 50px 0px 50px;
+    margin: 20px 50px 0 50px;
     border-radius: 5px;
 
     &[data-colormode = 'light'] {

@@ -60,7 +60,7 @@
 .title {
     font-size: $FONT_SIZE_TITLE2;
     font-weight: $FONT_WEIGHT_TITLE2;
-    margin: 5px 0px 15px 0px;
+    margin: 5px 0 15px 0;
     padding-right: 5px;
 
     a:hover {
@@ -90,7 +90,7 @@
     }
 
     .score, .num-comment {
-        margin: 0px 10px 0px 10px;
+        margin: 0 10px 0 10px;
         font-size: $FONT_SIZE_SUBHEAD;
         font-weight: $FONT_WEIGHT_SUBHEAD;
     }
@@ -115,6 +115,6 @@
 }
 
 ::ng-deep .ant-modal-body {
-    padding: 0px;
+    padding: 0;
     border-radius: 10px;
 }

@@ -3,7 +3,7 @@ import { MessageService } from "./MessageService";
 
 export enum ResponseCode {
     OK = 0,
-    FAIL_REDDITAPI = -1,
+    FAIL_REDDIT_API = -1,
     FAIL_SERVER = -2,
 }
 
@@ -46,7 +46,7 @@ export class RemoteAPIBase {
 
     protected handleStdError(error: IBasicResponse, name?: string) {
         if (!error.message) { error.message = "No error message" }
-        if (error.code === ResponseCode.FAIL_REDDITAPI) {
+        if (error.code === ResponseCode.FAIL_REDDIT_API) {
             this._message.error(`${name} Reddit API Error: ${error.message}`)
         } else if (error.code === ResponseCode.FAIL_SERVER) {
             this._message.error(`${name} Server Error: ${error.message}`)
@@ -65,7 +65,7 @@ export class RemoteAPIBase {
         this._message.error(`${name} Unexpected response data`)
     }
 
-    protected isStdResponse(value): value is IBasicResponse {
+    protected isStdResponse(value: any): value is IBasicResponse {
         return (value && typeof(value.code) === 'number')
     }
 
@@ -88,7 +88,7 @@ export class RemoteAPIBase {
                     return resolve(this.handleResponse(value, name))
                 },
                 error: (err) => {
-                    return reject(err)   
+                    return reject(err)
                 }
             })
         })
@@ -97,11 +97,11 @@ export class RemoteAPIBase {
     protected silentPost(endpoint: string, data?: any): Promise<any> {
         return new Promise((resolve, reject) => {
             this._http.post(this.baseURL + endpoint, data).subscribe({
-                next: (value) => { 
-                    return resolve(value) 
+                next: (value) => {
+                    return resolve(value)
                 },
-                error: (err) => { 
-                    return reject(err) 
+                error: (err) => {
+                    return reject(err)
                 }
             })
         })

@@ -4,7 +4,7 @@ import { APIService, IComment, IPost } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { MessageService } from "src/services/MessageService";
 import { ICommentListPayload } from "src/services/RemoteAPIBase";
-import { SiderService } from "src/services/SiderService";
+import { SideMenuService } from "src/services/SideMenuService";
 
 @Component({
     selector: 'post-list',
@@ -28,7 +28,7 @@ export class PostList implements OnInit {
         private _api: APIService,
         private _appearanceService: AppearanceService,
         private _router: Router,
-        private _siderService: SiderService,
+        private _sideMenuService: SideMenuService,
         private _messageService: MessageService,
     ) {}
 
@@ -62,7 +62,7 @@ export class PostList implements OnInit {
         }
         this._api.getComments(payload).then((res) => {
             this.commentList.push(...res)
-        }).catch((err) => {
+        }).catch(() => {
             this._messageService.error("Failed to load comments.")
         }).finally(() => {
             this.commentsLoading = false
@@ -84,7 +84,8 @@ export class PostList implements OnInit {
     }
 
     goToSubreddit(subreddit: string) {
-        this._router.navigate(['/subreddit', subreddit])
-        this._siderService.collapse()
+        this._router.navigate(['/subreddit', subreddit]).then(() => {
+            this._sideMenuService.collapse()
+        })
     }
 }

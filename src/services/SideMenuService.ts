@@ -4,8 +4,8 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
-export class SiderService {
-    
+export class SideMenuService {
+
     private _isCollapsed = new BehaviorSubject<boolean>(false)
     public isCollapsed$ = this._isCollapsed.asObservable()
 

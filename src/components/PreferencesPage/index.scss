@@ -10,7 +10,7 @@
 .preferences-toolbar {
     width: 100%;
     height: $POST_LIST_TOOLBAR_HEIGHT;
-    
+
     &[data-colormode = 'light'] {
         background-color: $LIGHT_HEADER_COLOR;
         border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
@@ -36,7 +36,7 @@
 }
 
 .list-content {
-    margin: 0px 30px 0px 30px;
+    margin: 0 30px 0 30px;
 }
 
 .section {
@@ -44,7 +44,7 @@
 }
 
 .section-title {
-    margin: 10px 0px 5px 5px;
+    margin: 10px 0 5px 5px;
     font-size: $FONT_SIZE_SUBHEAD;
     font-weight: $FONT_WEIGHT_SUBHEAD;
 

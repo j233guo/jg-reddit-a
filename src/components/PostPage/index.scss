@@ -33,7 +33,7 @@
 .post-content {
     height: 80vh;
     overflow-y: scroll;
-    padding: 0px 25px 10px 25px;
+    padding: 0 25px 10px 25px;
 }
 
 .media {
@@ -47,7 +47,7 @@
 }
 
 .post-section {
-    padding: 25px 10px 0px 10px;
+    padding: 25px 10px 0 10px;
 }
 
 .post-info, .comment-info {
@@ -76,7 +76,7 @@
 .title {
     font-size: $FONT_SIZE_TITLE2;
     font-weight: $FONT_WEIGHT_TITLE2;
-    margin: 5px 0px 10px 0px;
+    margin: 5px 0 10px 0;
 
     &[data-colormode = 'light'] {
         color: $LIGHT_TEXT_COLOR;
@@ -125,7 +125,7 @@
     }
 
     .score, .num-comment {
-        margin: 0px 10px 0px 10px;
+        margin: 0 10px 0 10px;
         font-size: $FONT_SIZE_SUBHEAD;
         font-weight: $FONT_WEIGHT_SUBHEAD;
     }

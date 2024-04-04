@@ -1,11 +1,11 @@
-import { Component, Input } from "@angular/core";
+import {Component, Input, OnChanges} from "@angular/core";
 
 @Component({
     selector: "url-handler",
     templateUrl: "./index.html",
     styleUrls: ["./index.scss"]
 })
-export class UrlHandler {
+export class UrlHandler implements OnChanges {
     @Input() url: string;
 
     isImage: boolean = false

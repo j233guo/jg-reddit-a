@@ -13,7 +13,7 @@ import { MessageService } from "src/services/MessageService";
     styleUrls: ['./index.scss']
 })
 export class SubredditPage implements OnInit {
-    @ViewChild(PostList) postlist: PostList
+    @ViewChild(PostList) postList: PostList
 
     uiSetting: IUISetting
     preferences: IPreferences
@@ -33,7 +33,7 @@ export class SubredditPage implements OnInit {
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
     }
-    
+
     ngOnInit(): void {
         this.uiSetting = this._appearanceService.getUISetting
         this._appearanceService.observableUISetting.subscribe(this, (value) => {
@@ -51,17 +51,17 @@ export class SubredditPage implements OnInit {
             if (param["sub"] !== this.subreddit) {
                 this.subreddit = param["sub"]
                 this.posts = []
-                this.loadPosts()
+                this.loadPosts().then()
             }
         })
-        this.loadPosts()
+        this.loadPosts().then()
     }
 
     setListingOption(option: ListingOption) {
         if (option === this.listingOption) return
         this.listingOption = option
         this.posts = []
-        this.loadPosts()
+        this.loadPosts().then()
     }
 
     async loadPosts(after?: string | null) {
@@ -74,7 +74,7 @@ export class SubredditPage implements OnInit {
         this.postListLoading = true
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
-        }).catch((err) => {
+        }).catch(() => {
             this._messageService.error("Failed to load posts.")
         }).finally(() => {
             this.postListLoading = false

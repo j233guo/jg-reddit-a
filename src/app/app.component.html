@@ -19,7 +19,7 @@
         <nz-layout>
             <nz-sider nzWidth="220px" [(nzCollapsed)]="siderCollapsed">
                 <button nz-button nzType="text" class="sider-collapse-btn" [attr.data-colormode]="uiSetting.colorMode"
-                    (click)="toggleSiderCollapse()">
+                    (click)="toggleSideMenuCollapse()">
                     <span *ngIf="siderCollapsed">>></span>
                     <span *ngIf="!siderCollapsed"><<</span>
                 </button>
@@ -29,7 +29,7 @@
                             <li nz-menu-item [routerLink]="'/home'" [nzMatchRouterExact]="true" [nzMatchRouter]="true" nzSelected>
                                 <span nz-icon nzType="home" nzTheme="outline"></span>&nbsp;Home
                             </li>
-                            <li nz-menu-item [routerLink]="'/hot'" [nzMatchRouterExact]="true" [nzMatchRouter]="true"nzIcon="bars">
+                            <li nz-menu-item [routerLink]="'/hot'" [nzMatchRouterExact]="true" [nzMatchRouter]="true">
                                 <span nz-icon nzType="fire" nzTheme="outline"></span>&nbsp;Hot
                             </li>
                         </ul>
