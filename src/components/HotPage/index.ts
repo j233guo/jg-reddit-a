@@ -24,7 +24,7 @@ export class HotPage implements OnInit {
         private _preferenceService: PreferenceService,
         private _messageService: MessageService,
     ) {}
-    
+
     ngOnInit(): void {
         this.uiSetting = this._appearanceService.getUISetting
         this._appearanceService.observableUISetting.subscribe(this, (value) => {
@@ -38,7 +38,7 @@ export class HotPage implements OnInit {
                 this.preferences[key] = val
             })
         })
-        this.loadPosts()
+        this.loadPosts().then()
     }
 
     async loadPosts(after?: string | null) {
@@ -51,7 +51,7 @@ export class HotPage implements OnInit {
         this.postListLoading = true
         this._api.getPosts(payload).then((res) => {
             this.posts.push(...res)
-        }).catch((err) => {
+        }).catch(() => {
             this._messageService.error("Failed to load posts.")
         }).finally(() => {
             this.postListLoading = false

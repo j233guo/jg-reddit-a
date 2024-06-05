@@ -1,32 +1,30 @@
-import { Component } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import { debounceTime, distinctUntilChanged } from "rxjs";
 import { APIService } from "src/services/APIService";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { ISubredditNamesPayload } from "src/services/RemoteAPIBase";
-import { SiderService } from "src/services/SiderService";
+import { SideMenuService } from "src/services/SideMenuService";
 
 @Component({
     selector: 'search-page',
     templateUrl: './index.html',
     styleUrls: ['./index.scss']
 })
-export class SearchPage {
+export class SearchPage implements OnInit {
 
     uiSetting: IUISetting
 
-    includeNSFW: boolean = true
     loading: boolean = false
     names: string[] = []
 
     searchControl = new FormControl()
-
     constructor(
         private _appearanceService: AppearanceService,
         private _api: APIService,
         private _router: Router,
-        private _siderService: SiderService,
+        private _sideMenuService: SideMenuService,
     ) {}
 
     ngOnInit() {
@@ -37,10 +35,10 @@ export class SearchPage {
             })
         })
         this.searchControl.valueChanges.pipe(
-            debounceTime(1000), 
+            debounceTime(1000),
             distinctUntilChanged()
         ).subscribe((value) => {
-            this.search(value)
+            this.search(value).then(() => {})
         })
     }
 
@@ -53,7 +51,7 @@ export class SearchPage {
         }
         this._api.getSubredditNames(payload).then((res) => {
             if (res) { this.names = res }
-        }).catch((err) => {
+        }).catch(() => {
 
         }).finally(() => {
             this.loading = false
@@ -61,7 +59,8 @@ export class SearchPage {
     }
 
     goToSubreddit(name: string) {
-        this._router.navigate(['/subreddit', name])
-        this._siderService.collapse()
+        this._router.navigate(['/subreddit', name]).then(() => {
+            this._sideMenuService.collapse()
+        })
     }
 }

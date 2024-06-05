@@ -5,7 +5,7 @@ import { APIService } from 'src/services/APIService';
 import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
 import { LoadingService } from 'src/services/LoadingService';
 import { MessageService } from 'src/services/MessageService';
-import { SiderService } from 'src/services/SiderService';
+import { SideMenuService } from 'src/services/SideMenuService';
 
 @Component({
     selector: 'app-component',
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
         private _loadingService: LoadingService,
         private _message: MessageService,
         private _api: APIService,
-        private _siderService: SiderService,
+        private _sideMenuService: SideMenuService,
         private _router: Router
     ) {
         this.favouriteSubreddits = FAVOURITE_SUBS
@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
     }
 
     async ngOnInit() {
-        this._siderService.isCollapsed$.subscribe((collapsed) => { 
-            this.siderCollapsed = collapsed 
+        this._sideMenuService.isCollapsed$.subscribe((collapsed) => {
+            this.siderCollapsed = collapsed
         })
         this._appearanceService.observableUISetting.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {
@@ -55,21 +55,21 @@ export class AppComponent implements OnInit {
             this._loadingService.finishLoading()
         })
     }
-    
+
     /**
      * Toggles the state of the sider (sidebar) collapse.
      */
-    toggleSiderCollapse() {
-        this.siderCollapsed ? this._siderService.expand() : this._siderService.collapse()
+    toggleSideMenuCollapse() {
+        this.siderCollapsed ? this._sideMenuService.expand() : this._sideMenuService.collapse()
     }
 
     goToHome() {
         this._router.navigate(['/'])
-        this._siderService.expand()
+        this._sideMenuService.expand()
     }
 
     goToSearch() {
         this._router.navigate(['/search'])
-        this._siderService.collapse()
+        this._sideMenuService.collapse()
     }
 }

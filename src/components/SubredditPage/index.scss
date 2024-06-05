@@ -25,7 +25,6 @@
 
 .subreddit-name {
     margin-left: 25px;
-    font-weight: 600;
     font-size: $FONT_SIZE_HEADLINE;
     font-weight: $FONT_WEIGHT_HEADLINE;
 
@@ -41,7 +40,7 @@
 .sort-button {
     width: 75px;
     height: calc($POST_LIST_TOOLBAR_HEIGHT - 10px);
-    margin: 5px 5px 5px 0px;
+    margin: 5px 5px 5px 0;
     font-size: $FONT_SIZE_SUBHEAD;
     font-weight: $FONT_WEIGHT_SUBHEAD;
 

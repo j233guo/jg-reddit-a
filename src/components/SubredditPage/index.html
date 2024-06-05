@@ -6,30 +6,23 @@
         <div class="sort-buttons">
             <button nz-button nzShape="round" class="sort-button"
                 [ngClass]="listingOption === 'hot' ? 'sort-button-selected' : ''"
-                [attr.data-colormode]="uiSetting.colorMode"
-                (click)="setListingOption('hot')">
+                [attr.data-colormode]="uiSetting.colorMode" (click)="setListingOption('hot')">
                 Hot
             </button>
             <button nz-button nzShape="round" class="sort-button"
                 [ngClass]="listingOption === 'new' ? 'sort-button-selected' : ''"
-                [attr.data-colormode]="uiSetting.colorMode"
-                (click)="setListingOption('new')">
+                [attr.data-colormode]="uiSetting.colorMode" (click)="setListingOption('new')">
                 New
             </button>
             <button nz-button nzShape="round" class="sort-button"
                 [ngClass]="listingOption === 'rising' ? 'sort-button-selected' : ''"
-                [attr.data-colormode]="uiSetting.colorMode"
-                (click)="setListingOption('rising')">
+                [attr.data-colormode]="uiSetting.colorMode" (click)="setListingOption('rising')">
                 Rising
             </button>
         </div>
     </div>
     <div class="post-list">
-        <post-list 
-            [posts]="posts" 
-            [loading]="postListLoading"
-            [displaySubreddit]="false"
-            (load)="loadPosts($event)">
-        </post-list>
+        <post-list [posts]="posts" [loading]="postListLoading" [displaySubreddit]="false"
+                   (load)="loadPosts($event)"></post-list>
     </div>
 </div>
