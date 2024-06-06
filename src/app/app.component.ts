@@ -64,12 +64,12 @@ export class AppComponent implements OnInit {
     }
 
     goToHome() {
-        this._router.navigate(['/'])
+        this._router.navigate(['/']).then()
         this._sideMenuService.expand()
     }
 
     goToSearch() {
-        this._router.navigate(['/search'])
+        this._router.navigate(['/search']).then()
         this._sideMenuService.collapse()
     }
 }
