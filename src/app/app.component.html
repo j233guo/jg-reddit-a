@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 <ng-template #searchTooltipTemplate>
-                    <tooltip-content text="Search For a Community"></tooltip-content>
+                    <tooltip-content text="Search For a Community" [colorMode]="uiSetting.colorMode"></tooltip-content>
                 </ng-template>
             </div>
         </div>
@@ -53,7 +53,7 @@
                         </a>
                     </div>
                     <ng-template #preferencesTooltipTemplate>
-                        <tooltip-content text="Preferences"></tooltip-content>
+                        <tooltip-content text="Preferences" [colorMode]="uiSetting.colorMode"></tooltip-content>
                     </ng-template>
                 </div>
             </nz-sider>

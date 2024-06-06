@@ -5,10 +5,16 @@
         <a (click)="dismissModal()">
             <svg width="100%" height="100%" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" cx="150" cy="150" r="150"></circle>
-                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#101010' : '#EBECF0'" cx="150" cy="150" r="130"></circle>
-                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" transform="translate(150, 150) rotate(45) translate(-150, -150)" x="50" y="135" width="200" height="30"></rect>
-                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'" transform="translate(150, 150) rotate(45) translate(-150, -150)" x="135" y="50" width="30" height="200"></rect>
+                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'"
+                            cx="150" cy="150" r="150"></circle>
+                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#101010' : '#EBECF0'"
+                            cx="150" cy="150" r="130"></circle>
+                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'"
+                          transform="translate(150, 150) rotate(45) translate(-150, -150)"
+                          x="50" y="135" width="200" height="30"></rect>
+                    <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'"
+                          transform="translate(150, 150) rotate(45) translate(-150, -150)"
+                          x="135" y="50" width="30" height="200"></rect>
                 </g>
             </svg>
         </a>
@@ -38,7 +44,8 @@
                         <url-handler [url]="post.url"></url-handler>
                     </div>
                     <div nz-row>
-                        <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="post.selftext_html | safeHtml"></div>
+                        <div [ngClass]="'self-text-'+uiSetting.colorMode"
+                             [innerHTML]="post.selftext_html | safeHtml"></div>
                     </div>
                     <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
                         <span>
@@ -53,13 +60,16 @@
                         </span>
                         <nz-divider nzType="vertical"></nz-divider>
                         <span>
-                            <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
+                            <button nz-button nzType="text" class="open-in-browser-btn"
+                                    [attr.data-colormode]="uiSetting.colorMode"
                                     (click)="goToLink('https://www.reddit.com' + post.permalink)"
-                                    tooltip [tooltipContent]="viewOriginalBtnTooltipTemplate" [tooltipPlacement]="'bottom'">
+                                    tooltip [tooltipContent]="viewOriginalBtnTooltipTemplate"
+                                    [tooltipPlacement]="'bottom'">
                                 <span nz-icon nzType="upload" nzTheme="outline"></span>
                             </button>
                             <ng-template #viewOriginalBtnTooltipTemplate>
-                                <tooltip-content text="View Original Post on Reddit in a New Browser Tab"></tooltip-content>
+                                <tooltip-content text="View Original Post on Reddit in a New Browser Tab"
+                                                 [colorMode]="uiSetting.colorMode"></tooltip-content>
                             </ng-template>
                         </span>
                     </div>

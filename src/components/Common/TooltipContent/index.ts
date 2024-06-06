@@ -1,10 +1,12 @@
 import {Component, Input} from "@angular/core";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {ColorMode} from "../../../services/AppearanceService";
 
 @Component({
     selector: 'tooltip-content',
     template: `
-        <div @tooltipAnimation [ngStyle]="{'background-color': backgroundColor}" class="tooltip-content">
+        <div @tooltipAnimation class="tooltip-content"
+             [ngStyle]="{'background-color': colorMode === 'light' ? '#00000080' : '#F3F3F480'}">
             <ng-container *ngIf="text; else contentTemplate">
                 {{text}}
             </ng-container>
@@ -34,6 +36,6 @@ import {animate, style, transition, trigger} from "@angular/animations";
     ]
 })
 export class TooltipContentComponent {
-    @Input() backgroundColor: string = '#00000080'
+    @Input() colorMode: ColorMode
     @Input() text: string
 }
