@@ -16,6 +16,7 @@ import { LoadingService } from 'src/services/LoadingService';
 import { FormsModule } from '@angular/forms';
 import { PreferenceService } from 'src/services/PreferenceService';
 import { SideMenuService } from 'src/services/SideMenuService';
+import {DirectiveModule} from "./directive.module";
 
 @NgModule({
     declarations: [
@@ -26,10 +27,11 @@ import { SideMenuService } from 'src/services/SideMenuService';
         FormsModule,
         SharedModule,
         UIModule,
-        RouterModule.forRoot(routes, { useHash: false }),
+        RouterModule.forRoot(routes, {useHash: false}),
         HttpClientModule,
         BrowserAnimationsModule,
         IconModule,
+        DirectiveModule,
     ],
     providers: [
         APIService,

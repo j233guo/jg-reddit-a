@@ -13,6 +13,8 @@ import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
 import { PostMedia } from "src/components/PostPage/PostMedia";
 import { UrlHandler } from "src/components/PostPage/UrlHandler";
 import { SearchPage } from "src/components/SearchPage";
+import {TooltipContentComponent} from "../components/Common/TooltipContent";
+import {DirectiveModule} from "./directive.module";
 
 @NgModule({
     declarations: [
@@ -26,12 +28,14 @@ import { SearchPage } from "src/components/SearchPage";
         SearchPage,
         SubredditPage,
         SafeHtmlPipe,
+        TooltipContentComponent,
         UrlHandler,
     ],
     imports: [
         CommonModule,
         FormsModule,
         SharedModule,
+        DirectiveModule,
     ],
     exports: [
         HomePage,
@@ -39,6 +43,7 @@ import { SearchPage } from "src/components/SearchPage";
         PreferencesPage,
         SearchPage,
         SubredditPage,
+        TooltipContentComponent,
     ]
 })
 export class UIModule {}

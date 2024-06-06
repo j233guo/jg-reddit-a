@@ -54,10 +54,13 @@
                         <nz-divider nzType="vertical"></nz-divider>
                         <span>
                             <button nz-button nzType="text" class="open-in-browser-btn" [attr.data-colormode]="uiSetting.colorMode"
-                                nz-tooltip nzTooltipTitle="View Original Post" nzTooltipPlacement="bottom"
-                                (click)="goToLink('https://www.reddit.com' + post.permalink)">
+                                    (click)="goToLink('https://www.reddit.com' + post.permalink)"
+                                    tooltip [tooltipContent]="viewOriginalBtnTooltipTemplate" [tooltipPlacement]="'bottom'">
                                 <span nz-icon nzType="upload" nzTheme="outline"></span>
                             </button>
+                            <ng-template #viewOriginalBtnTooltipTemplate>
+                                <tooltip-content text="View Original Post on Reddit in a New Browser Tab"></tooltip-content>
+                            </ng-template>
                         </span>
                     </div>
                 </div>

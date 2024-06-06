@@ -9,11 +9,14 @@
                     </div>
                 </a>
                 <div class="search-logo" [attr.data-colormode]="uiSetting.colorMode"
-                    nz-tooltip nzTooltipTitle="Search For a Community">
+                     tooltip [tooltipContent]="searchTooltipTemplate" [tooltipPlacement]="'left'">
                     <a (click)="goToSearch()">
                         <span nz-icon nzType="search" nzTheme="outline"></span>
                     </a>
                 </div>
+                <ng-template #searchTooltipTemplate>
+                    <tooltip-content text="Search For a Community"></tooltip-content>
+                </ng-template>
             </div>
         </div>
         <nz-layout>
@@ -44,11 +47,14 @@
                 </ul>
                 <div nz-row [nzJustify]="'center'" class="sider-toolbar" [attr.data-colormode]="uiSetting.colorMode">
                     <div class="sider-toolbar-button" [attr.data-colormode]="uiSetting.colorMode"
-                        nz-tooltip nzTooltipTitle="Preferences">
+                         tooltip [tooltipContent]="preferencesTooltipTemplate" [tooltipPlacement]="'right'">
                         <a [routerLink]="'/preferences'">
                             <span nz-icon nzType="setting" nzTheme="outline"></span>
                         </a>
                     </div>
+                    <ng-template #preferencesTooltipTemplate>
+                        <tooltip-content text="Preferences"></tooltip-content>
+                    </ng-template>
                 </div>
             </nz-sider>
             <nz-content class="outer-content" [attr.data-colormode]="uiSetting.colorMode">
