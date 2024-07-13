@@ -1,1 +1,3 @@
-<div *ngIf="media && media['oembed']" [innerHTML]="media['oembed'].html | safeHtml"></div>
+<ng-container *ngIf="media && media['oembed']">
+    <div class="media-container" [innerHTML]="media['oembed'].html | safeHtml"></div>
+</ng-container>
