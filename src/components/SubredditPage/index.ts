@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { PostList } from "../PostList";
-import { APIService, IPost } from "src/services/APIService";
-import { IPostListPayload, ListingOption } from "src/services/RemoteAPIBase";
-import { AppearanceService, IUISetting } from "src/services/AppearanceService";
-import { IPreferences, PreferenceService } from "src/services/PreferenceService";
-import { MessageService } from "src/services/MessageService";
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {PostList} from "../PostList";
+import {APIService} from "src/services/APIService";
+import {IPostListPayload, ListingOption} from "src/services/RemoteAPIBase";
+import {AppearanceService, IUISetting} from "src/services/AppearanceService";
+import {IPreferences, PreferenceService} from "src/services/PreferenceService";
+import {MessageService} from "src/services/MessageService";
+import {IPost} from "../../data/dataTypes";
 
 @Component({
     selector: 'subreddit-page',

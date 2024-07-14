@@ -1,3 +1,7 @@
 <ng-container *ngIf="media && media['oembed']">
     <div class="media-container" [innerHTML]="media['oembed'].html | safeHtml"></div>
 </ng-container>
+
+<ng-container *ngIf="mediaMetadataContent.length !== 0">
+
+</ng-container>

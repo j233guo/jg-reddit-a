@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { APIService, IPost } from "src/services/APIService";
-import { AppearanceService, IUISetting } from "src/services/AppearanceService";
-import { MessageService } from "src/services/MessageService";
-import { IPreferences, PreferenceService } from "src/services/PreferenceService";
-import { IPostListPayload } from "src/services/RemoteAPIBase";
+import {Component, OnInit} from "@angular/core";
+import {APIService} from "src/services/APIService";
+import {AppearanceService, IUISetting} from "src/services/AppearanceService";
+import {MessageService} from "src/services/MessageService";
+import {IPreferences, PreferenceService} from "src/services/PreferenceService";
+import {IPostListPayload} from "src/services/RemoteAPIBase";
+import {IPost} from "../../data/dataTypes";
 
 @Component({
     selector: 'home-page',

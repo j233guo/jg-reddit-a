@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { IComment, IPost } from "src/services/APIService";
-import { AppearanceService, IUISetting } from "src/services/AppearanceService";
+import {AppearanceService, IUISetting} from "src/services/AppearanceService";
+import {IComment, IPost} from "../../data/dataTypes";
 
 @Component({
     selector: 'post-page',
