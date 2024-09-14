@@ -1,6 +1,10 @@
 <div class="content-container">
-    <img alt="" *ngIf="isImage" [src]="url" class="responsive-image">
-    <a *ngIf="isRedditLink" [href]="url" target="_blank" rel="noopener noreferrer">
-        {{ url }}
-    </a>
+    @if (isImage) {
+        <img alt="" [src]="url" class="responsive-image">
+    }
+    @if (isRedditLink) {
+        <a [href]="url" target="_blank" rel="noopener noreferrer">
+            {{ url }}
+        </a>
+    }
 </div>

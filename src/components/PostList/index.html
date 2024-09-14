@@ -1,62 +1,61 @@
 <div class="content-container">
-    <div *ngFor="let post of posts" class="post-cell" [attr.data-colormode]="uiSetting.colorMode">
-        <div nz-row>
-            <div nz-col [nzSpan]="post.thumbnail === '' ? 24 : 21">
-                <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
-                    <span *ngIf="displaySubreddit" class="subreddit-name"
-                          [attr.data-colormode]="uiSetting.colorMode">
-                        <a (click)="goToSubreddit(post.subreddit)">
-                            r/{{ post.subreddit }}
-                        </a>
-                    </span>
-                    <span class="author">
-                        Posted by u/{{post.author}}
-                    </span>
-                    <span class="post-time">
-                        {{ post.created_utc | parseUTC }}
-                    </span>
+    @for (post of posts; track post.id) {
+        <div class="post-cell" [attr.data-colormode]="uiSetting.colorMode">
+            <div nz-row>
+                <div nz-col [nzSpan]="post.thumbnail === '' ? 24 : 21">
+                    <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
+                        @if (displaySubreddit) {
+                            <span class="subreddit-name" [attr.data-colormode]="uiSetting.colorMode">
+                                <a (click)="goToSubreddit(post.subreddit)">
+                                    r/{{ post.subreddit }}
+                                </a>
+                            </span>
+                        }
+                        <span class="author">
+                            Posted by u/{{ post.author }}
+                        </span>
+                        <span class="post-time">
+                            {{ post.created_utc | parseUTC }}
+                        </span>
+                    </div>
+                    <div nz-row>
+                        <span class="title" [attr.data-colormode]="uiSetting.colorMode">
+                            <a (click)="openPost(post)">{{ post.title }}</a>
+                        </span>
+                    </div>
+                    <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
+                        <span>
+                            <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
+                            <span class="score">{{ post.score }}</span>
+                            <span nz-icon nzType="arrow-down" nzTheme="outline"></span>
+                        </span>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <span>
+                            <span nz-icon nzType="comment" nzTheme="outline"></span>
+                            <span class="num-comment">{{ post.num_comments }}</span>
+                        </span>
+                    </div>
                 </div>
-                <div nz-row>
-                    <span class="title" [attr.data-colormode]="uiSetting.colorMode">
-                        <a (click)="openPost(post)">{{post.title}}</a>
-                    </span>
+                <div nz-col [nzSpan]="post.thumbnail === '' ? 0 : 3" class="thumbnail-cell">
+                    <img alt="" [src]="post.thumbnail" (error)="onThumbnailError($event)" class="thumbnail">
                 </div>
-                <div nz-row [nzAlign]="'middle'" class="score-comment" [attr.data-colormode]="uiSetting.colorMode">
-                    <span>
-                        <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
-                        <span class="score">{{ post.score }}</span>
-                        <span nz-icon nzType="arrow-down" nzTheme="outline"></span>
-                    </span>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <span>
-                        <span nz-icon nzType="comment" nzTheme="outline"></span>
-                        <span class="num-comment">{{ post.num_comments }}</span>
-                    </span>
-                </div>
-            </div>
-            <div nz-col [nzSpan]="post.thumbnail === '' ? 0 : 3" class="thumbnail-cell" >
-                <img alt="" [src]="post.thumbnail" (error)="onThumbnailError($event)" class="thumbnail">
             </div>
         </div>
-    </div>
+    }
+
     <div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="load-more">
-        <ng-container *ngIf="!loading">
-            <a (click)="loadMore()">Load More</a>
-        </ng-container>
-        <ng-container *ngIf="loading">
+        @if (loading) {
             <nz-spin nzSimple></nz-spin>
-        </ng-container>
+        } @else {
+            <a (click)="loadMore()">Load More</a>
+        }
     </div>
 </div>
 
 <nz-modal [(nzVisible)]="displayPostDetail" [nzContent]="modalContent" (nzOnCancel)="closePost()" [nzFooter]="null"
-    [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
+          [nzWidth]="'50%'" [nzClosable]="false" [nzCentered]="true">
     <ng-template #modalContent>
-        <post-page
-            [post]="openedPost"
-            [comments]="commentList"
-            [loading]="commentsLoading"
-            (dismiss)="closePost()">
-        </post-page>
+        <post-page [post]="openedPost" [comments]="commentList" [loading]="commentsLoading"
+                   (dismiss)="closePost()"></post-page>
     </ng-template>
 </nz-modal>

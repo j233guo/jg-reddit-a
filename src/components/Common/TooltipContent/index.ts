@@ -7,12 +7,11 @@ import {ColorMode} from "../../../services/AppearanceService";
     template: `
         <div @tooltipAnimation class="tooltip-content"
              [ngStyle]="{'background-color': colorMode === 'light' ? '#00000080' : '#F3F3F480'}">
-            <ng-container *ngIf="text; else contentTemplate">
+            @if (text) {
                 {{text}}
-            </ng-container>
-            <ng-template #contentTemplate>
+            } @else {
                 <ng-content></ng-content>
-            </ng-template>
+            }
         </div>
     `,
     styles: [`
