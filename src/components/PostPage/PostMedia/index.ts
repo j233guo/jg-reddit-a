@@ -1,12 +1,10 @@
-import {Component, Input, OnChanges, OnInit} from "@angular/core";
+import {Component, Input, OnChanges} from "@angular/core";
+import {IMediaMetadata} from "../../../data/dataTypes";
 
-export interface IPostGalleryData {
-    type: 'Image' | 'AnimatedImage',
+interface IGalleryData {
+    url: string
     x: number
     y: number
-    url?: string
-    gif?: string
-    mp4?: string
 }
 
 @Component({
@@ -14,18 +12,29 @@ export interface IPostGalleryData {
     templateUrl: "./index.html",
     styleUrls: ["./index.scss"]
 })
-export class PostMedia implements OnInit, OnChanges{
+export class PostMedia implements OnChanges {
     @Input() media: any
-    @Input() mediaMetadata: object[]
+    @Input() mediaMetadata: Record<string, IMediaMetadata>
 
-    mediaMetadataContent: IPostGalleryData[] = []
-
-    ngOnInit() {
-        console.log(this.media)
-        console.log(this.mediaMetadata)
-    }
+    gallery: IGalleryData[] = []
 
     ngOnChanges() {
+        function getImageUrl(url?: string): string | null {
+            if (!url) { return null }
+            const regex = /https:\/\/preview\.redd\.it\/([^?]+)/;
+            const match = url.match(regex);
+            return match ? `https://i.redd.it/${match[1]}` : null;
+        }
 
+        if (this.mediaMetadata) {
+            this.gallery = []
+            Object.values(this.mediaMetadata).forEach(item => {
+                this.gallery.push({
+                    url: (item.e === 'Image' ? getImageUrl(item.s.u) : getImageUrl(item.s.gif)) ?? '',
+                    x: item.s.x,
+                    y: item.s.y,
+                })
+            })
+        }
     }
 }
