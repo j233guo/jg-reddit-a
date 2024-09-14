@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Router } from "@angular/router";
-import { APIService, IComment, IPost } from "src/services/APIService";
-import { AppearanceService, IUISetting } from "src/services/AppearanceService";
-import { MessageService } from "src/services/MessageService";
-import { ICommentListPayload } from "src/services/RemoteAPIBase";
-import { SideMenuService } from "src/services/SideMenuService";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Router} from "@angular/router";
+import {APIService} from "src/services/APIService";
+import {AppearanceService, IUISetting} from "src/services/AppearanceService";
+import {MessageService} from "src/services/MessageService";
+import {ICommentListPayload} from "src/services/RemoteAPIBase";
+import {SideMenuService} from "src/services/SideMenuService";
+import {IComment, IPost} from "../../data/dataTypes";
 
 @Component({
     selector: 'post-list',
@@ -79,7 +80,7 @@ export class PostList implements OnInit {
      * By setting the style of the 'target' to 'display: none', the thumbnail image is effectively hidden when it fails to load.
      * @param event error event
      */
-    onThumbnailError(event) {
+    onThumbnailError(event: any) {
         event.target.style.display = 'none'
     }
 

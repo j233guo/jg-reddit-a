@@ -29,7 +29,7 @@ export class AppearanceService {
 
     initUISetting() {
         this._uiSetting = {
-            colorMode: 'dark'
+            colorMode: 'light'
         }
     }
 
