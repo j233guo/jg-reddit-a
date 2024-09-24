@@ -1,6 +1,6 @@
 import {Component, effect, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {AppearanceService, IUISetting} from "src/services/AppearanceService";
 import {IComment, IPost} from "../../data/dataTypes";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'post-page',
@@ -16,11 +16,11 @@ export class PostPage implements OnInit {
     uiSetting: IUISetting
 
     constructor(
-        private _appearanceService: AppearanceService
+        private _uiControl: UIControlService,
     ) {
-        this.uiSetting = this._appearanceService.UISetting()
+        this.uiSetting = this._uiControl.UISetting()
         effect(() => {
-            this.uiSetting = this._appearanceService.UISetting()
+            this.uiSetting = this._uiControl.UISetting()
         });
     }
 

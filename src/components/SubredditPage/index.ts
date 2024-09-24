@@ -3,10 +3,10 @@ import {ActivatedRoute} from "@angular/router";
 import {PostList} from "../PostList";
 import {APIService} from "src/services/APIService";
 import {IPostListPayload, ListingOption} from "src/services/RemoteAPIBase";
-import {AppearanceService, IUISetting} from "src/services/AppearanceService";
 import {IPreferences, PreferenceService} from "src/services/PreferenceService";
 import {MessageService} from "src/services/MessageService";
 import {IPost} from "../../data/dataTypes";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'subreddit-page',
@@ -26,16 +26,16 @@ export class SubredditPage implements OnInit {
     listingOption: ListingOption = 'hot'
 
     constructor(
+        private _uiControl: UIControlService,
         private _api: APIService,
-        private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService,
         private _route: ActivatedRoute,
         private _messageService: MessageService
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
-        this.uiSetting = this._appearanceService.UISetting()
+        this.uiSetting = this._uiControl.UISetting()
         effect(() => {
-            this.uiSetting = this._appearanceService.UISetting()
+            this.uiSetting = this._uiControl.UISetting()
         });
     }
 

@@ -1,6 +1,6 @@
 import {Component, effect, OnInit} from "@angular/core";
-import { AppearanceService, IUISetting } from "src/services/AppearanceService";
-import { IPreferences, PreferenceService } from "src/services/PreferenceService";
+import {IPreferences, PreferenceService} from "src/services/PreferenceService";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'preferences-page',
@@ -13,12 +13,12 @@ export class PreferencesPage implements OnInit {
     preferences: IPreferences
 
     constructor(
-        private _appearanceService: AppearanceService,
+        private _uiControl: UIControlService,
         private _preferenceService: PreferenceService
     ) {
-        this.uiSetting = this._appearanceService.UISetting()
+        this.uiSetting = this._uiControl.UISetting()
         effect(() => {
-            this.uiSetting = this._appearanceService.UISetting()
+            this.uiSetting = this._uiControl.UISetting()
         });
     }
 
@@ -32,7 +32,7 @@ export class PreferencesPage implements OnInit {
     }
 
     applyUITheme() {
-        this._appearanceService.applyUISetting(this.uiSetting)
+        this._uiControl.applyUISetting(this.uiSetting)
     }
 
     applyPreferences() {

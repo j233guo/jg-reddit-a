@@ -1,11 +1,9 @@
 import {Component, effect, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
-import { FAVOURITE_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
-import { APIService } from 'src/services/APIService';
-import { AppearanceService, IUISetting } from 'src/services/AppearanceService';
-import { LoadingService } from 'src/services/LoadingService';
-import { MessageService } from 'src/services/MessageService';
-import { SideMenuService } from 'src/services/SideMenuService';
+import {Router} from '@angular/router';
+import {FAVOURITE_SUBS, ISubredditNameDict} from 'src/data/FavouriteSubs';
+import {APIService} from 'src/services/APIService';
+import {MessageService} from 'src/services/MessageService';
+import {IUISetting, UIControlService} from "../services/UIControlService";
 
 @Component({
     selector: 'app-component',
@@ -15,42 +13,39 @@ import { SideMenuService } from 'src/services/SideMenuService';
 export class AppComponent implements OnInit {
 
     uiSetting: IUISetting
-    siderCollapsed: boolean = false
+    sideMenuCollapsed: boolean = false
     favouriteSubreddits: ISubredditNameDict[]
 
     loadingSpinningEffect: boolean
     loadingText: string = ""
 
     constructor(
-        private _appearanceService: AppearanceService,
-        private _loadingService: LoadingService,
+        private _uiControl: UIControlService,
         private _message: MessageService,
         private _api: APIService,
-        private _sideMenuService: SideMenuService,
         private _router: Router
     ) {
         this.favouriteSubreddits = FAVOURITE_SUBS
-        this.uiSetting = this._appearanceService.UISetting()
+        this.uiSetting = this._uiControl.UISetting()
+        this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
         effect(() => {
-            this.uiSetting = this._appearanceService.UISetting()
+            this.uiSetting = this._uiControl.UISetting()
+            this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
         });
     }
 
     async ngOnInit() {
-        this._sideMenuService.isCollapsed$.subscribe((collapsed) => {
-            this.siderCollapsed = collapsed
-        })
-        this._loadingService.getLoadingState().subscribe((value) => {
+        this._uiControl.LoadingState.subscribe((value) => {
             this.loadingSpinningEffect = value.status
             this.loadingText = value.text
         })
-        this._loadingService.startLoading()
+        this._uiControl.startLoading()
         this._api.checkServer().then((res) => {
             if (!res) { this._message.error("Unable to access Reddit API because access token is unavailable.") }
         }).catch(() => {
             this._message.error("Failed to connect to server.")
         }).finally(() => {
-            this._loadingService.finishLoading()
+            this._uiControl.finishLoading()
         })
     }
 
@@ -58,16 +53,16 @@ export class AppComponent implements OnInit {
      * Toggles the state of the sider (sidebar) collapse.
      */
     toggleSideMenuCollapse() {
-        this.siderCollapsed ? this._sideMenuService.expand() : this._sideMenuService.collapse()
+        this.sideMenuCollapsed ? this._uiControl.expandSideMenu() : this._uiControl.collapseSideMenu()
     }
 
     goToHome() {
         this._router.navigate(['/']).then()
-        this._sideMenuService.expand()
+        this._uiControl.expandSideMenu()
     }
 
     goToSearch() {
         this._router.navigate(['/search']).then()
-        this._sideMenuService.collapse()
+        this._uiControl.collapseSideMenu()
     }
 }

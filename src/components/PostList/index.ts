@@ -1,11 +1,10 @@
 import {Component, effect, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {Router} from "@angular/router";
 import {APIService} from "src/services/APIService";
-import {AppearanceService, IUISetting} from "src/services/AppearanceService";
 import {MessageService} from "src/services/MessageService";
 import {ICommentListPayload} from "src/services/RemoteAPIBase";
-import {SideMenuService} from "src/services/SideMenuService";
 import {IComment, IPost} from "../../data/dataTypes";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'post-list',
@@ -26,15 +25,14 @@ export class PostList implements OnInit {
     commentsLoading: boolean = false
 
     constructor(
+        private _uiControl: UIControlService,
         private _api: APIService,
-        private _appearanceService: AppearanceService,
         private _router: Router,
-        private _sideMenuService: SideMenuService,
         private _messageService: MessageService,
     ) {
-        this.uiSetting = this._appearanceService.UISetting()
+        this.uiSetting = this._uiControl.UISetting()
         effect(() => {
-            this.uiSetting = this._appearanceService.UISetting()
+            this.uiSetting = this._uiControl.UISetting()
         });
     }
 
@@ -84,7 +82,7 @@ export class PostList implements OnInit {
 
     goToSubreddit(subreddit: string) {
         this._router.navigate(['/subreddit', subreddit]).then(() => {
-            this._sideMenuService.collapse()
+            this._uiControl.collapseSideMenu()
         })
     }
 }

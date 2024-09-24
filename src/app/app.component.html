@@ -20,10 +20,10 @@
             </div>
         </div>
         <nz-layout>
-            <nz-sider nzWidth="220px" [(nzCollapsed)]="siderCollapsed">
+            <nz-sider nzWidth="220px" [(nzCollapsed)]="sideMenuCollapsed">
                 <button nz-button nzType="text" class="sider-collapse-btn" [attr.data-colormode]="uiSetting.colorMode"
                         (click)="toggleSideMenuCollapse()">
-                    @if (siderCollapsed) {
+                    @if (sideMenuCollapsed) {
                         <span>>></span>
                     } @else {
                         <span><<</span>

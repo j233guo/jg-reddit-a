@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {animate, style, transition, trigger} from "@angular/animations";
-import {ColorMode} from "../../../services/AppearanceService";
+import {ColorMode} from "../../../services/UIControlService";
 
 @Component({
     selector: 'tooltip-content',
