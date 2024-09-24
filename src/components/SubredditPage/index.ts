@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, effect, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {PostList} from "../PostList";
 import {APIService} from "src/services/APIService";
@@ -33,15 +33,13 @@ export class SubredditPage implements OnInit {
         private _messageService: MessageService
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
     }
 
     ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
         this.preferences = this._preferenceService.getPreferences
         this._preferenceService.observablePreferences.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {

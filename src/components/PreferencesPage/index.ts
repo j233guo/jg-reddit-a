@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, effect, OnInit} from "@angular/core";
 import { AppearanceService, IUISetting } from "src/services/AppearanceService";
 import { IPreferences, PreferenceService } from "src/services/PreferenceService";
 
@@ -15,15 +15,14 @@ export class PreferencesPage implements OnInit {
     constructor(
         private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService
-    ) {}
+    ) {
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
+    }
 
     ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
         this.preferences = this._preferenceService.getPreferences
         this._preferenceService.observablePreferences.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {

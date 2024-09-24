@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, effect, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FAVOURITE_SUBS, ISubredditNameDict } from 'src/data/FavouriteSubs';
 import { APIService } from 'src/services/APIService';
@@ -30,17 +30,15 @@ export class AppComponent implements OnInit {
         private _router: Router
     ) {
         this.favouriteSubreddits = FAVOURITE_SUBS
-        this.uiSetting = this._appearanceService.getUISetting
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
     }
 
     async ngOnInit() {
         this._sideMenuService.isCollapsed$.subscribe((collapsed) => {
             this.siderCollapsed = collapsed
-        })
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
         })
         this._loadingService.getLoadingState().subscribe((value) => {
             this.loadingSpinningEffect = value.status

@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, effect, OnInit} from "@angular/core";
 import {APIService} from "src/services/APIService";
 import {AppearanceService, IUISetting} from "src/services/AppearanceService";
 import {MessageService} from "src/services/MessageService";
@@ -24,15 +24,14 @@ export class HotPage implements OnInit {
         private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService,
         private _messageService: MessageService,
-    ) {}
+    ) {
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
+    }
 
     ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
         this.preferences = this._preferenceService.getPreferences
         this._preferenceService.observablePreferences.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {

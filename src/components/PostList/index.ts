@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, effect, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {Router} from "@angular/router";
 import {APIService} from "src/services/APIService";
 import {AppearanceService, IUISetting} from "src/services/AppearanceService";
@@ -31,16 +31,14 @@ export class PostList implements OnInit {
         private _router: Router,
         private _sideMenuService: SideMenuService,
         private _messageService: MessageService,
-    ) {}
-
-    ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
+    ) {
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
     }
+
+    ngOnInit(): void {}
 
     loadMore() {
         const lastPostName = this.posts && this.posts.length > 0 ? this.posts[this.posts.length - 1].name : null

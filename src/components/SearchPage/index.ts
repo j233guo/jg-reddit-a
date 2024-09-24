@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, effect, OnInit} from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import { debounceTime, distinctUntilChanged } from "rxjs";
@@ -25,15 +25,14 @@ export class SearchPage implements OnInit {
         private _api: APIService,
         private _router: Router,
         private _sideMenuService: SideMenuService,
-    ) {}
+    ) {
+        this.uiSetting = this._appearanceService.UISetting()
+        effect(() => {
+            this.uiSetting = this._appearanceService.UISetting()
+        });
+    }
 
     ngOnInit() {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
         this.searchControl.valueChanges.pipe(
             debounceTime(1000),
             distinctUntilChanged()
