@@ -12,7 +12,9 @@ export interface IUISetting {
     colorMode: ColorMode
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class UIControlService {
     private readonly uiSetting: WritableSignal<IUISetting>
     private readonly loadingState: BehaviorSubject<LoadingState>
