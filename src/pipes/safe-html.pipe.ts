@@ -1,5 +1,5 @@
-import { DomSanitizer } from '@angular/platform-browser'
-import { PipeTransform, Pipe } from "@angular/core";
+import {DomSanitizer} from '@angular/platform-browser'
+import {PipeTransform, Pipe} from "@angular/core";
 
 @Pipe({
     name: 'safeHtml'
@@ -20,8 +20,12 @@ export class SafeHtmlPipe implements PipeTransform  {
      * @returns A SafeHtml object if the input was not empty, otherwise an empty string.
      */
     transform(value: string) {
-        const parsedHTMLString = new DOMParser().parseFromString(value, "text/html")
+        if (!value) {
+            return ""
+        }
+        const valueWithoutScript = value.replace(/<script.*?>.*?<\/script>/gi, '');
+        const parsedHTMLString = new DOMParser().parseFromString(valueWithoutScript, "text/html")
         const parsedHTML = parsedHTMLString.documentElement.textContent ?? ""
-        return value ? this.sanitized.bypassSecurityTrustHtml(parsedHTML) : ""
+        return this.sanitized.bypassSecurityTrustHtml(parsedHTML)
     }
 }

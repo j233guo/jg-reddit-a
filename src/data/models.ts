@@ -47,3 +47,7 @@ export interface IMediaMetadata {
     s: IMediaMetadataImage
     status: string
 }
+
+export interface ISubreddit {
+    name: string;
+}

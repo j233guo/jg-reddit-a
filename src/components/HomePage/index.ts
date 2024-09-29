@@ -1,10 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, effect, OnInit} from "@angular/core";
 import {APIService} from "src/services/APIService";
-import {AppearanceService, IUISetting} from "src/services/AppearanceService";
 import {MessageService} from "src/services/MessageService";
 import {IPreferences, PreferenceService} from "src/services/PreferenceService";
 import {IPostListPayload} from "src/services/RemoteAPIBase";
-import {IPost} from "../../data/dataTypes";
+import {IPost} from "../../data/models";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'home-page',
@@ -20,19 +20,18 @@ export class HomePage implements OnInit {
     postListLoading: boolean = false
 
     constructor(
+        private _uiControl: UIControlService,
         private _api: APIService,
-        private _appearanceService: AppearanceService,
         private _preferenceService: PreferenceService,
         private _messageService: MessageService,
-    ) {}
+    ) {
+        this.uiSetting = this._uiControl.getUISetting()
+        effect(() => {
+            this.uiSetting = this._uiControl.getUISetting()
+        });
+    }
 
     ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
         this.preferences = this._preferenceService.getPreferences
         this._preferenceService.observablePreferences.subscribe(this, (value) => {
             Object.entries(value).forEach(([key, val]) => {

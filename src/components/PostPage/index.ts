@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import {AppearanceService, IUISetting} from "src/services/AppearanceService";
-import {IComment, IPost} from "../../data/dataTypes";
+import {Component, effect, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {IComment, IPost} from "../../data/models";
+import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
     selector: 'post-page',
@@ -16,17 +16,15 @@ export class PostPage implements OnInit {
     uiSetting: IUISetting
 
     constructor(
-        private _appearanceService: AppearanceService
-    ) {}
-
-    ngOnInit(): void {
-        this.uiSetting = this._appearanceService.getUISetting
-        this._appearanceService.observableUISetting.subscribe(this, (value) => {
-            Object.entries(value).forEach(([key, val]) => {
-                this.uiSetting[key] = val
-            })
-        })
+        private _uiControl: UIControlService,
+    ) {
+        this.uiSetting = this._uiControl.getUISetting()
+        effect(() => {
+            this.uiSetting = this._uiControl.getUISetting()
+        });
     }
+
+    ngOnInit(): void {}
 
     /**
      * Opens a provided URL in a new browser tab.

@@ -1,8 +1,8 @@
-<ng-container *ngIf="media && media['oembed']">
+@if (media && media['oembed']) {
     <div class="media-container" [innerHTML]="media['oembed'].html | safeHtml"></div>
-</ng-container>
+}
 
-<ng-container *ngIf="gallery.length !== 0">
+@if (gallery.length !== 0) {
     <nz-carousel style="height: 70vh">
         @for (item of gallery; track item) {
             <div nz-carousel-content class="carouselContent">
@@ -10,7 +10,4 @@
             </div>
         }
     </nz-carousel>
-<!--    <div *ngFor="let item of gallery; let i = index" >-->
-<!--        <img [src]="item.url" style="width: 100%; height: 100%">-->
-<!--    </div>-->
-</ng-container>
+}

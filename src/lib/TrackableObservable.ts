@@ -22,7 +22,7 @@ export class TrackableObservable<K, T extends Observable<K> = Observable<K>> {
     constructor(
         private _observable: Observable<K>
     ) {}
-    
+
     subscribe(name: string|object, next: (value: K) => void, error?: (error: any) => void, complete?: () => void): SubscriptionHandle {
         if (!name || !next || (typeof(name) !== 'string' && typeof(name) !== 'object')) throw 'Name and Next Required'
         let handle = this._observable.subscribe(next, error, complete)
@@ -33,7 +33,7 @@ export class TrackableObservable<K, T extends Observable<K> = Observable<K>> {
 }
 
 export class TrackableSubjectWrapper<T extends {[index:string] : any}, TSubject extends Subject<T>> {
-    private _observable: TrackableObservable<T>
+    private readonly _observable: TrackableObservable<T>
 
     constructor(
         private _subject: TSubject,

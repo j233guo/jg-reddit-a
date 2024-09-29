@@ -3,10 +3,6 @@
         <a (click)="dismissModal()">
             <svg width="100%" height="100%" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-<!--                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'"-->
-<!--                            cx="150" cy="150" r="150"></circle>-->
-<!--                    <circle id="Oval" [attr.fill]="uiSetting.colorMode === 'dark'? '#101010' : '#EBECF0'"-->
-<!--                            cx="150" cy="150" r="130"></circle>-->
                     <rect id="Rectangle" [attr.fill]="uiSetting.colorMode === 'dark'? '#EDEFF1' : '#343536'"
                           transform="translate(150, 150) rotate(45) translate(-150, -150)"
                           x="50" y="135" width="200" height="30"></rect>
@@ -24,7 +20,7 @@
                 <div nz-col nzSpan="24">
                     <div nz-row [nzAlign]="'middle'" class="post-info" [attr.data-colormode]="uiSetting.colorMode">
                         <span class="author">
-                            u/{{post.author}}
+                            u/{{ post.author }}
                         </span>
                         <span class="post-time">
                             {{ post.created_utc | parseUTC }}
@@ -32,7 +28,7 @@
                     </div>
                     <div nz-row>
                         <span class="title" [attr.data-colormode]="uiSetting.colorMode">
-                            {{post.title}}
+                            {{ post.title }}
                         </span>
                     </div>
                     <div nz-row class="media">
@@ -78,26 +74,28 @@
         <nz-divider></nz-divider>
 
         <div class="comment-section">
-            <div *ngFor="let comment of comments" class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
-                <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
-                    <span class="author">
-                        u/{{ comment.author }}
-                    </span>
-                    <span class="comment-time">
-                        {{ comment.created_utc | parseUTC }}
-                    </span>
-                    <span class="comment-score">
-                        {{ comment.score }} points
-                    </span>
+            @for (comment of comments; track comment.id) {
+                <div class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
+                    <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
+                        <span class="author">
+                            u/{{ comment.author }}
+                        </span>
+                        <span class="comment-time">
+                            {{ comment.created_utc | parseUTC }}
+                        </span>
+                        <span class="comment-score">
+                            {{ comment.score }} points
+                        </span>
+                    </div>
+                    <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
                 </div>
-                <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
-            </div>
+            }
         </div>
     </div>
 
-    <ng-container *ngIf="loading">
+    @if (loading) {
         <div class="loading-spin">
             <nz-spin nzSimple></nz-spin>
         </div>
-    </ng-container>
+    }
 </div>

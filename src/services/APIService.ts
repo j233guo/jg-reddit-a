@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {ICommentListPayload, IPostListPayload, ISubredditNamesPayload, RemoteAPIBase} from "./RemoteAPIBase";
 import {HttpClient} from "@angular/common/http";
 import {MessageService} from "./MessageService";
-import {IComment, IPost} from "../data/dataTypes";
+import {IComment, IPost} from "../data/models";
 
 @Injectable({
     providedIn: 'root'

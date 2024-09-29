@@ -24,8 +24,8 @@ nz-spin {
     height: 100vh;
     display: block;
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     z-index: 10;
     background-color: #f7f7f766;
 
@@ -52,7 +52,7 @@ nz-spin {
 .search-logo {
     height: 35px;
     width: 35px;
-    margin: 5px 20px 5px 0px;
+    margin: 5px 20px 5px 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -92,7 +92,7 @@ nz-spin {
 }
 
 .outer-content {
-    padding: 20px 50px 0px 50px;
+    padding: 20px 50px 0 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,6 +125,7 @@ nz-spin {
 
 .sider-menu {
     height: calc(100% - 75px);
+    overflow-y: scroll;
 }
 
 .sider-collapse-btn {
@@ -132,45 +133,53 @@ nz-spin {
     width: 100%;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_SIDER_BG_COLOR;
+        background-color: $LIGHT_SIDE_MENU_BG_COLOR;
         color: $LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_SIDER_BG_COLOR;
+        background-color: $DARK_SIDE_MENU_BG_COLOR;
         color: $DARK_TEXT_COLOR;
-    }    
+    }
 }
 
 ::ng-deep .sider-collapse-btn.ant-btn {
     background-color: #345678;
-    border-radius: 0px;
-    border: 0px;
-} 
+    border-radius: 0;
+    border: 0;
+}
 
 ::ng-deep .sider-menu.ant-menu-dark {
-    background-color: $DARK_SIDER_BG_COLOR;
+    background-color: $DARK_SIDE_MENU_BG_COLOR;
 }
 
 ::ng-deep .sider-menu.ant-menu-inline, .sider-menu.ant-menu-inline-collapsed {
-    border-right: 0px;
+    border-right: 0;
+}
+
+::ng-deep .ant-menu-submenu-title {
+    font-weight: 600;
+}
+
+::ng-deep .ant-menu-item {
+    font-size: 0.9em;
 }
 
 .sider-toolbar {
     height: 45px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_SIDER_BG_COLOR;
+        background-color: $LIGHT_SIDE_MENU_BG_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_SIDER_BG_COLOR;
+        background-color: $DARK_SIDE_MENU_BG_COLOR;
     }
 }
 
 .sider-toolbar-button {
-    height: 35px; 
-    width: 35px; 
+    height: 35px;
+    width: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,4 +218,17 @@ nz-footer {
 
 ::ng-deep .ant-layout-footer {
     padding: 15px 50px;
+}
+
+.sideMenuEmptyMsg {
+    font-size: 0.8em;
+    font-weight: $FONT_WEIGHT_SUBHEAD;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_SECONDARY_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_SECONDARY_TEXT_COLOR;
+    }
 }

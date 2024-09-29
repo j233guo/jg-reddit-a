@@ -37,6 +37,39 @@
     }
 }
 
+.subreddit-favorites {
+    margin-left: 25px;
+}
+
+.subreddit-favorite-btn {
+    height: calc($POST_LIST_TOOLBAR_HEIGHT - 10px);
+    margin: 5px 0 5px 0;
+
+    span {
+        &[data-colormode = 'light'] {
+            color: $LIGHT_TEXT_COLOR;
+        }
+
+        &[data-colormode = 'dark'] {
+            color: $DARK_TEXT_COLOR;
+        }
+    }
+}
+
+.sort-text {
+    margin-right: 10px;
+    font-size: $FONT_SIZE_SUBHEAD;
+    font-weight: $FONT_WEIGHT_SUBHEAD;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+}
+
 .sort-button {
     width: 75px;
     height: calc($POST_LIST_TOOLBAR_HEIGHT - 10px);
@@ -45,12 +78,12 @@
     font-weight: $FONT_WEIGHT_SUBHEAD;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        background-color: $LIGHT_POST_CELL_BG_COLOR;
         color: $LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POSTCELL_BG_COLOR;
+        background-color: $DARK_POST_CELL_BG_COLOR;
         color: $DARK_TEXT_COLOR;
     }
 }

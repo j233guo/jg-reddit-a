@@ -54,7 +54,7 @@
 }
 
 .search-input-dark {
-    background-color: $DARK_POSTCELL_BG_COLOR !important;
+    background-color: $DARK_POST_CELL_BG_COLOR !important;
     color: $DARK_TEXT_COLOR !important;
 }
 
@@ -72,12 +72,12 @@
     border-radius: 5px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        background-color: $LIGHT_POST_CELL_BG_COLOR;
         box-shadow: 0 1px 1px #091E4240;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POSTCELL_BG_COLOR;
+        background-color: $DARK_POST_CELL_BG_COLOR;
     }
 }
 
