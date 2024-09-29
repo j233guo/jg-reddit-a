@@ -125,6 +125,7 @@ nz-spin {
 
 .sider-menu {
     height: calc(100% - 75px);
+    overflow-y: scroll;
 }
 
 .sider-collapse-btn {
@@ -154,6 +155,14 @@ nz-spin {
 
 ::ng-deep .sider-menu.ant-menu-inline, .sider-menu.ant-menu-inline-collapsed {
     border-right: 0;
+}
+
+::ng-deep .ant-menu-submenu-title {
+    font-weight: 600;
+}
+
+::ng-deep .ant-menu-item {
+    font-size: 0.9em;
 }
 
 .sider-toolbar {
@@ -213,7 +222,7 @@ nz-footer {
 
 .sideMenuEmptyMsg {
     font-size: 0.8em;
-    font-weight: 500;
+    font-weight: $FONT_WEIGHT_SUBHEAD;
 
     &[data-colormode = 'light'] {
         color: $LIGHT_SECONDARY_TEXT_COLOR;
