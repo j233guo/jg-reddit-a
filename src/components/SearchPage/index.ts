@@ -24,9 +24,9 @@ export class SearchPage implements OnInit {
         private _api: APIService,
         private _router: Router,
     ) {
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
         });
     }
 

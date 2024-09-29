@@ -5,8 +5,9 @@ import {APIService} from "src/services/APIService";
 import {IPostListPayload, ListingOption} from "src/services/RemoteAPIBase";
 import {IPreferences, PreferenceService} from "src/services/PreferenceService";
 import {MessageService} from "src/services/MessageService";
-import {IPost} from "../../data/dataTypes";
+import {IPost} from "../../data/models";
 import {IUISetting, UIControlService} from "../../services/UIControlService";
+import {SubredditService} from "../../services/SubredditService";
 
 @Component({
     selector: 'subreddit-page',
@@ -30,12 +31,13 @@ export class SubredditPage implements OnInit {
         private _api: APIService,
         private _preferenceService: PreferenceService,
         private _route: ActivatedRoute,
-        private _messageService: MessageService
+        private _messageService: MessageService,
+        private _subredditService: SubredditService,
     ) {
         this.subreddit = this._route.snapshot.paramMap.get('sub')
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
         });
     }
 
@@ -54,6 +56,9 @@ export class SubredditPage implements OnInit {
             }
         })
         this.loadPosts().then()
+        this._subredditService.addRecentSubreddit({
+            name: this.subreddit ?? ""
+        })
     }
 
     setListingOption(option: ListingOption) {

@@ -1,5 +1,5 @@
 import {Component, effect, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {IComment, IPost} from "../../data/dataTypes";
+import {IComment, IPost} from "../../data/models";
 import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
@@ -18,9 +18,9 @@ export class PostPage implements OnInit {
     constructor(
         private _uiControl: UIControlService,
     ) {
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
         });
     }
 

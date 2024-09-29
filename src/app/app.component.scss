@@ -132,24 +132,24 @@ nz-spin {
     width: 100%;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_SIDER_BG_COLOR;
+        background-color: $LIGHT_SIDE_MENU_BG_COLOR;
         color: $LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_SIDER_BG_COLOR;
+        background-color: $DARK_SIDE_MENU_BG_COLOR;
         color: $DARK_TEXT_COLOR;
-    }    
+    }
 }
 
 ::ng-deep .sider-collapse-btn.ant-btn {
     background-color: #345678;
     border-radius: 0px;
     border: 0px;
-} 
+}
 
 ::ng-deep .sider-menu.ant-menu-dark {
-    background-color: $DARK_SIDER_BG_COLOR;
+    background-color: $DARK_SIDE_MENU_BG_COLOR;
 }
 
 ::ng-deep .sider-menu.ant-menu-inline, .sider-menu.ant-menu-inline-collapsed {
@@ -160,17 +160,17 @@ nz-spin {
     height: 45px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_SIDER_BG_COLOR;
+        background-color: $LIGHT_SIDE_MENU_BG_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_SIDER_BG_COLOR;
+        background-color: $DARK_SIDE_MENU_BG_COLOR;
     }
 }
 
 .sider-toolbar-button {
-    height: 35px; 
-    width: 35px; 
+    height: 35px;
+    width: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,4 +209,17 @@ nz-footer {
 
 ::ng-deep .ant-layout-footer {
     padding: 15px 50px;
+}
+
+.sideMenuEmptyMsg {
+    font-size: 0.8em;
+    font-weight: 500;
+
+    &[data-colormode = 'light'] {
+        color: $LIGHT_SECONDARY_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_SECONDARY_TEXT_COLOR;
+    }
 }

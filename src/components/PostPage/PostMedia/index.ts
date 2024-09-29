@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges} from "@angular/core";
-import {IMediaMetadata} from "../../../data/dataTypes";
+import {IMediaMetadata} from "../../../data/models";
 
 interface IGalleryData {
     url: string

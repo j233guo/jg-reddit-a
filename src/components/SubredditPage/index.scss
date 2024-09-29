@@ -45,12 +45,12 @@
     font-weight: $FONT_WEIGHT_SUBHEAD;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POSTCELL_BG_COLOR;
+        background-color: $LIGHT_POST_CELL_BG_COLOR;
         color: $LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POSTCELL_BG_COLOR;
+        background-color: $DARK_POST_CELL_BG_COLOR;
         color: $DARK_TEXT_COLOR;
     }
 }

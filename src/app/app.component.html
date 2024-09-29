@@ -41,15 +41,32 @@
                             </li>
                         </ul>
                     </li>
-                    <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">
-                        <ul>
-                            @for (item of favouriteSubreddits; track item.subName) {
-                                <li nz-menu-item [routerLink]="'/subreddit/'+item.subName" [nzMatchRouter]="true">
-                                    {{ item.displayName }}
-                                </li>
-                            }
-                        </ul>
+                    <li nz-submenu nzOpen nzTitle="Recently Visited" nzIcon="field-time">
+                        @if (recentSubreddits.length > 0) {
+                            <ul>
+                                @for (item of recentSubreddits; track item.name) {
+                                    <li nz-menu-item [routerLink]="'/subreddit/'+item.name" [nzMatchRouter]="true">
+                                        r/{{ item.name }}
+                                    </li>
+                                }
+                            </ul>
+                        } @else {
+                            <nz-empty [nzNotFoundContent]="noRecentSubTemplate"></nz-empty>
+                        }
                     </li>
+<!--                    <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">-->
+<!--                        @if (favouriteSubreddits.length > 0) {-->
+<!--                            <ul>-->
+<!--                                @for (item of favouriteSubreddits; track item.name) {-->
+<!--                                    <li nz-menu-item [routerLink]="'/subreddit/'+item.name" [nzMatchRouter]="true">-->
+<!--                                        r/{{ item.name }}-->
+<!--                                    </li>-->
+<!--                                }-->
+<!--                            </ul>-->
+<!--                        } @else {-->
+<!--                            <nz-empty [nzNotFoundContent]="noFavoriteSubTemplate"></nz-empty>-->
+<!--                        }-->
+<!--                    </li>-->
                 </ul>
                 <div nz-row [nzJustify]="'center'" class="sider-toolbar" [attr.data-colormode]="uiSetting.colorMode">
                     <div class="sider-toolbar-button" [attr.data-colormode]="uiSetting.colorMode"
@@ -82,3 +99,15 @@
         </nz-spin>
     }
 </div>
+
+<ng-template #noRecentSubTemplate>
+    <span class="sideMenuEmptyMsg" [attr.data-colormode]="uiSetting.colorMode">
+        No recently visited subreddit
+    </span>
+</ng-template>
+
+<ng-template #noFavoriteSubTemplate>
+    <span class="sideMenuEmptyMsg" [attr.data-colormode]="uiSetting.colorMode" >
+        You have no saved favourite subreddit
+    </span>
+</ng-template>

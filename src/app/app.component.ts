@@ -1,9 +1,10 @@
 import {Component, effect, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FAVOURITE_SUBS, ISubredditNameDict} from 'src/data/FavouriteSubs';
 import {APIService} from 'src/services/APIService';
 import {MessageService} from 'src/services/MessageService';
 import {IUISetting, UIControlService} from "../services/UIControlService";
+import {SubredditService} from "../services/SubredditService";
+import {ISubreddit} from "../data/models";
 
 @Component({
     selector: 'app-component',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
 
     uiSetting: IUISetting
     sideMenuCollapsed: boolean = false
-    favouriteSubreddits: ISubredditNameDict[]
+    favouriteSubreddits: ISubreddit[]
+    recentSubreddits: ISubreddit[] = []
 
     loadingSpinningEffect: boolean
     loadingText: string = ""
@@ -23,15 +25,19 @@ export class AppComponent implements OnInit {
         private _uiControl: UIControlService,
         private _message: MessageService,
         private _api: APIService,
-        private _router: Router
+        private _router: Router,
+        private _subredditService: SubredditService,
     ) {
-        this.favouriteSubreddits = FAVOURITE_SUBS
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
+        this.favouriteSubreddits = this._subredditService.getFavoriteSubreddits()
+        this.recentSubreddits = this._subredditService.getRecentSubreddits()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
             this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
-        });
+            this.favouriteSubreddits = this._subredditService.getFavoriteSubreddits()
+            this.recentSubreddits = this._subredditService.getRecentSubreddits()
+        })
     }
 
     async ngOnInit() {

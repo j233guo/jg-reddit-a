@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {APIService} from "src/services/APIService";
 import {MessageService} from "src/services/MessageService";
 import {ICommentListPayload} from "src/services/RemoteAPIBase";
-import {IComment, IPost} from "../../data/dataTypes";
+import {IComment, IPost} from "../../data/models";
 import {IUISetting, UIControlService} from "../../services/UIControlService";
 
 @Component({
@@ -30,9 +30,9 @@ export class PostList implements OnInit {
         private _router: Router,
         private _messageService: MessageService,
     ) {
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
         });
     }
 

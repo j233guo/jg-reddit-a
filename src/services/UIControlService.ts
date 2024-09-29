@@ -27,7 +27,7 @@ export class UIControlService {
     }
 
     // UI Setting functions
-    get UISetting() {
+    get getUISetting() {
         return this.uiSetting.asReadonly()
     }
 

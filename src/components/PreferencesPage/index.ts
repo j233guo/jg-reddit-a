@@ -16,9 +16,9 @@ export class PreferencesPage implements OnInit {
         private _uiControl: UIControlService,
         private _preferenceService: PreferenceService
     ) {
-        this.uiSetting = this._uiControl.UISetting()
+        this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
-            this.uiSetting = this._uiControl.UISetting()
+            this.uiSetting = this._uiControl.getUISetting()
         });
     }
 
