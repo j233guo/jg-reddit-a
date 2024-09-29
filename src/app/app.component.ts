@@ -30,11 +30,13 @@ export class AppComponent implements OnInit {
     ) {
         this.uiSetting = this._uiControl.getUISetting()
         this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
-        this.favouriteSubreddits = this._subredditService.getFavoriteSubreddits()
-        this.recentSubreddits = this._subredditService.getRecentSubreddits()
         effect(() => {
             this.uiSetting = this._uiControl.getUISetting()
             this.sideMenuCollapsed = this._uiControl.getSideMenuCollapsed()
+        })
+        this.favouriteSubreddits = this._subredditService.getFavoriteSubreddits()
+        this.recentSubreddits = this._subredditService.getRecentSubreddits()
+        effect(() => {
             this.favouriteSubreddits = this._subredditService.getFavoriteSubreddits()
             this.recentSubreddits = this._subredditService.getRecentSubreddits()
         })

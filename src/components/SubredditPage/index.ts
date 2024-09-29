@@ -5,7 +5,7 @@ import {APIService} from "src/services/APIService";
 import {IPostListPayload, ListingOption} from "src/services/RemoteAPIBase";
 import {IPreferences, PreferenceService} from "src/services/PreferenceService";
 import {MessageService} from "src/services/MessageService";
-import {IPost} from "../../data/models";
+import {IPost, ISubreddit} from "../../data/models";
 import {IUISetting, UIControlService} from "../../services/UIControlService";
 import {SubredditService} from "../../services/SubredditService";
 
@@ -19,6 +19,9 @@ export class SubredditPage implements OnInit {
 
     uiSetting: IUISetting
     preferences: IPreferences
+
+    favoriteSubreddits: ISubreddit[] = []
+    isFavorite: boolean = false
 
     subreddit: string | null
     posts: IPost[] = []
@@ -38,7 +41,12 @@ export class SubredditPage implements OnInit {
         this.uiSetting = this._uiControl.getUISetting()
         effect(() => {
             this.uiSetting = this._uiControl.getUISetting()
-        });
+        })
+        this.favoriteSubreddits = this._subredditService.getFavoriteSubreddits()
+        effect(() => {
+            this.favoriteSubreddits = this._subredditService.getFavoriteSubreddits()
+            this.evaluateFavorite()
+        })
     }
 
     ngOnInit(): void {
@@ -51,6 +59,7 @@ export class SubredditPage implements OnInit {
         this._route.params.subscribe(param => {
             if (param["sub"] !== this.subreddit) {
                 this.subreddit = param["sub"]
+                this.evaluateFavorite()
                 this.posts = []
                 this.loadPosts().then()
             }
@@ -83,5 +92,25 @@ export class SubredditPage implements OnInit {
         }).finally(() => {
             this.postListLoading = false
         })
+    }
+
+    evaluateFavorite() {
+        this.isFavorite = this.favoriteSubreddits.filter((sub) => {
+            return sub.name === this.subreddit
+        }).length !== 0
+    }
+
+    saveFavorite() {
+        if (!this.subreddit) return
+        this._subredditService.addFavoriteSubreddit({
+            name: this.subreddit
+        })
+        this._messageService.success(`r/${this.subreddit} added to favorites`)
+    }
+
+    removeFavorite() {
+        if (!this.subreddit) return
+        this._subredditService.removeFavoriteSubreddit(this.subreddit)
+        this._messageService.success(`r/${this.subreddit} removed from favorites`)
     }
 }

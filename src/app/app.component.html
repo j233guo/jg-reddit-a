@@ -54,19 +54,19 @@
                             <nz-empty [nzNotFoundContent]="noRecentSubTemplate"></nz-empty>
                         }
                     </li>
-<!--                    <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">-->
-<!--                        @if (favouriteSubreddits.length > 0) {-->
-<!--                            <ul>-->
-<!--                                @for (item of favouriteSubreddits; track item.name) {-->
-<!--                                    <li nz-menu-item [routerLink]="'/subreddit/'+item.name" [nzMatchRouter]="true">-->
-<!--                                        r/{{ item.name }}-->
-<!--                                    </li>-->
-<!--                                }-->
-<!--                            </ul>-->
-<!--                        } @else {-->
-<!--                            <nz-empty [nzNotFoundContent]="noFavoriteSubTemplate"></nz-empty>-->
-<!--                        }-->
-<!--                    </li>-->
+                    <li nz-submenu nzOpen nzTitle="Favourite Subs" nzIcon="star">
+                        @if (favouriteSubreddits.length > 0) {
+                            <ul>
+                                @for (item of favouriteSubreddits; track item.name) {
+                                    <li nz-menu-item [routerLink]="'/subreddit/'+item.name" [nzMatchRouter]="true">
+                                        r/{{ item.name }}
+                                    </li>
+                                }
+                            </ul>
+                        } @else {
+                            <nz-empty [nzNotFoundContent]="noFavoriteSubTemplate"></nz-empty>
+                        }
+                    </li>
                 </ul>
                 <div nz-row [nzJustify]="'center'" class="sider-toolbar" [attr.data-colormode]="uiSetting.colorMode">
                     <div class="sider-toolbar-button" [attr.data-colormode]="uiSetting.colorMode"

@@ -11,6 +11,7 @@ import {
     RedditOutline,
     SearchOutline,
     SettingOutline,
+    StarFill,
     StarOutline,
     UploadOutline,
 } from '@ant-design/icons-angular/icons';
@@ -27,6 +28,7 @@ const icons: IconDefinition[] = [
     RedditOutline,
     SearchOutline,
     SettingOutline,
+    StarFill,
     StarOutline,
     UploadOutline,
 ]

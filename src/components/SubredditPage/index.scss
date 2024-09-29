@@ -37,6 +37,15 @@
     }
 }
 
+.subreddit-favorites {
+    margin-left: 25px;
+}
+
+.subreddit-favorite-btn {
+    height: calc($POST_LIST_TOOLBAR_HEIGHT - 10px);
+    margin: 5px 0 5px 0;
+}
+
 .sort-button {
     width: 75px;
     height: calc($POST_LIST_TOOLBAR_HEIGHT - 10px);

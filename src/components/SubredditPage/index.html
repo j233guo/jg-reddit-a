@@ -1,8 +1,23 @@
 <div class="content-container">
     <div nz-row [nzAlign]="'middle'" [nzJustify]="'space-between'"
          class="post-list-toolbar" [attr.data-colormode]="uiSetting.colorMode">
-        <div class="subreddit-name" [attr.data-colormode]="uiSetting.colorMode">
-            <span>r/{{subreddit}}</span>
+        <div nz-row [nzAlign]="'middle'">
+            <div class="subreddit-name" [attr.data-colormode]="uiSetting.colorMode">
+                <span>r/{{subreddit}}</span>
+            </div>
+            <div class="subreddit-favorites">
+                @if (isFavorite) {
+                    <button nz-button nzType="text" class="subreddit-favorite-btn" (click)="removeFavorite()"
+                            tooltip [tooltipPlacement]="'right'" [tooltipContent]="removeFavoriteTemplate">
+                        <span nz-icon nzType="star" nzTheme="fill" style="height: 100%"></span>
+                    </button>
+                } @else {
+                    <button nz-button nzType="text" class="subreddit-favorite-btn" (click)="saveFavorite()"
+                            tooltip [tooltipPlacement]="'right'" [tooltipContent]="addFavoriteTemplate">
+                        <span nz-icon nzType="star" nzTheme="outline"></span>
+                    </button>
+                }
+            </div>
         </div>
         <div class="sort-buttons">
             <button nz-button nzShape="round" class="sort-button"
@@ -27,3 +42,13 @@
                    (load)="loadPosts($event)"></post-list>
     </div>
 </div>
+
+<ng-template #addFavoriteTemplate>
+    <tooltip-content [text]="'Add this subreddit to favorites'"
+                     [colorMode]="uiSetting.colorMode"></tooltip-content>
+</ng-template>
+
+<ng-template #removeFavoriteTemplate>
+    <tooltip-content [text]="'Remove this subreddit from favorites'"
+                     [colorMode]="uiSetting.colorMode"></tooltip-content>
+</ng-template>
