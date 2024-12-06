@@ -66,6 +66,9 @@ export class PostList implements OnInit {
         })
     }
 
+    /**
+     * Closes the post detail view and clears the comment list
+     */
     closePost() {
         this.displayPostDetail = false
         this.commentList = []
@@ -80,6 +83,10 @@ export class PostList implements OnInit {
         event.target.style.display = 'none'
     }
 
+    /**
+     * Navigates to the specified subreddit page and collapses the side menu
+     * @param subreddit The name of the subreddit to navigate to
+     */
     goToSubreddit(subreddit: string) {
         this._router.navigate(['/subreddit', subreddit]).then(() => {
             this._uiControl.collapseSideMenu()

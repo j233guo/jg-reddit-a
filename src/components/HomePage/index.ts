@@ -41,10 +41,14 @@ export class HomePage implements OnInit {
         this.loadPosts().then(() => {})
     }
 
+    /**
+     * Loads posts from the API and appends them to the existing posts list
+     * @param after Optional pagination token for loading more posts
+     */
     async loadPosts(after?: string | null) {
         let payload: IPostListPayload = {
             subreddit: 'all',
-            listingOption: 'top',
+            listingOption: 'top', 
             limit: this.preferences.postsPerLoad
         }
         if (after) { payload['after'] = after }

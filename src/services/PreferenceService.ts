@@ -25,12 +25,19 @@ export class PreferenceService {
         this.initPreferences()
     }
 
+    /**
+     * Initializes the preferences with default values
+     */
     initPreferences() {
         this._preferences = {
             postsPerLoad: 25,
         }
     }
 
+    /**
+     * Applies the provided preferences to the current preferences
+     * @param value The new preferences to apply
+     */
     applyPreferences(value: Partial<IPreferences>) {
         let pass: Partial<IPreferences> = {}
         Object.entries(value).forEach(([key, val]) => {
