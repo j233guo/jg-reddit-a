@@ -75,20 +75,7 @@
 
         <div class="comment-section">
             @for (comment of comments; track comment.id) {
-                <div class="comment-cell" [attr.data-colormode]="uiSetting.colorMode">
-                    <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
-                        <span class="author">
-                            u/{{ comment.author }}
-                        </span>
-                        <span class="comment-time">
-                            {{ comment.created_utc | parseUTC }}
-                        </span>
-                        <span class="comment-score">
-                            {{ comment.score }} points
-                        </span>
-                    </div>
-                    <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
-                </div>
+                <comment-cell [comment]="comment"></comment-cell>
             }
         </div>
     </div>

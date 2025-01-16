@@ -55,7 +55,7 @@ export class PostList implements OnInit {
             subreddit: this.openedPost.subreddit,
             id: this.openedPost.id,
             limit: 50,
-            depth: 0,
+            depth: 10,
         }
         this._api.getComments(payload).then((res) => {
             this.commentList.push(...res)
