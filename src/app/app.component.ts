@@ -58,19 +58,28 @@ export class AppComponent implements OnInit {
     }
 
     /**
-     * Toggles the state of the sider (sidebar) collapse.
+     * Toggles the side menu between collapsed and expanded states.
+     * If currently collapsed, expands the menu.
+     * If currently expanded, collapses the menu.
      */
     toggleSideMenuCollapse() {
         this.sideMenuCollapsed ? this._uiControl.expandSideMenu() : this._uiControl.collapseSideMenu()
     }
 
+    /**
+     * Navigates to the home page and expands the side menu.
+     */
     goToHome() {
         this._router.navigate(['/']).then()
         this._uiControl.expandSideMenu()
     }
 
+    /**
+     * Navigates to the search page and collapses the side menu.
+     */
     goToSearch() {
         this._router.navigate(['/search']).then()
         this._uiControl.collapseSideMenu()
     }
 }
+    

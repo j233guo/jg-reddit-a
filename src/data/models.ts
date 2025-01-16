@@ -26,6 +26,7 @@ export interface IComment {
     name: string
     permalink: string
     score: number
+    replies: IComment[]
 }
 
 export interface IMediaMetadataImage {

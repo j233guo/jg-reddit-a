@@ -1,0 +1,25 @@
+<div class="comment-cell" [attr.data-colormode]="uiSetting.colorMode" 
+    [attr.data-depth]="depth" 
+    [style.margin-left.px]="depth > 0 ? 20 : 0"
+    [style.border-left-color]="depth > 0 ? borderColor : 'transparent'">
+    <div class="comment-content">
+        <div nz-row [nzAlign]="'middle'" class="comment-info" [attr.data-colormode]="uiSetting.colorMode">
+            <span class="author">
+                u/{{ comment.author }}
+            </span>
+            <span class="comment-time">
+                {{ comment.created_utc | parseUTC }}
+            </span>
+            <span class="comment-score">
+                {{ comment.score }} points
+            </span>
+        </div>
+        <div [ngClass]="'self-text-'+uiSetting.colorMode" [innerHTML]="comment.body_html | safeHtml"></div>
+    </div>
+    @if (comment.replies && comment.replies.length > 0) {
+        @for (reply of comment.replies; track reply.id) {
+            <comment-cell [comment]="reply" [depth]="depth + 1" 
+                [parentBorderColor]="borderColor"></comment-cell>
+        }
+    }
+</div>

@@ -87,50 +87,6 @@
     }
 }
 
-.comment-cell {
-    margin: 10px 25px 10px 25px;
-    border-radius: 8px;
-    padding: 10px 10px 5px 15px;
-
-    &[data-colormode = 'light'] {
-        background-color: $LIGHT_POST_CELL_BG_COLOR;
-        box-shadow: 0 1px 1px #091E4240;
-    }
-
-    &[data-colormode = 'dark'] {
-        background-color: $DARK_POST_CELL_BG_COLOR;
-    }
-}
-
-.comment-info {
-    margin-bottom: 5px;
-
-    span {
-        font-size: $FONT_SIZE_SUBHEAD;
-        font-weight: $FONT_WEIGHT_SUBHEAD;
-    }
-
-    .comment-time {
-        margin-left: 15px;
-    }
-}
-
-.score-comment {
-    &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
-    }
-
-    &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
-    }
-
-    .score, .num-comment {
-        margin: 0 10px 0 10px;
-        font-size: $FONT_SIZE_SUBHEAD;
-        font-weight: $FONT_WEIGHT_SUBHEAD;
-    }
-}
-
 .open-in-browser-btn {
     &[data-colormode = 'light'] {
         color: $LIGHT_TEXT_COLOR;
@@ -152,5 +108,21 @@
     .md {
         color: $DARK_TEXT_COLOR;
         font-size: $FONT_SIZE_BODY;
+    }
+}
+
+.score-comment {
+    &[data-colormode = 'light'] {
+        color: $LIGHT_TEXT_COLOR;
+    }
+
+    &[data-colormode = 'dark'] {
+        color: $DARK_TEXT_COLOR;
+    }
+
+    .score, .num-comment {
+        margin: 0 10px 0 10px;
+        font-size: $FONT_SIZE_SUBHEAD;
+        font-weight: $FONT_WEIGHT_SUBHEAD;
     }
 }

@@ -13,11 +13,13 @@ import { SafeHtmlPipe } from "src/pipes/safe-html.pipe";
 import { PostMedia } from "src/components/PostPage/PostMedia";
 import { UrlHandler } from "src/components/PostPage/UrlHandler";
 import { SearchPage } from "src/components/SearchPage";
-import {TooltipContentComponent} from "../components/Common/TooltipContent";
-import {DirectiveModule} from "./directive.module";
+import { TooltipContentComponent } from "../components/Common/TooltipContent";
+import { DirectiveModule } from "./directive.module";
+import { CommentCell } from "src/components/PostPage/CommentCell";
 
 @NgModule({
     declarations: [
+        CommentCell,
         HomePage,
         HotPage,
         ParseUTCPipe,

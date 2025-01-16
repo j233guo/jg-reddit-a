@@ -27,6 +27,10 @@ export class UIControlService {
     }
 
     // UI Setting functions
+    /**
+     * Retrieves the current UI settings
+     * @returns A readonly signal containing the current UI settings
+     */
     get getUISetting() {
         return this.uiSetting.asReadonly()
     }
@@ -40,29 +44,50 @@ export class UIControlService {
     }
 
     // Loading Functions
+    /**
+     * Starts the loading state with the provided text
+     * @param text The text to display while loading (default is an empty string)
+     */
     startLoading(text: string = "") {
         this.loadingState.next({ status: true, text: text })
     }
 
+    /**
+     * Finishes the loading state
+     */
     finishLoading() {
         setTimeout(() => {
             this.loadingState.next({ status: false, text: "" })
         }, 100)
     }
 
+    /**
+     * Retrieves the loading state
+     * @returns The loading state as a BehaviorSubject
+     */
     get LoadingState() {
         return this.loadingState
     }
 
     // side menu functions
+    /**
+     * Retrieves the collapsed state of the side menu
+     * @returns A readonly signal containing the collapsed state of the side menu
+     */
     get getSideMenuCollapsed() {
         return this.sideMenuCollapsed.asReadonly()
     }
 
+    /**
+     * Collapses the side menu
+     */
     collapseSideMenu() {
         this.sideMenuCollapsed.set(true)
     }
 
+    /**
+     * Expands the side menu
+     */
     expandSideMenu() {
         this.sideMenuCollapsed.set(false)
     }
