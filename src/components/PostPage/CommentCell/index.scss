@@ -2,18 +2,35 @@
 @import "../../../scss/font";
 
 .comment-cell {
-    margin: 10px 25px 10px 25px;
-    border-radius: 8px;
-    padding: 10px 10px 5px 15px;
+    margin: 15px 5px 2px 0;
+    border-radius: 10px;
+    padding: 10px 0 5px 0;
+
+    &[data-depth]:not([data-depth="0"]) {
+        border-left: 2px solid #878A8C;
+        border-top: 1px solid #E6E7E8;
+    }
+
+    &[data-depth="0"] {
+        margin-left: 10px;
+    }
 
     &[data-colormode = 'light'] {
         background-color: $LIGHT_POST_CELL_BG_COLOR;
-        box-shadow: 0 1px 1px #091E4240;
+        box-shadow: 0 2px 2px #091E4240;
     }
 
     &[data-colormode = 'dark'] {
         background-color: $DARK_POST_CELL_BG_COLOR;
+
+        &[data-depth]:not([data-depth="0"]) {
+            border-top: 1px solid #343536;
+        }
     }
+}
+
+.comment-content {
+    padding: 0px 10px 0px 15px;
 }
 
 .comment-info {
