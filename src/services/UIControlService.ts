@@ -19,11 +19,31 @@ export class UIControlService {
     private readonly uiSetting: WritableSignal<IUISetting>
     private readonly loadingState: BehaviorSubject<LoadingState>
     private readonly sideMenuCollapsed: WritableSignal<boolean>
+    private readonly UI_SETTING_KEY = 'uiSetting'
 
     constructor() {
         this.uiSetting = signal<IUISetting>({colorMode: 'light'})
         this.loadingState = new BehaviorSubject<LoadingState>({ status: false, text: "" })
         this.sideMenuCollapsed = signal(false)
+        this.loadUISetting()
+    }
+
+    /**
+     * Loads the UI settings from local storage
+     */
+    loadUISetting() {
+        const uiSetting = localStorage.getItem(this.UI_SETTING_KEY)
+        if (uiSetting) {
+            this.uiSetting.set(JSON.parse(uiSetting))
+        }
+    }
+
+    /**
+     * Saves the UI settings to local storage
+     * @param uiSetting The UI settings to save
+     */
+    saveUISetting(uiSetting: IUISetting) {
+        localStorage.setItem(this.UI_SETTING_KEY, JSON.stringify(uiSetting))
     }
 
     // UI Setting functions
@@ -41,6 +61,7 @@ export class UIControlService {
             ...value
         }
         this.uiSetting.set(updatedSetting)
+        this.saveUISetting(updatedSetting)
     }
 
     // Loading Functions

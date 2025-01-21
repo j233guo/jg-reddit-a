@@ -16,22 +16,14 @@ export class PreferenceService {
 
     private _preferences: IPreferences
     private _subjectPreferences: SubjectPreferences
+    private readonly PREFERENCES_KEY = 'preferences'
 
     get getPreferences() { return this._preferences }
     get observablePreferences() { return this._subjectPreferences.observable }
 
     constructor() {
         this._subjectPreferences = new TrackableSubjectWrapper(new Subject())
-        this.initPreferences()
-    }
-
-    /**
-     * Initializes the preferences with default values
-     */
-    initPreferences() {
-        this._preferences = {
-            postsPerLoad: 25,
-        }
+        this.loadPreferences()
     }
 
     /**
@@ -45,5 +37,27 @@ export class PreferenceService {
             pass[key] = val
         })
         this._subjectPreferences.subject.next(pass)
+        this.savePreferences()
+    }
+
+    /**
+     * Saves the current preferences to local storage
+     */
+    savePreferences() {
+        localStorage.setItem(this.PREFERENCES_KEY, JSON.stringify(this._preferences))
+    }
+
+    /**
+     * Loads the preferences from local storage
+     */
+    loadPreferences() {
+        const preferences = localStorage.getItem(this.PREFERENCES_KEY)
+        if (preferences) {
+            this._preferences = JSON.parse(preferences)
+        } else {
+            this._preferences = {
+                postsPerLoad: 25,
+            }
+        }
     }
 }
