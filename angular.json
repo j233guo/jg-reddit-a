@@ -58,9 +58,21 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "develop-cloud": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.devcloud.ts"
+              }]
+            },
+            "develop-local": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.devlocal.ts"
+              }]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "develop-local"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -69,10 +81,16 @@
               "buildTarget": "jg-reddit-a:build:production"
             },
             "development": {
-              "buildTarget": "jg-reddit-a:build:development"
+              "buildTarget": "jg-reddit-a:build:develop-cloud"
+            },
+            "develop-local": {
+              "buildTarget": "jg-reddit-a:build:develop-local"
+            },
+            "develop-cloud": {
+              "buildTarget": "jg-reddit-a:build:develop-cloud"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "develop-cloud"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

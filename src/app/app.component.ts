@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
             this.loadingSpinningEffect = value.status
             this.loadingText = value.text
         })
-        this._uiControl.startLoading()
+        this._uiControl.startLoading("Connecting to Server...")
         this._api.checkServer().then((res) => {
             if (!res) { this._message.error("Unable to access Reddit API because access token is unavailable.") }
         }).catch(() => {
