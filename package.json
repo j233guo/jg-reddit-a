@@ -9,10 +9,12 @@
     "test": "ng test",
     "build-develop-local": "ng build --configuration=develop-local",
     "build-develop-cloud": "ng build --configuration=develop-cloud",
-    "build-production": "ng build --configuration=production",
+    "build-production-local": "ng build --configuration=production-local",
+    "build-production-cloud": "ng build --configuration=production-cloud",
     "serve-develop-local": "ng serve --configuration=develop-local --no-live-reload --proxy-config proxy.conf.json --port 55385",
     "serve-develop-cloud": "ng serve --configuration=develop-cloud --no-live-reload --proxy-config proxy.conf.json --port 55385",
-    "serve-production": "ng serve --configuration=production --no-live-reload --proxy-config proxy.conf.json --port 55385"
+    "serve-production-local": "ng serve --configuration=production-local --no-live-reload --proxy-config proxy.conf.json --port 55385",
+    "serve-production-cloud": "ng serve --configuration=production-cloud --no-live-reload --proxy-config proxy.conf.json --port 55385"
   },
   "private": true,
   "dependencies": {

@@ -59,16 +59,24 @@
               "sourceMap": true,
               "namedChunks": true
             },
-            "develop-cloud": {
+            "production-local": {
               "fileReplacements": [{
                 "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.devcloud.ts"
-              }]
+                "with": "src/environments/environment.prod.local.ts"
+              }],
+              "outputHashing": "all"
+            },
+            "production-cloud": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.cloud.ts"
+              }],
+              "outputHashing": "all"
             },
             "develop-local": {
               "fileReplacements": [{
                 "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.devlocal.ts"
+                "with": "src/environments/environment.dev.local.ts"
               }]
             }
           },
@@ -77,11 +85,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "jg-reddit-a:build:production"
+            "production-local": {
+              "buildTarget": "jg-reddit-a:build:production-local"
             },
-            "development": {
-              "buildTarget": "jg-reddit-a:build:develop-cloud"
+            "production-cloud": {
+              "buildTarget": "jg-reddit-a:build:production-cloud"
             },
             "develop-local": {
               "buildTarget": "jg-reddit-a:build:develop-local"
