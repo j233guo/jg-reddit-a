@@ -7,7 +7,14 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "develop": "ng serve --no-live-reload --proxy-config proxy.conf.json --port 55385"
+    "build-develop-local": "ng build --configuration=develop-local",
+    "build-develop-cloud": "ng build --configuration=develop-cloud",
+    "build-production-local": "ng build --configuration=production-local",
+    "build-production-cloud": "ng build --configuration=production-cloud",
+    "serve-develop-local": "ng serve --configuration=develop-local --no-live-reload --proxy-config proxy.conf.json --port 55385",
+    "serve-develop-cloud": "ng serve --configuration=develop-cloud --no-live-reload --proxy-config proxy.conf.json --port 55385",
+    "serve-production-local": "ng serve --configuration=production-local --no-live-reload --proxy-config proxy.conf.json --port 55385",
+    "serve-production-cloud": "ng serve --configuration=production-cloud --no-live-reload --proxy-config proxy.conf.json --port 55385"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +27,7 @@
     "@angular/platform-browser": "^18.2.13",
     "@angular/platform-browser-dynamic": "^18.2.13",
     "@angular/router": "^18.2.13",
+    "@ctrl/tinycolor": "^4.1.0",
     "ng-zorro-antd": "^18.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

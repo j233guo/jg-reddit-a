@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { MessageService } from "./MessageService";
+import { environment } from "../environments/environment";
 
 export enum ResponseCode {
     OK = 0,
@@ -37,12 +38,14 @@ export interface ISubredditNamesPayload {
 
 export class RemoteAPIBase {
 
-    protected baseURL: string  = 'http://127.0.0.1:5000'
+    protected baseURL: string
 
     public constructor(
         protected _http: HttpClient,
         protected _message: MessageService,
-    ) {}
+    ) {
+        this.baseURL = environment.apiUrl
+    }
 
     /**
      * Handles standard error responses
