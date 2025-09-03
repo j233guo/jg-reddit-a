@@ -9,7 +9,8 @@ import {IUISetting, UIControlService} from "../../services/UIControlService";
 @Component({
     selector: 'search-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class SearchPage implements OnInit {
 

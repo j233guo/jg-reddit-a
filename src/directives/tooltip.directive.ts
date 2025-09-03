@@ -3,7 +3,8 @@ import {ConnectionPositionPair, Overlay, OverlayRef} from "@angular/cdk/overlay"
 import {TemplatePortal} from "@angular/cdk/portal";
 
 @Directive({
-    selector: '[tooltip]'
+    selector: '[tooltip]',
+    standalone: false
 })
 export class TooltipDirective {
     @Input('tooltipContent') content: TemplateRef<any>

@@ -6,6 +6,7 @@ import {IUISetting, UIControlService} from "../../services/UIControlService";
     selector: 'post-page',
     templateUrl: './index.html',
     styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class PostPage implements OnInit {
     @Input('loading') loading: boolean

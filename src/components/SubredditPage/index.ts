@@ -12,7 +12,8 @@ import {SubredditService} from "../../services/SubredditService";
 @Component({
     selector: 'subreddit-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class SubredditPage implements OnInit {
     @ViewChild(PostList) postList: PostList

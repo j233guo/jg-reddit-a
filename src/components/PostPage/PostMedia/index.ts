@@ -10,7 +10,8 @@ interface IGalleryData {
 @Component({
     selector: "post-media",
     templateUrl: "./index.html",
-    styleUrls: ["./index.scss"]
+    styleUrls: ["./index.scss"],
+    standalone: false
 })
 export class PostMedia implements OnChanges {
     @Input() media: any
