@@ -1,6 +1,6 @@
-@import "../../scss/color";
-@import "../../scss/font";
-@import "../../scss/layout";
+@use "../../scss/color" as color;
+@use "../../scss/font" as font;
+@use "../../scss/layout" as layout;
 
 .content-container {
     width: 100%;
@@ -9,29 +9,29 @@
 
 .preferences-toolbar {
     width: 100%;
-    height: $POST_LIST_TOOLBAR_HEIGHT;
+    height: layout.$POST_LIST_TOOLBAR_HEIGHT;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_HEADER_COLOR;
-        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid color.$LIGHT_HEADER_BOTTOM_BORDER_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_HEADER_COLOR;
-        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$DARK_HEADER_COLOR;
+        border-bottom: 1px solid color.$DARK_HEADER_BOTTOM_BORDER_COLOR;
     }
 }
 
 .preferences-title {
     margin-left: 25px;
-    font-size: $FONT_SIZE_TITLE2;
+    font-size: font.$FONT_SIZE_TITLE2;
 
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 }
 
@@ -45,15 +45,15 @@
 
 .section-title {
     margin: 10px 0 5px 5px;
-    font-size: $FONT_SIZE_SUBHEAD;
-    font-weight: $FONT_WEIGHT_SUBHEAD;
+    font-size: font.$FONT_SIZE_SUBHEAD;
+    font-weight: font.$FONT_WEIGHT_SUBHEAD;
 
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 }
 
@@ -61,39 +61,39 @@
     border-radius: 8px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POST_CELL_BG_COLOR;
+        background-color: color.$LIGHT_POST_CELL_BG_COLOR;
         box-shadow: 0 1px 1px #091E4240;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POST_CELL_BG_COLOR;
+        background-color: color.$DARK_POST_CELL_BG_COLOR;
     }
 }
 
 .pref-line {
     width: 100%;
     align-items: center;
-    font-weight: $FONT_WEIGHT_BODY;
-    font-size: $FONT_SIZE_BODY;
+    font-weight: font.$FONT_WEIGHT_BODY;
+    font-size: font.$FONT_SIZE_BODY;
     padding: 5px 15px 5px 15px;
 
     .pref-line-tag {
         &[data-colormode = 'light'] {
-            color: $LIGHT_TEXT_COLOR;
+            color: color.$LIGHT_TEXT_COLOR;
         }
 
         &[data-colormode = 'dark'] {
-            color: $DARK_TEXT_COLOR;
+            color: color.$DARK_TEXT_COLOR;
         }
     }
 }
 
 ::ng-deep .ant-select-dark {
     .ant-select-selector {
-        background-color: $DARK_POST_CELL_BG_COLOR !important;
+        background-color: color.$DARK_POST_CELL_BG_COLOR !important;
     }
 
     .ant-select-selection-item, .ant-select-arrow {
-        color: $DARK_TEXT_COLOR !important;
+        color: color.$DARK_TEXT_COLOR !important;
     }
 }
