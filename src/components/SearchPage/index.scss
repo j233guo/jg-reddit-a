@@ -1,6 +1,6 @@
-@import "../../scss/color";
-@import "../../scss/font";
-@import "../../scss/layout";
+@use "../../scss/color" as color;
+@use "../../scss/font" as font;
+@use "../../scss/layout" as layout;
 
 .content-container {
     display: flex;
@@ -11,30 +11,30 @@
 
 .toolbar {
     width: 100%;
-    height: $POST_LIST_TOOLBAR_HEIGHT;
+    height: layout.$POST_LIST_TOOLBAR_HEIGHT;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_HEADER_COLOR;
-        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid color.$LIGHT_HEADER_BOTTOM_BORDER_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_HEADER_COLOR;
-        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$DARK_HEADER_COLOR;
+        border-bottom: 1px solid color.$DARK_HEADER_BOTTOM_BORDER_COLOR;
     }
 }
 
 .title {
     margin-left: 25px;
-    font-size: $FONT_SIZE_HEADLINE;
-    font-weight: $FONT_WEIGHT_HEADLINE;
+    font-size: font.$FONT_SIZE_HEADLINE;
+    font-weight: font.$FONT_WEIGHT_HEADLINE;
 
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 }
 
@@ -50,62 +50,62 @@
 
 .search-input {
     border-radius: 5px;
-    border-color: $DARK_BOX_BORDER_COLOR;
+    border-color: color.$DARK_BOX_BORDER_COLOR;
 }
 
 .search-input-dark {
-    background-color: $DARK_POST_CELL_BG_COLOR !important;
-    color: $DARK_TEXT_COLOR !important;
+    background-color: color.$DARK_POST_CELL_BG_COLOR !important;
+    color: color.$DARK_TEXT_COLOR !important;
 }
 
 .checkbox-dark {
-    color: $DARK_TEXT_COLOR !important;
+    color: color.$DARK_TEXT_COLOR !important;
 }
 
 .search-results {
     display: block;
     width: 65%;
-    height: calc(100% - $POST_LIST_TOOLBAR_HEIGHT - 120px);
+    height: calc(100% - #{layout.$POST_LIST_TOOLBAR_HEIGHT} - 120px);
     overflow: scroll;
     padding: 25px;
     margin: 20px 50px 0 50px;
     border-radius: 5px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POST_CELL_BG_COLOR;
+        background-color: color.$LIGHT_POST_CELL_BG_COLOR;
         box-shadow: 0 1px 1px #091E4240;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POST_CELL_BG_COLOR;
+        background-color: color.$DARK_POST_CELL_BG_COLOR;
     }
 }
 
 ::ng-deep .empty-placeholder-dark {
     p {
-        color: $DARK_TEXT_COLOR !important;
+        color: color.$DARK_TEXT_COLOR !important;
     }
 }
 
 .search-result-line {
     a {
-        font-size: $FONT_SIZE_HEADLINE;
-        font-weight: $FONT_SIZE_HEADLINE;
+        font-size: font.$FONT_SIZE_HEADLINE;
+        font-weight: font.$FONT_SIZE_HEADLINE;
     }
 
     a:hover {
-        color: $LINK_HOVERED_COLOR;
+        color: color.$LINK_HOVERED_COLOR;
     }
 
     &[data-colormode = 'light'] {
         a {
-            color: $LIGHT_TEXT_COLOR;
+            color: color.$LIGHT_TEXT_COLOR;
         }
     }
 
     &[data-colormode = 'dark'] {
         a {
-            color: $DARK_TEXT_COLOR
+            color: color.$DARK_TEXT_COLOR
         }
     }
 }
@@ -115,10 +115,10 @@
     margin: 15px 0;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_TEXT_COLOR;
+        background-color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_TEXT_COLOR;
+        background-color: color.$DARK_TEXT_COLOR;
     }
 }

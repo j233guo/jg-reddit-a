@@ -25,14 +25,15 @@ import {ColorMode} from "../../../services/UIControlService";
     animations: [
         trigger('tooltipAnimation', [
             transition(':enter', [
-                style({opacity: 0, transform: 'scale(0)'}),
-                animate('0.1s ease-out', style({opacity: 1, transform: 'scale(1)'}),)
+                style({ opacity: 0, transform: 'scale(0)' }),
+                animate('0.1s ease-out', style({ opacity: 1, transform: 'scale(1)' }))
             ]),
             transition(':leave', [
-                animate('0.1s ease-in', style({opacity: 0, transform: 'scale(0)'}),)
+                animate('0.1s ease-in', style({ opacity: 0, transform: 'scale(0)' }))
             ])
         ])
-    ]
+    ],
+    standalone: false
 })
 export class TooltipContentComponent {
     @Input() colorMode: ColorMode

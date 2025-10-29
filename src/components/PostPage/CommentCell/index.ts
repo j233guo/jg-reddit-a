@@ -5,7 +5,8 @@ import { IUISetting, UIControlService } from "src/services/UIControlService";
 @Component({
     selector: "comment-cell",
     templateUrl: "./index.html",
-    styleUrls: ["./index.scss"]
+    styleUrls: ["./index.scss"],
+    standalone: false
 })
 export class CommentCell {
     @Input() comment: IComment

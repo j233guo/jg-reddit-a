@@ -3,7 +3,8 @@ import {Component, Input, OnChanges} from "@angular/core";
 @Component({
     selector: "url-handler",
     templateUrl: "./index.html",
-    styleUrls: ["./index.scss"]
+    styleUrls: ["./index.scss"],
+    standalone: false
 })
 export class UrlHandler implements OnChanges {
     @Input() url: string;

@@ -1,6 +1,6 @@
-@import "../../scss/color";
-@import "../../scss/font";
-@import "../../scss/layout";
+@use "../../scss/color" as color;
+@use  "../../scss/font" as font;
+@use "../../scss/layout" as layout;
 
 .content-container {
     display: block;
@@ -10,36 +10,36 @@
 
 .post-list-toolbar {
     width: 100%;
-    height: $POST_LIST_TOOLBAR_HEIGHT;
+    height: layout.$POST_LIST_TOOLBAR_HEIGHT;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_HEADER_COLOR;
-        border-bottom: 1px solid $LIGHT_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$LIGHT_HEADER_COLOR;
+        border-bottom: 1px solid color.$LIGHT_HEADER_BOTTOM_BORDER_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_HEADER_COLOR;
-        border-bottom: 1px solid $DARK_HEADER_BOTTOM_BORDER_COLOR;
+        background-color: color.$DARK_HEADER_COLOR;
+        border-bottom: 1px solid color.$DARK_HEADER_BOTTOM_BORDER_COLOR;
     }
 }
 
 .post-list-title {
     margin-left: 25px;
-    font-size: $FONT_SIZE_HEADLINE;
-    font-weight: $FONT_WEIGHT_HEADLINE;
+    font-size: font.$FONT_SIZE_HEADLINE;
+    font-weight: font.$FONT_WEIGHT_HEADLINE;
 
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 }
 
 .post-list {
     display: block;
     width: 100%;
-    height: calc(100% - $POST_LIST_TOOLBAR_HEIGHT);
+    height: calc(100% - #{layout.$POST_LIST_TOOLBAR_HEIGHT});
     overflow: scroll;
 }

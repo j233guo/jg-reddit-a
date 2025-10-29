@@ -5,7 +5,8 @@ import {IUISetting, UIControlService} from "../../services/UIControlService";
 @Component({
     selector: 'preferences-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class PreferencesPage implements OnInit {
 

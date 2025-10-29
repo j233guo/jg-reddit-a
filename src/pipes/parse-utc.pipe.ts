@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    name: "parseUTC"
+    name: "parseUTC",
+    standalone: false
 })
 export class ParseUTCPipe implements PipeTransform {
 

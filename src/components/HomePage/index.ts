@@ -9,7 +9,8 @@ import {IUISetting, UIControlService} from "../../services/UIControlService";
 @Component({
     selector: 'home-page',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class HomePage implements OnInit {
 

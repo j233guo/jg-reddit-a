@@ -1,5 +1,5 @@
-@import "../../scss/color";
-@import "../../scss/font";
+@use "../../scss/color" as color;
+@use "../../scss/font" as font;
 
 .post-cell {
     margin: 15px 30px 15px 30px;
@@ -7,19 +7,19 @@
     padding: 15px 15px 15px 20px;
 
     &[data-colormode = 'light'] {
-        background-color: $LIGHT_POST_CELL_BG_COLOR;
+        background-color: color.$LIGHT_POST_CELL_BG_COLOR;
         box-shadow: 0 1px 1px #091E4240;
     }
 
     &[data-colormode = 'dark'] {
-        background-color: $DARK_POST_CELL_BG_COLOR;
+        background-color: color.$DARK_POST_CELL_BG_COLOR;
     }
 }
 
 .post-info {
     span {
-        font-size: $FONT_SIZE_SUBHEAD;
-        font-weight: $FONT_WEIGHT_SUBHEAD;
+        font-size: font.$FONT_SIZE_SUBHEAD;
+        font-weight: font.$FONT_WEIGHT_SUBHEAD;
     }
 
     .subreddit-name {
@@ -31,68 +31,68 @@
     }
 
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 }
 
 .subreddit-name {
     a:hover {
-        color: $LINK_HOVERED_COLOR;
+        color: color.$LINK_HOVERED_COLOR;
     }
 
     &[data-colormode = 'light'] {
         a {
-            color: $LIGHT_TEXT_COLOR;
+            color: color.$LIGHT_TEXT_COLOR;
         }
     }
 
     &[data-colormode = 'dark'] {
         a {
-            color: $DARK_TEXT_COLOR
+            color: color.$DARK_TEXT_COLOR
         }
     }
 }
 
 .title {
-    font-size: $FONT_SIZE_TITLE2;
-    font-weight: $FONT_WEIGHT_TITLE2;
+    font-size: font.$FONT_SIZE_TITLE2;
+    font-weight: font.$FONT_WEIGHT_TITLE2;
     margin: 5px 0 15px 0;
     padding-right: 5px;
 
     a:hover {
-        color: $LINK_HOVERED_COLOR;
+        color: color.$LINK_HOVERED_COLOR;
     }
 
     &[data-colormode = 'light'] {
         a {
-            color: $LIGHT_TEXT_COLOR;
+            color: color.$LIGHT_TEXT_COLOR;
         }
     }
 
     &[data-colormode = 'dark'] {
         a {
-            color: $DARK_TEXT_COLOR
+            color: color.$DARK_TEXT_COLOR
         }
     }
 }
 
 .score-comment {
     &[data-colormode = 'light'] {
-        color: $LIGHT_TEXT_COLOR;
+        color: color.$LIGHT_TEXT_COLOR;
     }
 
     &[data-colormode = 'dark'] {
-        color: $DARK_TEXT_COLOR;
+        color: color.$DARK_TEXT_COLOR;
     }
 
     .score, .num-comment {
         margin: 0 10px 0 10px;
-        font-size: $FONT_SIZE_SUBHEAD;
-        font-weight: $FONT_WEIGHT_SUBHEAD;
+        font-size: font.$FONT_SIZE_SUBHEAD;
+        font-weight: font.$FONT_WEIGHT_SUBHEAD;
     }
 }
 

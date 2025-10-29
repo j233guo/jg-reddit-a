@@ -9,7 +9,8 @@ import {IUISetting, UIControlService} from "../../services/UIControlService";
 @Component({
     selector: 'post-list',
     templateUrl: './index.html',
-    styleUrls: ['./index.scss']
+    styleUrls: ['./index.scss'],
+    standalone: false
 })
 export class PostList implements OnInit {
     @Input('posts') posts: IPost[]
